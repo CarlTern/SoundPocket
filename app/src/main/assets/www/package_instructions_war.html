@@ -18,38 +18,12 @@
     </div>
 </div>
 <div class="wrapCenter">
-    <h1>Active pack text</h1>
-    <button id="packbutton" class="packBtn" onClick="animTrigg()">Active pack svg</button>
-    <button class="bigStdBtn">Choose pack</button>
+    <h1>Instructions for war package</h1>
+    <button class="packBtn">Active pack svg</button>
 </div>
 <div class="emptySpace">
 
 </div>
-
-
-
-
-<!-- Rounded switch -->
-<hr>
-    Content below just for dev team
-<hr>
-<h2>Sounds enabled</h2>
-<label class="switch">
-    <input id="soundswitch" type="checkbox" onclick="soundSwitchClicked()">
-    <span class="slider round"></span>
-</label>
-
-
-<h2>Choose your sound</h2>
-
-<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3)">Shotgun</button>
-<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun)">Mario</button>
-<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario)">Warcraft 3</button>
-
-<hr>
-<h2>Test Android callback by getting time</h2>
-<button id="soundswitch" class="button button5" onclick="this.st';">Get Time</button>
-<p>Time from Android: </p><p id="androidtime"> nothing yet...</p>
 
 <script>
     window.oncontextmenu = function(event) {
@@ -84,19 +58,6 @@
     function callbackTimeFromAndroid(time) {
         androidtime.innerHTML = time;
     }
-
-
-     function animTrigg() {
-        document.getElementById("packbutton").classList.add('fadout');
-     }
-
-
-     document.getElementById("packbutton").addEventListener("transitionend", goToPackageInstruction);
-
-
-     function goToPackageInstruction() {
-        Android.goToPackageInstruction('war');
-     }
 </script>
 
 

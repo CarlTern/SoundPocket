@@ -77,10 +77,17 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void goToPackageInstruction(String pack) {
+        loadNewHTML("package_instructions_war.html");
+        //runJavaScript("window.location = 'package_instructions_war.html';");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
 
 
 
 
+    //methods to make the webview function calls to run on the same thread as UI.
 
     private void runJavaScript(String jsFunction) {
         final String fJSFunction = jsFunction;
@@ -89,6 +96,16 @@ public class MyJavaScriptInterface {
             public void run() {
                 webView.evaluateJavascript("javascript: " + fJSFunction,
                         null);            }
+        });
+    }
+
+    private void loadNewHTML(String filename) {
+        final String filenameFinal = filename;
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.loadUrl("file:///android_asset/www/" + filenameFinal);
+            }
         });
     }
 }
