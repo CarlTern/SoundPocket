@@ -19,18 +19,16 @@ import edu.cmu.pocketsphinx.Hypothesis;
 import edu.cmu.pocketsphinx.RecognitionListener;
 import edu.cmu.pocketsphinx.SpeechRecognizer;
 import edu.cmu.pocketsphinx.SpeechRecognizerSetup;
-import static android.widget.Toast.makeText;
-
 
 public class MainActivity extends AppCompatActivity implements
         RecognitionListener {
     /* We only need the keyphrase to start recognition, one menu with list of choices,
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
-    private static final String KWS_SEARCH = "hello";
-    private static final String MENU_SEARCH = "hello";
+    private static final String KWS_SEARCH = "again";
+    private static final String MENU_SEARCH = "goodbye";
     /* Keyword we are looking for to activate recognition */
-    private static final String KEYPHRASE = "hello";
+    private static final String KEYPHRASE = "activate";
 
     /* Recognition object */
     private SpeechRecognizer recognizer;
@@ -176,6 +174,14 @@ public class MainActivity extends AppCompatActivity implements
             setPackage("Shotgun");
             }else if (text.equals("mario")) {
             setPackage("Mario");
+        }else if (text.equals("dab machine")) {
+        setPackage("MLG");
+    }else if (text.equals("warcraft")) {
+            setPackage("Warcraft3");
+        }else if (text.equals("pistol")) {
+            setPackage("Pistol");
+        } else if (text.equals("star wars")) {
+            setPackage("LightSaber");
         }
     }
 

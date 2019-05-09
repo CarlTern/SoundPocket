@@ -2,4 +2,4 @@
 
 grammar menu;
 
-public <smart> = (shotgun | mario);
+public <smart> = (shotgun | mario | dab machine | warcraft | pistol | star wars);
