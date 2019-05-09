@@ -1,6 +1,7 @@
 package com.dynamicdusk.soundpocket;
 
 import android.content.Context;
+import android.hardware.Sensor;
 import android.media.MediaPlayer;
 
 import java.nio.channels.Pipe;
@@ -11,6 +12,9 @@ import java.nio.channels.Pipe;
 
 public class SoundPlayer {
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
+    public static final int SOUND_PISTOL_SILENCED= R.raw.silenced;
+    public static final int SOUND_PISTOL= R.raw.pistol;
+    public static final int SOUND_SCREW_ON_SILENCER= R.raw.screw;
     public static final int SOUND_LIGHTSABER_ON= R.raw.lightsaberon;
     public static final int SOUND_LIGHTSABER_HIT = R.raw.lightsaberhit;
     public static final int SOUND_AIR_HORN = R.raw.airhorn;
@@ -29,10 +33,13 @@ public class SoundPlayer {
     public static final int SOUND_FIREBALL = R.raw.fireball;
     public static final int SOUND_COIN = R.raw.coin;
     public static final int SOUND_PIPE = R.raw.pipe;
+    public static final int SOUND_POWER_UP = R.raw.powerup;
+    public static final int SOUND_STAGE_WON = R.raw.stagewon;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
     Context context;
+
 
     public SoundPlayer(Context context) {
         this.context = context;
@@ -134,6 +141,26 @@ public class SoundPlayer {
                     break;
                 case SOUND_LIGHTSABER_ON:
                     initPlayer(SOUND_LIGHTSABER_ON);
+                    mPlayer.start();
+                    break;
+                case SOUND_PISTOL_SILENCED:
+                    initPlayer(SOUND_PISTOL_SILENCED);
+                    mPlayer.start();
+                    break;
+                case SOUND_PISTOL:
+                    initPlayer(SOUND_PISTOL);
+                    mPlayer.start();
+                    break;
+                case SOUND_SCREW_ON_SILENCER:
+                    initPlayer(SOUND_SCREW_ON_SILENCER);
+                    mPlayer.start();
+                    break;
+                case SOUND_POWER_UP:
+                    initPlayer(SOUND_POWER_UP);
+                    mPlayer.start();
+                    break;
+                case SOUND_STAGE_WON:
+                    initPlayer(SOUND_STAGE_WON);
                     mPlayer.start();
                     break;
                 case -1:

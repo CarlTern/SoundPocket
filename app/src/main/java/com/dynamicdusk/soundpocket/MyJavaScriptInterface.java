@@ -4,16 +4,17 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.speech.RecognizerIntent;
 
 import java.io.Console;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 /**
  * Created by fredricbillow on 2019-04-07.
@@ -24,6 +25,7 @@ public class MyJavaScriptInterface {
     Context context;
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
+
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
         this.webView = w;

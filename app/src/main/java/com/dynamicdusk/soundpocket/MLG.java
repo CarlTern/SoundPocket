@@ -2,18 +2,20 @@ package com.dynamicdusk.soundpocket;
 
 import android.content.Context;
 
-public class MLG implements AccelerometerListener {
+public class MLG extends AccelerometerListener {
 
+    private float xThreshold = 12;
+    private float yThreshold = 8;
+    private float zThreshold = 12;
     SoundPlayer soundPlayer;
 
-
+    public MLG(){
+        super.xThreshold = xThreshold;
+        super.yThreshold = yThreshold;
+        super.zThreshold = zThreshold;
+    }
     public void setSoundPlayer(SoundPlayer soundPlayer){
         this.soundPlayer = soundPlayer;
-    }
-
-    @Override
-    public void onAccelerationChanged(float x, float y, float z) {
-
     }
 
     @Override
