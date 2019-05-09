@@ -37,9 +37,8 @@ public class MainActivity extends AppCompatActivity implements
 
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
-    AccelerometerManager accelerometerManager;
     WebView webView;
-
+    AccelerometerManager manager = new AccelerometerManager();
 
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements
 
     protected void onCreate(Bundle savedInstanceState) {
 
-        accelerometerManager = new AccelerometerManager();
+
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements
         final WebView webViewCallbackAccess = webView;
         packages.get("Shotgun").setSoundPlayer(this.soundPlayer);
         if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(packages.get("Shotgun"));
+            manager.startListening(packages.get("Shotgun"));
         }
 
         Timer timer = new Timer();
@@ -106,8 +105,9 @@ public class MainActivity extends AppCompatActivity implements
 
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
-        if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(packages.get(key));
+
+        if (manager.isSupported(this)) {
+            manager.startListening(packages.get(key));
         }
     }
 
