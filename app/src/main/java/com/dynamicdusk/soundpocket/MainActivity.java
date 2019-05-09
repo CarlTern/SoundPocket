@@ -171,17 +171,17 @@ public class MainActivity extends AppCompatActivity implements
         if (text.equals(KEYPHRASE)) {
             switchSearch(MENU_SEARCH);
         }else if (text.equals("shotgun")) {
-            setPackage("Shotgun");
+            this.setPackage("Shotgun");
         }else if (text.equals("mario")) {
-            setPackage("Mario");
+            this.setPackage("Mario");
         }else if (text.equals("dab machine")) {
-            setPackage("MLG");
+            this.setPackage("MLG");
         }else if (text.equals("warcraft")) {
-            setPackage("Warcraft3");
+            this.setPackage("Warcraft3");
         }else if (text.equals("pistol")) {
-            setPackage("Pistol");
+            this.setPackage("Pistol");
         } else if (text.equals("star wars")) {
-            setPackage("LightSaber");
+            this.setPackage("LightSaber");
         }
     }
 
