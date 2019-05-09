@@ -7,7 +7,7 @@ import java.util.Date;
 public class Shotgun extends AccelerometerListener {
 
     private float xThreshold = 12;
-    private float yThreshold = 8;
+    private float yThreshold = 4;
     private float zThreshold = 12;
     private int shots = 0;
     private boolean loaded;
