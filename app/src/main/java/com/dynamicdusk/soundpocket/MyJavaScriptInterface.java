@@ -49,7 +49,6 @@ public class MyJavaScriptInterface {
     }
 
 
-
     @JavascriptInterface
     public void alert(String message) {
         new AlertDialog.Builder(context)
@@ -78,8 +77,27 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void goToPackageInstruction(String pack) {
+    public void goToPackageInstruction() {
+
+        //get the state i.e. the currently chosen package
+        String chosenPack = "";
+        if (chosenPack.equals("")) {
+            //put the checks here
+        } else {
+
+        }
+
         loadNewHTML("package_instructions_war.html");
+        System.out.println("-------------------------------instructions");
+
+        //runJavaScript("window.location = 'package_instructions_war.html';");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    @JavascriptInterface
+    public void goToChoosePackage() {
+        System.out.println("-------------------------------package");
+        loadNewHTML("browse.html");
         //runJavaScript("window.location = 'package_instructions_war.html';");
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }

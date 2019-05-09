@@ -7,28 +7,60 @@
 </head>
 
 <body>
-
+<div id="maxdivBtnInstructions">
+<div id="maxdivBtnPacks">
 <!-- Lets go fresh -->
 <div class="wrapNav">
     <div class="leftFloater clearFloater">
-        Lock
+        <button class="navBtn" onclick="">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 25 24.1" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            </style>
+            <g>
+            <path class="st0" d="M20.4,9.7H20V7.5c0-4.1-3.2-7.5-7.3-7.5c-0.1,0-0.3,0-0.4,0C8.3,0.1,5,3.5,5,7.5v2.2H4.6
+            c-0.7,0-1.3,0.7-1.3,1.7v11c0,0.9,0.6,1.7,1.3,1.7h15.9c0.7,0,1.3-0.8,1.3-1.7v-11C21.8,10.5,21.2,9.7,20.4,9.7z M14,16.9v3.3
+            c0,0.4-0.3,0.7-0.7,0.7h-1.6c-0.4,0-0.7-0.3-0.7-0.7v-3.3c-0.4-0.4-0.6-0.9-0.6-1.4c0-1.1,0.8-2,1.9-2c0.1,0,0.3,0,0.4,0
+            c1,0,1.9,0.9,1.9,2C14.6,16,14.4,16.5,14,16.9z M16.9,9.7h-4.2h-0.4H8.1V7.5c0-2.4,2-4.4,4.4-4.4s4.4,2,4.4,4.4L16.9,9.7L16.9,9.7z
+            "/>
+            </g>
+            </svg>
+        </button>
     </div>
     <div class="rightFloater">
-        Sound
+        <button class="navBtn" onclick="">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 25 25" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            </style>
+            <g>
+            <path class="st0" d="M12.5,20.3c0,0.4-0.2,0.8-0.6,1c-0.2,0.1-0.3,0.1-0.5,0.1c-0.3,0-0.5-0.1-0.7-0.3L4.4,16H1.1
+            C0.5,16,0,15.5,0,14.9v-4.5c0-0.6,0.5-1.1,1.1-1.1h3.3l6.2-5.1c0.3-0.3,0.8-0.3,1.2-0.2s0.6,0.6,0.6,1V20.3L12.5,20.3z M16.9,18.5
+            C16.9,18.5,16.8,18.5,16.9,18.5c-0.4,0-0.7-0.1-0.9-0.3L15.8,18c-0.4-0.4-0.5-1-0.1-1.5c0.9-1.2,1.3-2.5,1.3-3.9
+            c0-1.5-0.5-3-1.5-4.2C15.2,8,15.2,7.4,15.6,7l0.2-0.2c0.2-0.2,0.5-0.3,0.9-0.3c0.3,0,0.6,0.2,0.8,0.4c1.3,1.6,2,3.6,2,5.8
+            c0,2-0.6,3.9-1.8,5.4C17.5,18.3,17.2,18.5,16.9,18.5z M21.6,22c-0.2,0.2-0.5,0.4-0.8,0.4c0,0,0,0-0.1,0c-0.3,0-0.6-0.1-0.8-0.3
+            L19.7,22c-0.4-0.4-0.5-1.1-0.1-1.5c1.8-2.2,2.8-4.9,2.8-7.8c0-3-1.1-5.8-3-8c-0.4-0.5-0.4-1.1,0.1-1.6l0.2-0.2
+            c0.2-0.2,0.5-0.3,0.8-0.3c0.3,0,0.6,0.1,0.8,0.4C23.7,5.6,25,9,25,12.6C25,16.1,23.8,19.4,21.6,22z"/>
+            </g>
+            </svg>
+        </button>
     </div>
 </div>
+
 <div class="wrapCenter">
-    <h1>Active pack text</h1>
-    <button id="packbutton" class="packBtn" onClick="animTrigg()">Active pack svg</button>
-    <button class="bigStdBtn">Choose pack</button>
+    <h1>Shotgun pack</h1>
+    <button id="btnInstructions" class="packBtn" onclick="Android.goToPackageInstruction()">
+        <img src="shotgun.svg" width="150px" height="150px"/>
+    </button>
+    <button id="btnChoosePack" class="bigStdBtn" onclick="Android.goToChoosePackage()">Choose pack</button>
 </div>
 <div class="emptySpace">
-
 </div>
 
-
-
-
+</div>
+</div>
 <!-- Rounded switch -->
 <hr>
     Content below just for dev team
@@ -42,9 +74,11 @@
 
 <h2>Choose your sound</h2>
 
-<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3)">Shotgun</button>
-<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun)">Mario</button>
-<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario)">Warcraft 3</button>
+<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG,buttonLightSaber)">Shotgun</button>
+<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun, buttonMLG,buttonLightSaber)">Mario</button>
+<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario, buttonMLG,buttonLightSaber)">Warcraft 3</button>
+<button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario,buttonLightSaber)">MLG</button>
+<button id="buttonLightSaber" class="button button5" onclick="chooseSound(buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">LightSaber</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
@@ -73,9 +107,12 @@
             Android.setSound("Mario");
         } else if (id.id == 'buttonWarcraft3') {
             Android.setSound("Warcraft3");
+        } else if (id.id == 'buttonMLG') {
+            Android.setSound("MLG");
+        } else if (id.id == 'buttonLightSaber') {
+            Android.setSound("LightSaber");
         }
     }
-
 
     function getTimeFromAndroid() {
         Android.getTime();
@@ -84,19 +121,6 @@
     function callbackTimeFromAndroid(time) {
         androidtime.innerHTML = time;
     }
-
-
-     function animTrigg() {
-        document.getElementById("packbutton").classList.add('fadout');
-     }
-
-
-     document.getElementById("packbutton").addEventListener("transitionend", goToPackageInstruction);
-
-
-     function goToPackageInstruction() {
-        Android.goToPackageInstruction('war');
-     }
 </script>
 
 
