@@ -193,8 +193,6 @@ public class AccelerometerManager {
                     lastUpdate = now;
                 }
             }
-// trigger change event
-            listener.onAccelerationChanged(x, y, z);
         }
     };
 }
