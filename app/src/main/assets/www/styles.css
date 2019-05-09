@@ -161,6 +161,27 @@ body {
   transition: transform 0.3s linear;
 }
 
+.browseBtn {
+    border: none;
+    background-color: white;
+    color: #fe7f9c;
+    height: 120px;
+    width: 120px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 3px;
+
+    transition: all .2s ease-in-out;
+}
+
+.packBtn:active {
+    transform: scale(1.07, 1.07);
+}
+
 /* ------- Slider -------- */
 
 /* The switch - the box around the slider */

@@ -36,7 +36,7 @@ public class Warcraft3 extends AccelerometerListener {
     }
 
     public void onShakeX(float force) {
-        if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_WORK_WORK);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
@@ -44,15 +44,15 @@ public class Warcraft3 extends AccelerometerListener {
     }
 
     public void onShakeY(float force) {
-        if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_YES_MI_LORD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeZ(float force ) {
-        if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+    public void onShakeZ(float force) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }

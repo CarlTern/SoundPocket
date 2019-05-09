@@ -108,6 +108,7 @@ public class AccelerometerManager {
         private float forceX = 0;
         private float forceY = 0;
         private float forceZ = 0;
+
         private float roll = 0;
 
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -139,7 +140,7 @@ public class AccelerometerManager {
 
                 if (timeDiff > 0) {
                     forceX = Math.abs(x - lastX );
-                    forceY = Math.abs(y - lastY );
+                    forceY = (y - lastY );
                     forceZ = Math.abs(z - lastZ );
 
                     if (Float.compare(forceX, xThreshold) > 0) {
@@ -156,6 +157,13 @@ public class AccelerometerManager {
                         }
                         lastShake = now;
                     }
+                   /* else if (Float.compare(forceY,negyThreshold) <0) {
+                        if (now - lastShake >= interval) {
+                            listener.onShake(force);
+                        }
+                        lastShake = now;
+                    }
+*/
 
                     if (Float.compare(forceZ, zThreshold) > 0) {
 

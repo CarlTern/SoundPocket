@@ -74,10 +74,12 @@
 
 <h2>Choose your sound</h2>
 
-<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG)">Shotgun</button>
-<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun, buttonMLG)">Mario</button>
-<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario, buttonMLG)">Warcraft 3</button>
-<button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">MLG</button>
+<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG, buttonLightSaber)">Shotgun</button>
+<button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun, buttonMLG, buttonLightSaber)">Mario</button>
+<button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario, buttonMLG, buttonLightSaber)">Warcraft 3</button>
+<button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario,buttonLightSaber)">MLG</button>
+<button id="buttonLightSaber" class="button button5" onclick="chooseSound(buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">LightSaber</button>
+<button id="buttonPistol" class="button button5" onclick="chooseSound(buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">Pistol</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
@@ -108,7 +110,12 @@
             Android.setSound("Warcraft3");
         } else if (id.id == 'buttonMLG') {
             Android.setSound("MLG");
+        } else if (id.id == 'buttonLightSaber') {
+            Android.setSound("LightSaber");
+        }else if (id.id == 'buttonPistol') {
+            Android.setSound("Pistol");
         }
+
     }
 
     function getTimeFromAndroid() {
