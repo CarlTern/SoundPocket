@@ -21,10 +21,6 @@ public class Warcraft3 extends AccelerometerListener {
         this.soundPlayer = soundPlayer;
     }
 
-    @Override
-    public void onAccelerationChanged(float x, float y, float z) {
-
-    }
 
     @Override
     public void onShake(float force) {

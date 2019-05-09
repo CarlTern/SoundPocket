@@ -19,11 +19,6 @@ public class MLG extends AccelerometerListener {
     }
 
     @Override
-    public void onAccelerationChanged(float x, float y, float z) {
-
-    }
-
-    @Override
     public void onShake(float force) {
         if(soundPlayer.isSoundOn()) {
             soundPlayer.playSound(-1);

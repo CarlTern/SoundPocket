@@ -12,8 +12,6 @@ public abstract class AccelerometerListener {
         return new float[]{xThreshold, yThreshold, zThreshold};
     }
 
-    public abstract void onAccelerationChanged(float x, float y, float z);
-
     public abstract void onShake(float force);
 
     public abstract void onShakeX(float force);
