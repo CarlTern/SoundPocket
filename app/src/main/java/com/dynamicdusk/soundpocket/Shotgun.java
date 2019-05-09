@@ -4,8 +4,11 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Shotgun implements AccelerometerListener {
+public class Shotgun extends AccelerometerListener {
 
+    private float xThreshold = 12;
+    private float yThreshold = 8;
+    private float zThreshold = 12;
     private int shots = 0;
     private boolean loaded;
     private boolean magazineCocked = false;
@@ -14,7 +17,9 @@ public class Shotgun implements AccelerometerListener {
     private SoundPlayer soundPlayer;
 
     public Shotgun(){
-        timeStamp = Calendar.getInstance().getTimeInMillis();
+        super.xThreshold = xThreshold;
+        super.yThreshold = yThreshold;
+        super.zThreshold = zThreshold;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){

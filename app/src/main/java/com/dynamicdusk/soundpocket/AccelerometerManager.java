@@ -11,9 +11,9 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private static float xThreshold = 12.0f;
-    private static float yThreshold = 8;
-    private static float zThreshold = 12.0f;
+    private float xThreshold = 12;
+    private float yThreshold = 8;
+    private float zThreshold = 12;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
@@ -23,8 +23,7 @@ public class AccelerometerManager {
     private static Boolean supported;
     private static boolean running = false;
 
-
-    public static void stopListening() {
+    public void stopListening() {
         running = false;
         try {
             if (acceleratorManager != null && sensorEventListener != null) {
@@ -56,9 +55,10 @@ public class AccelerometerManager {
         return supported;
     }
 
-    public static void configure(int threshold, int interval) {
-        AccelerometerManager.xThreshold = threshold;
-        AccelerometerManager.interval = interval;
+    public void changeThreshold(float xThreshold, float yThreshold, float zThreshold) {
+        this.xThreshold = xThreshold;
+        this.yThreshold = yThreshold;
+        this.zThreshold = zThreshold;
     }
 
     /**
@@ -68,7 +68,7 @@ public class AccelerometerManager {
      */
 
 
-    public static void startListening(AccelerometerListener accelerometerListener) {
+    public void startListening(AccelerometerListener accelerometerListener) {
 
         acceleratorManager = (SensorManager) context.
                 getSystemService(Context.SENSOR_SERVICE);
@@ -90,20 +90,8 @@ public class AccelerometerManager {
         }
     }
 
-    /**
-     * Configures threshold and interval
-     * And registers a listener and start listening
-     *
-     * @param accelerometerListener callback for accelerometer events
-     * @param threshold minimum acceleration variation for considering shaking
-     * @param interval minimum interval between to shake events
-     */
-    public static void startListening(AccelerometerListener accelerometerListener, int threshold, int interval) {
-        configure(threshold, interval);
-        startListening(accelerometerListener);
-    }
 
-    private static SensorEventListener sensorEventListener = new SensorEventListener() {
+    private SensorEventListener sensorEventListener = new SensorEventListener() {
 
         private long now = 0;
         private long timeDiff = 0;

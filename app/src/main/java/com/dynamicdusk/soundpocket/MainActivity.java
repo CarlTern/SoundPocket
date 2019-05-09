@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity{
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
 
         accelerometerManager = new AccelerometerManager();
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         final WebView webViewCallbackAccess = webView;
         packages.get("Shotgun").setSoundPlayer(this.soundPlayer);
         if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(packages.get("Shotgun"));
+            accelerometerManager.startListening(packages.get("Shotgun"));
         }
 
         Timer timer = new Timer();
@@ -75,11 +73,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void setPackage(String key){
-        packages.get(key).setSoundPlayer(this.soundPlayer);
+        AccelerometerListener al = packages.get(key);
+        al.setSoundPlayer(this.soundPlayer);
         if (AccelerometerManager.isSupported(this)) {
-            AccelerometerManager.startListening(packages.get(key));
+            accelerometerManager.startListening(packages.get(key));
+            float [] thresholds = al.getThresholds();
+            accelerometerManager.changeThreshold(thresholds[0], thresholds[1], thresholds[2]);
         }
-
     }
 }
 

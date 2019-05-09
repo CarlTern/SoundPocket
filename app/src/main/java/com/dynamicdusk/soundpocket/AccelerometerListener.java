@@ -1,19 +1,26 @@
 package com.dynamicdusk.soundpocket;
 
 
-public interface AccelerometerListener {
+public abstract class AccelerometerListener {
+    protected float xThreshold;
+    protected float yThreshold;
+    protected float zThreshold;
 
-    public void setSoundPlayer(SoundPlayer soundPlayer);
+    public abstract void setSoundPlayer(SoundPlayer soundPlayer);
 
-    public void onAccelerationChanged(float x, float y, float z);
+    public float[] getThresholds(){
+        return new float[]{xThreshold, yThreshold, zThreshold};
+    }
 
-    public void onShake(float force);
+    public abstract void onAccelerationChanged(float x, float y, float z);
 
-    public void onShakeX(float force);
+    public abstract void onShake(float force);
 
-    public void onShakeY(float force);
+    public abstract void onShakeX(float force);
 
-    public void onShakeZ(float force);
+    public abstract void onShakeY(float force);
+
+    public abstract void onShakeZ(float force);
 
     }
 
