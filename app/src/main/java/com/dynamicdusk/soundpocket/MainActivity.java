@@ -2,14 +2,9 @@ package com.dynamicdusk.soundpocket;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-
-import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
-
-import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +13,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.*;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.PopupWindow;
-import android.widget.Toast;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
