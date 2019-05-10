@@ -80,6 +80,7 @@
 <button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario,buttonLightSaber)">MLG</button>
 <button id="buttonLightSaber" class="button button5" onclick="chooseSound(buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">LightSaber</button>
 <button id="buttonPistol" class="button button5" onclick="chooseSound(buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">Pistol</button>
+<button id="buttonFartPrank" class="button button5" onclick="chooseSound(buttonFartPrank,buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">FartPrank</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
@@ -114,6 +115,9 @@
             Android.setSound("LightSaber");
         }else if (id.id == 'buttonPistol') {
             Android.setSound("Pistol");
+        }
+        else if (id.id == 'buttonFartPrank') {
+            Android.setSound("FartPrank");
         }
 
     }

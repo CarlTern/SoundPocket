@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements
     /* We only need the keyphrase to start recognition, one menu with list of choices,
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
-    private static final String KWS_SEARCH = "activate";
+    private static final String KWS_SEARCH = "activate package";
 
     /* Recognition object */
     private SpeechRecognizer recognizer;
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements
         packages.put("MLG", new MLG());
         packages.put("LightSaber", new LightSaber());
         packages.put("Pistol", new Pistol());
+        packages.put("FartPrank", new FartPrank());
 
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
@@ -256,7 +257,9 @@ public class MainActivity extends AppCompatActivity implements
             this.setPackage("Pistol");
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-        }
+        } else if (text.equals("fart prank")) {
+               this.setPackage("FartPrank");
+           }
 
         switchSearch(KWS_SEARCH);
 
