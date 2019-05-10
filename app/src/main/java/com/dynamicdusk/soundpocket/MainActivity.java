@@ -224,11 +224,14 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public void onStop() {
+
         super.onStop();
+        /*
         if (recognizer != null) {
             recognizer.cancel();
             recognizer.shutdown();
         }
+        */
     }
 
 
