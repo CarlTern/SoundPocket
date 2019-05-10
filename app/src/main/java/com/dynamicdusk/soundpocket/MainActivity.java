@@ -226,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onStop() {
 
         super.onStop();
+        // Add below if you want voice recognition to end when minimizing app
         /*
         if (recognizer != null) {
             recognizer.cancel();
