@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements
 
     /* Recognition object */
     private SpeechRecognizer recognizer;
-
+    private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
     WebView webView;
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
             return;
         }
-        accelerometerManager = new AccelerometerManager();
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
@@ -300,23 +299,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    private void callPopup() {
 
-        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext()
-                .getSystemService(LAYOUT_INFLATER_SERVICE);
-
-        View popupView = layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item, null);
-
-        PopupWindow popupWindow = new PopupWindow(popupView,
-                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT,
-                true);
-
-        popupWindow.setTouchable(true);
-        popupWindow.setFocusable(true);
-
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-
-    }
 
 
 
