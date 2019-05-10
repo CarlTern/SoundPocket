@@ -210,13 +210,10 @@ public class MainActivity extends AppCompatActivity implements
         recognizer = SpeechRecognizerSetup.defaultSetup()
                 .setAcousticModel(new File(assetsDir, "en-us-ptm"))
                 .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-                // Disable this line if you don't want recognizer to save raw
-                // audio files to app's storage
-                //.setRawLogDir(assetsDir)
+                //Set threshold for keyword
+                .setKeywordThreshold((float)1e-5)
                 .getRecognizer();
         recognizer.addListener(this);
-        // Create keyword-activation search.
-       //recognizer.addKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
         // Create your custom grammar-based search
         File menuGrammar = new File(assetsDir, "words.gram");
         recognizer.addKeywordSearch(KWS_SEARCH, menuGrammar);
