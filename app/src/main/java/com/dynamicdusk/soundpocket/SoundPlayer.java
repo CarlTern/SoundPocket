@@ -42,6 +42,9 @@ public class SoundPlayer {
     public static final int SOUND_FART_FIVE = R.raw.fart5;
     public static final int SOUND_FART_SIX = R.raw.fart6;
     public static final int SOUND_FART_SEVEN = R.raw.fart7;
+    public static final int SOUND_SNARE = R.raw.snare;
+    public static final int SOUND_CYMBAL = R.raw.cymbal;
+    public static final int SOUND_TOM = R.raw.tom;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -196,6 +199,18 @@ public class SoundPlayer {
                     break;
                 case SOUND_FART_SEVEN:
                     initPlayer(SOUND_FART_SEVEN);
+                    mPlayer.start();
+                    break;
+                case SOUND_SNARE:
+                    initPlayer(SOUND_SNARE);
+                    mPlayer.start();
+                    break;
+                case SOUND_TOM:
+                    initPlayer(SOUND_TOM);
+                    mPlayer.start();
+                    break;
+                case SOUND_CYMBAL:
+                    initPlayer(SOUND_CYMBAL);
                     mPlayer.start();
                     break;
                 case -1:

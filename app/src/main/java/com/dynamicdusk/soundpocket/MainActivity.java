@@ -57,7 +57,10 @@ public class MainActivity extends AppCompatActivity implements
         packages.put("MLG", new MLG());
         packages.put("LightSaber", new LightSaber());
         packages.put("Pistol", new Pistol());
+        packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
+
+
 
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
@@ -256,6 +259,8 @@ public class MainActivity extends AppCompatActivity implements
             this.setPackage("LightSaber");
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
+           }else if (text.equals("drum kit")) {
+               this.setPackage("DrumKit");
            }
 
         switchSearch(KWS_SEARCH);
