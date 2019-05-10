@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar menu;
+
+public <smart> = (shotgun | mario | dab machine | warcraft | pistol | star wars);

@@ -1,14 +1,18 @@
 package com.dynamicdusk.soundpocket;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
-
+import android.app.ActionBar;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.*;
+import android.widget.PopupWindow;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,10 +30,7 @@ public class MainActivity extends AppCompatActivity implements
     /* We only need the keyphrase to start recognition, one menu with list of choices,
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
-    private static final String KWS_SEARCH = "again";
-    private static final String MENU_SEARCH = "goodbye";
-    /* Keyword we are looking for to activate recognition */
-    private static final String KEYPHRASE = "activate";
+    private static final String KWS_SEARCH = "activate";
 
     /* Recognition object */
     private SpeechRecognizer recognizer;
@@ -45,8 +46,12 @@ public class MainActivity extends AppCompatActivity implements
 
 
     protected void onCreate(Bundle savedInstanceState) {
-
-
+        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
+            return;
+        }
+        accelerometerManager = new AccelerometerManager();
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
@@ -134,6 +139,12 @@ public class MainActivity extends AppCompatActivity implements
         }, 3000);
 
     }
+    public void onDestroy() {
+        super.onDestroy();
+        recognizer.cancel();
+        recognizer.shutdown();
+    }
+
 
 
     @Override
@@ -180,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements
                 } catch (IOException e) {
                     return e;
                 }
+
                 return null;
             }
 
@@ -187,9 +199,10 @@ public class MainActivity extends AppCompatActivity implements
                 if (result != null) {
                     System.out.println(result.getMessage());
                 } else {
-                    switchSearch(KWS_SEARCH);
+                   switchSearch(KWS_SEARCH);
                 }
             }
+
         }.execute();
     }
 
@@ -203,10 +216,10 @@ public class MainActivity extends AppCompatActivity implements
                 .getRecognizer();
         recognizer.addListener(this);
         // Create keyword-activation search.
-        recognizer.addKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
+       //recognizer.addKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
         // Create your custom grammar-based search
-        File menuGrammar = new File(assetsDir, "menu.gram");
-        recognizer.addGrammarSearch(MENU_SEARCH, menuGrammar);
+        File menuGrammar = new File(assetsDir, "words.gram");
+        recognizer.addKeywordSearch(KWS_SEARCH, menuGrammar);
     }
 
 
@@ -220,31 +233,38 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public void onPartialResult(Hypothesis hypothesis) {
+
         if (hypothesis == null)
             return;
         String text = hypothesis.getHypstr();
-        if (text.equals(KEYPHRASE)) {
-            switchSearch(MENU_SEARCH);
-        }else if (text.equals("shotgun")) {
-            this.setPackage("Shotgun");
+        recognizer.cancel();
+
+      /*  if (text.equals(KEYPHRASE)) {
+
+            setPackage("Mario");
+
+       } else
+         */
+           if (text.equals("shotgun")) {
+            setPackage("Shotgun");
         }else if (text.equals("mario")) {
-            this.setPackage("Mario");
+            setPackage("Mario");
         }else if (text.equals("dab machine")) {
-            this.setPackage("MLG");
+            setPackage("MLG");
         }else if (text.equals("warcraft")) {
-            this.setPackage("Warcraft3");
+            setPackage("Warcraft3");
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
         }
+
+        switchSearch(KWS_SEARCH);
+
     }
 
 
     public void onResult(Hypothesis hypothesis) {
-        if (hypothesis != null) {
-            System.out.println(hypothesis.getHypstr());
-        }
     }
 
 
@@ -254,25 +274,50 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onEndOfSpeech() {
         if (!recognizer.getSearchName().equals(KWS_SEARCH))
-            switchSearch(KWS_SEARCH);
+        switchSearch(KWS_SEARCH);
+        //recognizer.stop();
+        //recognizer.startListening(KEYPHRASE);
     }
 
     private void switchSearch(String searchName) {
-        recognizer.stop();
+        recognizer.cancel();
         if (searchName.equals(KWS_SEARCH))
             recognizer.startListening(searchName);
         else
-            recognizer.startListening(searchName, 10000);
+            recognizer.startListening(searchName, 100);
+
     }
 
 
     public void onError(Exception error) {
+
         System.out.println(error.getMessage());
     }
 
 
     public void onTimeout() {
-        switchSearch(KWS_SEARCH);
+       // switchSearch(KWS_SEARCH);
     }
+
+
+    private void callPopup() {
+
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.support_simple_spinner_dropdown_item, null);
+
+        PopupWindow popupWindow = new PopupWindow(popupView,
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT,
+                true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+    }
+
+
 
 }
