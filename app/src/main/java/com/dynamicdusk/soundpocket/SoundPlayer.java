@@ -11,6 +11,7 @@ import java.nio.channels.Pipe;
  */
 
 public class SoundPlayer {
+    private final static int MAX_VOLUME = 100;
     //public static final int SOUND_SPRAY_PAINT_SHAKE = R.raw.spraypaintshake;
     public static final int SOUND_PISTOL_SILENCED= R.raw.silenced;
     public static final int SOUND_PISTOL= R.raw.pistol;
@@ -45,6 +46,9 @@ public class SoundPlayer {
     public static final int SOUND_SNARE = R.raw.snare;
     public static final int SOUND_CYMBAL = R.raw.cymbal;
     public static final int SOUND_TOM = R.raw.tom;
+    public static final int SOUND_LIGHTSABER_OPEN = R.raw.open;
+    public static final int SOUND_LIGHTSABER_PULSE = R.raw.pulse;
+    public static final int SOUND_LIGHTSABER_CLOSE = R.raw.close;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -78,6 +82,19 @@ public class SoundPlayer {
 
     public void setSoundOff() {
         this.soundOn = false;
+    }
+
+    public void setLoopingOn() {
+        mPlayer.setLooping(true);
+    }
+
+    public void setLoopingOff() {
+        mPlayer.setLooping(false);
+    }
+
+    public void setVolume(int newVolume) {
+        final float volume = (float) (1 - (Math.log(MAX_VOLUME - newVolume) / Math.log(MAX_VOLUME)));
+        mPlayer.setVolume(volume, volume);
     }
 
     public void playSound(int sound) {
@@ -211,6 +228,18 @@ public class SoundPlayer {
                     break;
                 case SOUND_CYMBAL:
                     initPlayer(SOUND_CYMBAL);
+                    mPlayer.start();
+                    break;
+                case SOUND_LIGHTSABER_OPEN:
+                    initPlayer(SOUND_LIGHTSABER_OPEN);
+                    mPlayer.start();
+                    break;
+                case SOUND_LIGHTSABER_PULSE:
+                    initPlayer(SOUND_LIGHTSABER_PULSE);
+                    mPlayer.start();
+                    break;
+                case SOUND_LIGHTSABER_CLOSE:
+                    initPlayer(SOUND_LIGHTSABER_CLOSE);
                     mPlayer.start();
                     break;
                 case -1:
