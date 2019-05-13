@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <meta name=viewport
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0">
+</head>
+
+<body class="fadeMe">
+
+<!-- Lets go fresh -->
+<div class="wrapNav">
+    <div class="leftFloater clearFloater">
+        Lock
+    </div>
+    <div class="rightFloater">
+        Sound
+    </div>
+</div>
+<div class="wrapCenter">
+    <h1>Instructions for war package</h1>
+    <button class="packBtn">Active pack svg</button>
+</div>
+<div class="emptySpace">
+
+</div>
+
+<script>
+    window.oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
+
+    function soundSwitchClicked() {
+        var checked = document.getElementById("soundswitch").checked;
+        Android.setSoundOn(checked);
+    }
+
+    function chooseSound(id, unmark1, unmark2) {
+        id.style.backgroundColor = "#f4bf42";
+        unmark1.style.backgroundColor = "white";
+        unmark2.style.backgroundColor = "white";
+        if(id.id == 'buttonShotgun') {
+            Android.setSound("Shotgun");
+        } else if (id.id == 'buttonMario') {
+            Android.setSound("Mario");
+        } else if (id.id == 'buttonWarcraft3') {
+            Android.setSound("Warcraft3");
+        }
+    }
+
+
+    function getTimeFromAndroid() {
+        Android.getTime();
+    }
+
+    function callbackTimeFromAndroid(time) {
+        androidtime.innerHTML = time;
+    }
+</script>
+
+
+</body>
+</html>

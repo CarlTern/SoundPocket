@@ -78,6 +78,37 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void goToPackageInstruction() {
+
+        //get the state i.e. the currently chosen package
+        String chosenPack = "";
+        if (chosenPack.equals("")) {
+            //put the checks here
+        } else {
+
+        }
+
+        loadNewHTML("package_instructions_war.html");
+        System.out.println("-------------------------------instructions");
+
+        //runJavaScript("window.location = 'package_instructions_war.html';");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    @JavascriptInterface
+    public void goToChoosePackage() {
+        System.out.println("-------------------------------package");
+        loadNewHTML("browse.html");
+        //runJavaScript("window.location = 'package_instructions_war.html';");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+
+
+
+    //methods to make the webview function calls to run on the same thread as UI.
+
     private void runJavaScript(String jsFunction) {
         final String fJSFunction = jsFunction;
         new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -85,6 +116,16 @@ public class MyJavaScriptInterface {
             public void run() {
                 webView.evaluateJavascript("javascript: " + fJSFunction,
                         null);            }
+        });
+    }
+
+    private void loadNewHTML(String filename) {
+        final String filenameFinal = filename;
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.loadUrl("file:///android_asset/www/" + filenameFinal);
+            }
         });
     }
 }

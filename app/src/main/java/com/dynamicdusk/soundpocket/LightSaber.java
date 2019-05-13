@@ -12,6 +12,7 @@ public class LightSaber extends AccelerometerListener {
     private float zThreshold = 12;
     SoundPlayer soundPlayer;
     private long timeStamp =0;
+    private boolean isOn = false;
 
     public LightSaber(){
         super.xThreshold = xThreshold;
@@ -33,7 +34,7 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void onShakeX(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        if(isOn &&soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
@@ -41,15 +42,16 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void onShakeY(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-            soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_ON);
+        if(!isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+            soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
             timeStamp = Calendar.getInstance().getTimeInMillis();
+            isOn = true;
         }
         //jsHandler.alert("Force: " + force);
     }
 
     public void onShakeZ(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        if(isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }

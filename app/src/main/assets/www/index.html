@@ -7,7 +7,8 @@
 </head>
 
 <body>
-
+<div id="maxdivBtnInstructions">
+<div id="maxdivBtnPacks">
 <!-- Lets go fresh -->
 <div class="wrapNav">
     <div class="leftFloater clearFloater">
@@ -50,17 +51,16 @@
 
 <div class="wrapCenter">
     <h1>Shotgun pack</h1>
-    <button class="packBtn" onclick="browse()">
+    <button id="btnInstructions" class="packBtn" onclick="Android.goToPackageInstruction()">
         <img src="shotgun.svg" width="150px" height="150px"/>
     </button>
-    <button class="bigStdBtn" onclick="">Choose pack</button>
+    <button id="btnChoosePack" class="bigStdBtn" onclick="Android.goToChoosePackage()">Choose pack</button>
 </div>
 <div class="emptySpace">
 </div>
 
-
-
-
+</div>
+</div>
 <!-- Rounded switch -->
 <hr>
     Content below just for dev team
@@ -80,10 +80,12 @@
 <button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario,buttonLightSaber)">MLG</button>
 <button id="buttonLightSaber" class="button button5" onclick="chooseSound(buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">LightSaber</button>
 <button id="buttonPistol" class="button button5" onclick="chooseSound(buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">Pistol</button>
+<button id="buttonFartPrank" class="button button5" onclick="chooseSound(buttonFartPrank,buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">FartPrank</button>
+<button id="buttonDrumKit" class="button button5" onclick="chooseSound(buttonDrumKit,buttonFartPrank,buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">DrumKit</button>
 
 <hr>
 <h2>Test Android callback by getting time</h2>
-<button id="soundswitch" class="button button5" onclick="getTimeFromAndroid()">Get Time</button>
+<button id="soundswitch" class="button button5" onclick="this.st';">Get Time</button>
 <p>Time from Android: </p><p id="androidtime"> nothing yet...</p>
 
 <script>
@@ -114,6 +116,10 @@
             Android.setSound("LightSaber");
         }else if (id.id == 'buttonPistol') {
             Android.setSound("Pistol");
+        }else if (id.id == 'buttonFartPrank') {
+            Android.setSound("FartPrank");
+        }  else if (id.id == 'buttonDrumKit') {
+            Android.setSound("DrumKit");
         }
 
     }
