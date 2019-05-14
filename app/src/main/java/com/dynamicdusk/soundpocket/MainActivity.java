@@ -5,19 +5,16 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.*;
+import android.widget.PopupWindow;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
     private static final String KWS_SEARCH = "activate package";
-    private String currentPackage = "Shotgun";
+
     /* Recognition object */
     private SpeechRecognizer recognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
@@ -152,9 +149,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    public String getCurrentPackage(){
-        return currentPackage;
-    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -176,22 +171,15 @@ public class MainActivity extends AppCompatActivity implements
         return super.onKeyDown(keyCode, event);
     }
 
-    public String[] getPackages(){
-        ArrayList <String> list= new ArrayList<String>();
-        for (String name : packages.keySet()){
-            list.add(name);
-        }
-        String[] returnie = new String[list.size()];
-        returnie = list.toArray(returnie);
-        return returnie;
-    }
+
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
-        currentPackage = key;
+
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
     }
+
     @SuppressLint("StaticFieldLeak")
     private void runRecognizerSetup() {
         // Recognizer initialization is a time-consuming and it involves IO,
@@ -253,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements
         if (hypothesis == null)
             return;
         String text = hypothesis.getHypstr();
-        System.out.println(text);
         recognizer.cancel();
 
       /*  if (text.equals(KEYPHRASE)) {
@@ -264,30 +251,21 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
-            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
         }else if (text.equals("mario")) {
             setPackage("Mario");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
         }else if (text.equals("dab machine")) {
             setPackage("MLG");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
            }
-
 
         switchSearch(KWS_SEARCH);
 
@@ -296,6 +274,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onResult(Hypothesis hypothesis) {
     }
+
 
     public void onBeginningOfSpeech() {
     }
