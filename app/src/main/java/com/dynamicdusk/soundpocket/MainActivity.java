@@ -266,7 +266,10 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
-            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("mario")) {
             setPackage("Mario");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
@@ -275,22 +278,40 @@ public class MainActivity extends AppCompatActivity implements
             }
         }else if (text.equals("air horn")) {
             setPackage("MLG");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }
 
 
