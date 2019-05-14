@@ -74,9 +74,7 @@ public class MainActivity extends AppCompatActivity implements
         settings.setJavaScriptEnabled(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-
         runRecognizerSetup();
-
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
 
