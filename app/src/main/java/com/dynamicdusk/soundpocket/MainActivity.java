@@ -16,6 +16,7 @@ import android.view.View;
 import android.webkit.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements
     private static final String KWS_SEARCH = "activate package";
 
     /* Recognition object */
+    private long timeStamp = 0;
     private SpeechRecognizer recognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     SoundPlayer soundPlayer;
@@ -253,28 +255,52 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
-            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("mario")) {
             setPackage("Mario");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
+            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
+                timeStamp = Calendar.getInstance().getTimeInMillis();
+            }
         }else if (text.equals("dab machine")) {
             setPackage("MLG");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }
 
 
