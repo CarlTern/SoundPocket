@@ -18,50 +18,15 @@
     </div>
 </div>
 <div class="wrapCenter">
-    <h1>Instructions for war package</h1>
-    <button class="packBtn">Active pack svg</button>
+    <h1>How to: *sound name*</h1>
+    <img src="avatar.svg"/>
+    <p>Move the phone to make the *sound name*. </p>
 </div>
 <div class="emptySpace">
 
 </div>
 
 <script>
-    window.oncontextmenu = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-
-    function soundSwitchClicked() {
-        var checked = document.getElementById("soundswitch").checked;
-        Android.setSoundOn(checked);
-    }
-
-    function chooseSound(id, unmark1, unmark2) {
-        id.style.backgroundColor = "#f4bf42";
-        unmark1.style.backgroundColor = "white";
-        unmark2.style.backgroundColor = "white";
-        if(id.id == 'buttonShotgun') {
-            Android.setSound("Shotgun");
-        } else if (id.id == 'buttonMario') {
-            Android.setSound("Mario");
-        } else if (id.id == 'buttonWarcraft3') {
-            Android.setSound("Warcraft3");
-        }
-    }
-
-    function callbackSpecificSoundInfo(packagename, title, text, filename)
-        Android.alert(packagename);
-        Android.alert(title);
-        Android.alert(text);
-        Android.alert(filename);
-
-    }
-
-    (function getSpecificSoundInfo() {
-        Android.getSpecificSoundInfo();
-    })();
-
 </script>
 
 

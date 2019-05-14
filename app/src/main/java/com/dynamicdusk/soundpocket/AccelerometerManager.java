@@ -17,7 +17,7 @@ public class AccelerometerManager {
     private float zAccThreshold = 12;
     private float xGyroThreshold = 5;
     private float yGyroThreshold = 5;
-    private float zGyroThreshold = 5;
+    private float zGyroThreshold = 1;
     private static int interval = 200;
 
     private static AccelerometerListener listener;
@@ -220,7 +220,7 @@ public class AccelerometerManager {
                         listener.onGyroY(force);
                     }
                     if (Float.compare(forceZ, zGyroThreshold) > 0) {
-                        listener.onGyroX(force);
+                        listener.onGyroZ(force);
                     }
                     lastX = x;
                     lastY = y;
