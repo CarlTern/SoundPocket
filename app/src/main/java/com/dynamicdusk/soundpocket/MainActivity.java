@@ -6,16 +6,20 @@ import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
+
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.*;
-import android.widget.PopupWindow;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
     private static final String KWS_SEARCH = "activate package";
-
+    private String currentPackage = "Shotgun";
     /* Recognition object */
     private SpeechRecognizer recognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements
     MyJavaScriptInterface jsHandler;
     WebView webView;
     AccelerometerManager manager = new AccelerometerManager();
+    private long timeStamp = 0;
 
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
@@ -69,9 +74,7 @@ public class MainActivity extends AppCompatActivity implements
         settings.setJavaScriptEnabled(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-
         runRecognizerSetup();
-
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
 
@@ -149,6 +152,34 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
+    public String getCurrentPackage(){
+        return currentPackage;
+    }
+
+    public String[] getCurrentPackageSoundList(){
+        switch(currentPackage) {
+            case "Shotgun":
+                String[] listS = {
+                        "spades",
+                        "hearts",
+                        "diamonds",
+                        "clubs"
+                };
+                return listS;
+
+            case "Mario":
+                String[] listM = {
+                        "mario",
+                        "lugig",
+                        "bowser"
+                };
+                return listM;
+
+            default:
+                String[] empty = {};
+                return empty;
+        }
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -171,15 +202,22 @@ public class MainActivity extends AppCompatActivity implements
         return super.onKeyDown(keyCode, event);
     }
 
-
+    public String[] getPackages(){
+        ArrayList <String> list= new ArrayList<String>();
+        for (String name : packages.keySet()){
+            list.add(name);
+        }
+        String[] returnie = new String[list.size()];
+        returnie = list.toArray(returnie);
+        return returnie;
+    }
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
-
+        currentPackage = key;
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
     }
-
     @SuppressLint("StaticFieldLeak")
     private void runRecognizerSetup() {
         // Recognizer initialization is a time-consuming and it involves IO,
@@ -241,6 +279,7 @@ public class MainActivity extends AppCompatActivity implements
         if (hypothesis == null)
             return;
         String text = hypothesis.getHypstr();
+        System.out.println(text);
         recognizer.cancel();
 
       /*  if (text.equals(KEYPHRASE)) {
@@ -251,21 +290,54 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("mario")) {
             setPackage("Mario");
-        }else if (text.equals("dab machine")) {
+            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
+                timeStamp = Calendar.getInstance().getTimeInMillis();
+            }
+        }else if (text.equals("air horn")) {
             setPackage("MLG");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }
+
 
         switchSearch(KWS_SEARCH);
 
@@ -274,7 +346,6 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onResult(Hypothesis hypothesis) {
     }
-
 
     public void onBeginningOfSpeech() {
     }

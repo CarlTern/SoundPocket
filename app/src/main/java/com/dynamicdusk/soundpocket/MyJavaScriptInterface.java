@@ -47,7 +47,15 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(String key) {
+        System.out.println("----------------------set package");
         mainActivity.setPackage(key);
+    }
+
+    @JavascriptInterface
+    public void setPackage(String key) {
+        System.out.println("----------------------set package");
+        mainActivity.setPackage(key);
+        goBack();
     }
 
 
@@ -79,6 +87,11 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void goToSoundList() {
+        loadNewHTML("soundlist.html");
+    }
+
+    @JavascriptInterface
     public void goToPackageInstruction() {
 
         //get the state i.e. the currently chosen package
@@ -104,7 +117,42 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void getCurrentPackage() {
+        String currentPack = mainActivity.getCurrentPackage();
+        String filename = "";
 
+        switch(currentPack) {
+            case "Shotgun":
+                filename = "shotgun.svg";
+                break;
+            case "Mario":
+                filename = "mario.svg";
+                break;
+        }
+        runJavaScript("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
+        System.out.println("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    @JavascriptInterface
+    public void getSoundList() {
+        String[] currentSoundList = mainActivity.getCurrentPackageSoundList();
+        StringBuilder stringArray = new StringBuilder();
+        stringArray.append("[");
+        for (String s : currentSoundList) {
+            stringArray.append("\"");
+            stringArray.append(s);
+            stringArray.append("\"");
+            stringArray.append(",");
+        }
+        stringArray.deleteCharAt(stringArray.length() -1);
+        stringArray.append("]");
+
+        runJavaScript("callbackSoundList(" + stringArray.toString() + ")");
+        System.out.println("callbackSoundList(" + stringArray.toString() + ")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
 
 
     //methods to make the webview function calls to run on the same thread as UI.
@@ -125,6 +173,15 @@ public class MyJavaScriptInterface {
             @Override
             public void run() {
                 webView.loadUrl("file:///android_asset/www/" + filenameFinal);
+            }
+        });
+    }
+
+    private void goBack() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.goBack();
             }
         });
     }

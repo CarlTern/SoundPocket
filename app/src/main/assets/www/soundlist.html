@@ -26,5 +26,19 @@
         <button class="browseBtn"></button>
         <button class="browseBtn"></button>
     </div>
+
+    <script>
+       function callbackSoundList(arraySounds) {
+            for (index in arraySounds) {
+                Android.alert(arraySounds[index]);
+            }
+        }
+
+        (function getSoundList() {
+            Android.getSoundList();
+
+        })();
+
+    </script>
 </body>
 </html>
