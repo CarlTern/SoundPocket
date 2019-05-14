@@ -87,6 +87,11 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void goToSoundList() {
+        loadNewHTML("soundlist.html");
+    }
+
+    @JavascriptInterface
     public void goToPackageInstruction() {
 
         //get the state i.e. the currently chosen package
@@ -130,7 +135,24 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void getSoundList() {
+        String[] currentSoundList = mainActivity.getCurrentPackageSoundList();
+        StringBuilder stringArray = new StringBuilder();
+        stringArray.append("[");
+        for (String s : currentSoundList) {
+            stringArray.append("\"");
+            stringArray.append(s);
+            stringArray.append("\"");
+            stringArray.append(",");
+        }
+        stringArray.deleteCharAt(stringArray.length() -1);
+        stringArray.append("]");
 
+        runJavaScript("callbackSoundList(" + stringArray.toString() + ")");
+        System.out.println("callbackSoundList(" + stringArray.toString() + ")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
 
 
     //methods to make the webview function calls to run on the same thread as UI.
