@@ -62,7 +62,7 @@ public class SoundPlayer {
 
 
     protected MediaPlayer mPlayer;
-    protected boolean soundOn = false;
+    protected boolean soundOn = true;
     Context context;
 
 
