@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("dab machine")) {
+        }else if (text.equals("air horn")) {
             setPackage("MLG");
                if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                    soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
