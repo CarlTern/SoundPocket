@@ -155,6 +155,32 @@ public class MainActivity extends AppCompatActivity implements
     public String getCurrentPackage(){
         return currentPackage;
     }
+
+    public String[] getCurrentPackageSoundList(){
+        switch(currentPackage) {
+            case "Shotgun":
+                String[] listS = {
+                        "spades",
+                        "hearts",
+                        "diamonds",
+                        "clubs"
+                };
+                return listS;
+
+            case "Mario":
+                String[] listM = {
+                        "mario",
+                        "lugig",
+                        "bowser"
+                };
+                return listM;
+
+            default:
+                String[] empty = {};
+                return empty;
+        }
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
