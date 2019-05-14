@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements
     MyJavaScriptInterface jsHandler;
     WebView webView;
     AccelerometerManager manager = new AccelerometerManager();
+    private long timeStamp = 0;
 
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
