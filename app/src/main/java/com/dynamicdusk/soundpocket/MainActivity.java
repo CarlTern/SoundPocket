@@ -5,8 +5,13 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+<<<<<<< HEAD
+
+import android.speech.RecognitionListener;
+=======
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+>>>>>>> 35c0e16bd88bec26eeb089935316e2a97300e597
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
