@@ -113,14 +113,12 @@ public class AccelerometerManager {
 
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
-
         public void onSensorChanged(SensorEvent event) {
 // use the event timestamp as reference
 // so the manager precision won't depends
 // on the AccelerometerListener implementation
 // processing time
             now = event.timestamp;
-
             x = event.values[0];
             y = event.values[1];
             z = event.values[2];
@@ -133,11 +131,8 @@ public class AccelerometerManager {
                 lastX = x;
                 lastY = y;
                 lastZ = z;
-
-
             } else {
                 timeDiff = now - lastUpdate;
-
                 if (timeDiff > 0) {
                     forceX = Math.abs(x - lastX );
                     forceY = (y - lastY );
@@ -157,36 +152,13 @@ public class AccelerometerManager {
                         }
                         lastShake = now;
                     }
-                   /* else if (Float.compare(forceY,negyThreshold) <0) {
-                        if (now - lastShake >= interval) {
-                            listener.onShake(force);
-                        }
-                        lastShake = now;
-                    }
-*/
-
                     if (Float.compare(forceZ, zThreshold) > 0) {
-
                         if (now - lastShake >= interval) {
                             listener.onShakeZ(force);
                         }
                         lastShake = now;
                     }
 
-                    //force = Math.abs(x + y + z - lastX - lastY - lastZ);
-
-                    //if (Float.compare(force, threshold) > 0) {
-
-                      //  if (now - lastShake >= interval) {
-// trigger shake event
-                          //  listener.onShake(force);
-                        //} else {
-                            //Toast.makeText(context, "No Motion detected",
-                              //      Toast.LENGTH_SHORT).show();
-
-                        //}
-                        //lastShake = now;
-                   // }
                     lastX = x;
                     lastY = y;
                     lastZ = z;
