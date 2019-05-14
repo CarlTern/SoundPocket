@@ -93,6 +93,7 @@ public class Shotgun extends AccelerometerListener {
             timeStamp = Calendar.getInstance().getTimeInMillis();
             magazineCocked = false;
             shots--;
+            timeStamp = Calendar.getInstance().getTimeInMillis();
         } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
