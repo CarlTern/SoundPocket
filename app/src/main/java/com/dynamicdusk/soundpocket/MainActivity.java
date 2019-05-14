@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements
        and one word that is required for method switchSearch - it will bring recognizer
        back to listening for the keyphrase*/
     private static final String KWS_SEARCH = "activate package";
-
+    private String currentPackage = "Shotgun";
     /* Recognition object */
     private SpeechRecognizer recognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
@@ -150,7 +150,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-
+    public String getCurrentPackage(){
+        return currentPackage;
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
-
+        currentPackage = key;
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
