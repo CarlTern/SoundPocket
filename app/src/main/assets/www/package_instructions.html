@@ -50,14 +50,18 @@
         }
     }
 
+    function callbackSpecificSoundInfo(packagename, title, text, filename)
+        Android.alert(packagename);
+        Android.alert(title);
+        Android.alert(text);
+        Android.alert(filename);
 
-    function getTimeFromAndroid() {
-        Android.getTime();
     }
 
-    function callbackTimeFromAndroid(time) {
-        androidtime.innerHTML = time;
-    }
+    (function getSpecificSoundInfo() {
+        Android.getSpecificSoundInfo();
+    })();
+
 </script>
 
 

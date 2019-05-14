@@ -159,21 +159,40 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public String[] getCurrentPackageSoundList(){
+
+        case "shotgun-shot":
+        filename = "shotgun.svg";
+        break;
+        case "shotgun-pump":
+        filename = "shotgun.svg";
+        break;
+        case "shotgun-empty-pump":
+        filename = "shotgun.svg";
+        break;
+        case "shotgun-dry-fire":
+        filename = "shotgun.svg";
+        break;
+        case "shotgun-ammo-load":
+        filename = "shotgun.svg";
+        break;
+
+
         switch(currentPackage) {
             case "Shotgun":
                 String[] listS = {
-                        "spades",
-                        "hearts",
-                        "diamonds",
-                        "clubs"
+                        "Fire",
+                        "Dry Fire",
+                        "Pump",
+                        "Empty Pump",
+                        "Ammo Refill"
                 };
                 return listS;
 
             case "Mario":
                 String[] listM = {
-                        "mario",
-                        "lugig",
-                        "bowser"
+                        "Jump",
+                        "Pipe",
+                        "Fireball"
                 };
                 return listM;
 
