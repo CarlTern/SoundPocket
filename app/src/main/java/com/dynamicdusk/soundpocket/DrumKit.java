@@ -33,7 +33,7 @@ public class DrumKit extends AccelerometerListener {
     }
 
     public void onShakeX(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 250) {
             soundPlayer.playSound(SoundPlayer.SOUND_SNARE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
@@ -41,7 +41,7 @@ public class DrumKit extends AccelerometerListener {
     }
 
     public void onShakeY(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 250) {
             soundPlayer.playSound(SoundPlayer.SOUND_CYMBAL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
@@ -49,7 +49,7 @@ public class DrumKit extends AccelerometerListener {
     }
 
     public void onShakeZ(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 250) {
             soundPlayer.playSound(SoundPlayer.SOUND_TOM);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
