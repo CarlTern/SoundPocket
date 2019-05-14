@@ -57,6 +57,9 @@ public class SoundPlayer {
     public static final int SOUND_MENU_SHOTGUN= R.raw.menushotgun;
     public static final int SOUND_MENU_STARWARS = R.raw.menustarwars;
     public static final int SOUND_MENU_DRUMKIT = R.raw.menudrumkit;
+    public static final int SOUND_ITS_A_ME= R.raw.itsame;
+
+
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -282,6 +285,11 @@ public class SoundPlayer {
                     initPlayer(SOUND_MENU_WARCRAFT);
                     mPlayer.start();
                     break;
+                case SOUND_ITS_A_ME:
+                    initPlayer(SOUND_ITS_A_ME);
+                    mPlayer.start();
+                    break;
+
                 case -1:
             }
         }

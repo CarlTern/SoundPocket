@@ -54,6 +54,9 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setPackage(String key) {
+        if(key.equals("Mario")){
+            soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
+        }
         System.out.println("----------------------set package");
         mainActivity.setPackage(key);
         goBack();
