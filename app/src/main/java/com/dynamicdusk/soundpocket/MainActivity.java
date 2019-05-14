@@ -177,7 +177,6 @@ public class MainActivity extends AppCompatActivity implements
         }
         return super.onKeyDown(keyCode, event);
     }
-
     public String[] getPackages(){
         ArrayList <String> list= new ArrayList<String>();
         for (String name : packages.keySet()){
@@ -322,12 +321,10 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-
     public void onError(Exception error) {
 
         System.out.println(error.getMessage());
     }
-
 
     public void onTimeout() {
        // switchSearch(KWS_SEARCH);
