@@ -58,6 +58,8 @@ public class SoundPlayer {
     public static final int SOUND_MENU_STARWARS = R.raw.menustarwars;
     public static final int SOUND_MENU_DRUMKIT = R.raw.menudrumkit;
     public static final int SOUND_ITS_A_ME= R.raw.itsame;
+    public static final int SOUND_MAMMA_MIA= R.raw.mammamia;
+    public static final int SOUND_BOING= R.raw.boing;
 
 
 
@@ -287,6 +289,14 @@ public class SoundPlayer {
                     break;
                 case SOUND_ITS_A_ME:
                     initPlayer(SOUND_ITS_A_ME);
+                    mPlayer.start();
+                    break;
+                case SOUND_MAMMA_MIA:
+                    initPlayer(SOUND_MAMMA_MIA);
+                    mPlayer.start();
+                    break;
+                case SOUND_BOING:
+                    initPlayer(SOUND_BOING);
                     mPlayer.start();
                     break;
 
