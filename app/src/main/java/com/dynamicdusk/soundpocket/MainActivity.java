@@ -87,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements
         webView.setLongClickable(false);
         webView.setHapticFeedbackEnabled(false);
 
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         this.soundPlayer = new SoundPlayer(this);
         this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer, this);
@@ -144,6 +148,21 @@ public class MainActivity extends AppCompatActivity implements
             }
         }, 3000);
 
+    }
+
+    protected void onResume(){
+        super.onResume();
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+    }
+
+    public void onWindowFocusChanged(boolean bool){
+        if (bool){
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        }
     }
     public void onDestroy() {
         super.onDestroy();

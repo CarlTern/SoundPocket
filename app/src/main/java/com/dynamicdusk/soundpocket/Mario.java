@@ -63,11 +63,8 @@ public class Mario extends AccelerometerListener {
 
     public void onGyroX(float force) {
     }
-
     public void onGyroY(float force) {     
     }
-
-
     public void onGyroZ(float force) {
     }
 }
