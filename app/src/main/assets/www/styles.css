@@ -45,7 +45,10 @@
 /* -------- The real deal ------- */
 
 body {
-    background-color: #fe7f9c;
+    background: #FF8008;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FF8008, #FFC837);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FF8008, #FFC837); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #fe7f9c; */
     color: white;
 }
 
@@ -60,7 +63,6 @@ body {
 }
 
 .wrapNav {
-    background-color: #fe7f9c;
     line-height: 50px;
     height: 50px;
     margin-bottom: 30px;
@@ -81,14 +83,19 @@ body {
 }
 
 .wrapCenter {
-    background-color: #fe7f9c;
     text-align: center;
 }
 
 .bigStdBtn {
-    border: none;
-    background-color: white;
-    color: #fe7f9c;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+
+    border: 1px solid #fff;
+
+    color: #fff;
     height: 70px;
     width: 240px;
     padding: 10px;
@@ -102,17 +109,32 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 
+         -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+             -khtml-user-select: none; /* Konqueror HTML */
+               -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome and Opera */
+
     transition: all .2s ease-in-out;
 }
 
 .bigStdBtn:active {
     transform: scale(1.07, 1.07);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .packBtn {
-    border: none;
-    background-color: white;
-    color: #fe7f9c;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+
+    border: 1px solid #fff;
+
+    color: #fff;
     height: 240px;
     width: 240px;
     padding: 20px;
@@ -124,11 +146,21 @@ body {
     margin-left: auto;
     margin-right: auto;
 
+             -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                 -khtml-user-select: none; /* Konqueror HTML */
+                   -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                        user-select: none; /* Non-prefixed version, currently
+                                              supported by Chrome and Opera */
+
     transition: all .2s ease-in-out;
 }
 
 .packBtn:active {
     transform: scale(1.07, 1.07);
+    background-color: rgba(255, 128, 8, 0.2);
+    #FF8008
 }
 
 .lock {
@@ -162,9 +194,14 @@ body {
 }
 
 .browseBtn {
-    border: none;
-    background-color: white;
-    color: #fe7f9c;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+
+    border: 1px solid #fff;
+
     height: 120px;
     width: 120px;
     padding: 20px;
@@ -178,7 +215,7 @@ body {
     transition: all .2s ease-in-out;
 }
 
-.packBtn:active {
+.browseBtn:active {
     transform: scale(1.07, 1.07);
 }
 

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
 
 import android.support.v4.app.ActivityCompat;
@@ -65,18 +66,15 @@ public class MainActivity extends AppCompatActivity implements
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
 
-
-
         super.onCreate(savedInstanceState);
+        this.getWindow().setStatusBarColor(Color.rgb(255, 200, 37));
         webView = new WebView(this);
         setContentView(webView);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-
         runRecognizerSetup();
-
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
 
@@ -157,6 +155,33 @@ public class MainActivity extends AppCompatActivity implements
     public String getCurrentPackage(){
         return currentPackage;
     }
+
+    public String[] getCurrentPackageSoundList(){
+        switch(currentPackage) {
+            case "Shotgun":
+                String[] listS = {
+                        "Fire",
+                        "Dry Fire",
+                        "Pump",
+                        "Empty Pump",
+                        "Ammo Refill"
+                };
+                return listS;
+
+            case "Mario":
+                String[] listM = {
+                        "Jump",
+                        "Pipe",
+                        "Fireball"
+                };
+                return listM;
+
+            default:
+                String[] empty = {};
+                return empty;
+        }
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -265,7 +290,10 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
-            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("mario")) {
             setPackage("Mario");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
@@ -274,22 +302,40 @@ public class MainActivity extends AppCompatActivity implements
             }
         }else if (text.equals("air horn")) {
             setPackage("MLG");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
-               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
            }
 
 

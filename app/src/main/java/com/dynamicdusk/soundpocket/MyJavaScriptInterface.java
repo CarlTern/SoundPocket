@@ -25,6 +25,7 @@ public class MyJavaScriptInterface {
     Context context;
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
+    String specificSoundState = "";
 
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
@@ -87,17 +88,14 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void goToPackageInstruction() {
+    public void goToSoundList() {
+        loadNewHTML("soundlist.html");
+    }
 
-        //get the state i.e. the currently chosen package
-        String chosenPack = "";
-        if (chosenPack.equals("")) {
-            //put the checks here
-        } else {
-
-        }
-
-        loadNewHTML("package_instructions_war.html");
+    @JavascriptInterface
+    public void goToPackageInstruction(String specificSound) {
+        specificSoundState = specificSound;
+        loadNewHTML("package_instructions.html");
         System.out.println("-------------------------------instructions");
 
         //runJavaScript("window.location = 'package_instructions_war.html';");
@@ -105,11 +103,57 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void getSpecificSoundInfo() {
+        String packageName = mainActivity.getPackageName();
+        String text = "";
+        String filename = "";
+
+        switch(specificSoundState) {
+            //------------Shotgun
+            case "Fire":
+                text = "fill in instruction text";
+                filename = "shotgun-fire-instruction.svg";
+                break;
+            case "Dry Fire":
+                text = "fill in instruction text";
+                filename = "shotgun-dry-fire-instruction.svg";
+                break;
+            case "Pump":
+                text = "fill in instruction text";
+                filename = "shotgun-pump-instruction.svg";
+                break;
+            case "Empty Pump":
+                text = "fill in instruction text";
+                filename = "shotgun-empty-pump-instruction.svg";
+                break;
+            case "Ammo Refill":
+                text = "fill in instruction text";
+                filename = "shotgun-ammo-refill-instruction.svg";
+                break;
+
+            //------------Mario
+            case "Jump":
+                text = "fill in instruction text";
+                filename = "mario-jump-instruction.svg";
+                break;
+            case "Pipe":
+                text = "fill in instruction text";
+                filename = "mario-pipe-instruction.svg";
+                break;
+            case "Fireball":
+                text = "fill in instruction text";
+                filename = "mario-fireball-instruction.svg";
+                break;
+        }
+        runJavaScript("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
+        System.out.println("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    @JavascriptInterface
     public void goToChoosePackage() {
         System.out.println("-------------------------------package");
         loadNewHTML("browse.html");
-        //runJavaScript("window.location = 'package_instructions_war.html';");
-        //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
     @JavascriptInterface
@@ -130,7 +174,24 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void getSoundList() {
+        String[] currentSoundList = mainActivity.getCurrentPackageSoundList();
+        StringBuilder stringArray = new StringBuilder();
+        stringArray.append("[");
+        for (String s : currentSoundList) {
+            stringArray.append("\"");
+            stringArray.append(s);
+            stringArray.append("\"");
+            stringArray.append(",");
+        }
+        stringArray.deleteCharAt(stringArray.length() -1);
+        stringArray.append("]");
 
+        runJavaScript("callbackSoundList(" + stringArray.toString() + ")");
+        System.out.println("callbackSoundList(" + stringArray.toString() + ")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
 
 
     //methods to make the webview function calls to run on the same thread as UI.
