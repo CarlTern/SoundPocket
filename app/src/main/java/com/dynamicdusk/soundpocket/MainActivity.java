@@ -157,24 +157,6 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public String[] getCurrentPackageSoundList(){
-
-        case "shotgun-shot":
-        filename = "shotgun.svg";
-        break;
-        case "shotgun-pump":
-        filename = "shotgun.svg";
-        break;
-        case "shotgun-empty-pump":
-        filename = "shotgun.svg";
-        break;
-        case "shotgun-dry-fire":
-        filename = "shotgun.svg";
-        break;
-        case "shotgun-ammo-load":
-        filename = "shotgun.svg";
-        break;
-
-
         switch(currentPackage) {
             case "Shotgun":
                 String[] listS = {
