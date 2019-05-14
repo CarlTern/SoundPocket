@@ -47,7 +47,15 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(String key) {
+        System.out.println("----------------------set package");
         mainActivity.setPackage(key);
+    }
+
+    @JavascriptInterface
+    public void setPackage(String key) {
+        System.out.println("----------------------set package");
+        mainActivity.setPackage(key);
+        goBack();
     }
 
 
@@ -104,6 +112,24 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
+    public void getCurrentPackage() {
+        String currentPack = mainActivity.getCurrentPackage();
+        String filename = "";
+
+        switch(currentPack) {
+            case "Shotgun":
+                filename = "shotgun.svg";
+                break;
+            case "Mario":
+                filename = "mario.svg";
+                break;
+        }
+        runJavaScript("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
+        System.out.println("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
 
 
 
@@ -125,6 +151,15 @@ public class MyJavaScriptInterface {
             @Override
             public void run() {
                 webView.loadUrl("file:///android_asset/www/" + filenameFinal);
+            }
+        });
+    }
+
+    private void goBack() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.goBack();
             }
         });
     }

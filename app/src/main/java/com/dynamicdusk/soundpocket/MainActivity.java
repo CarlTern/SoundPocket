@@ -16,7 +16,8 @@ import android.view.View;
 import android.webkit.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements
     private static final String KWS_SEARCH = "activate package";
     private String currentPackage = "Shotgun";
     /* Recognition object */
-    private long timeStamp = 0;
     private SpeechRecognizer recognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     SoundPlayer soundPlayer;
@@ -49,17 +49,11 @@ public class MainActivity extends AppCompatActivity implements
 
 
     protected void onCreate(Bundle savedInstanceState) {
-        //Voice activation creation from here
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
             return;
         }
-        runRecognizerSetup();
-        this.soundPlayer = new SoundPlayer(this);
-
-        //toHere
-
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
@@ -79,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
 
-
+        runRecognizerSetup();
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
@@ -94,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements
         webView.setHapticFeedbackEnabled(false);
 
 
-
+        this.soundPlayer = new SoundPlayer(this);
         this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer, this);
         webView.addJavascriptInterface(jsHandler, "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
@@ -182,7 +176,15 @@ public class MainActivity extends AppCompatActivity implements
         return super.onKeyDown(keyCode, event);
     }
 
-
+    public String[] getPackages(){
+        ArrayList <String> list= new ArrayList<String>();
+        for (String name : packages.keySet()){
+            list.add(name);
+        }
+        String[] returnie = new String[list.size()];
+        returnie = list.toArray(returnie);
+        return returnie;
+    }
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
@@ -190,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements
             manager.startListening(packages.get(key));
         }
     }
-
     @SuppressLint("StaticFieldLeak")
     private void runRecognizerSetup() {
         // Recognizer initialization is a time-consuming and it involves IO,
@@ -263,10 +264,7 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
         }else if (text.equals("mario")) {
             setPackage("Mario");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
@@ -275,40 +273,22 @@ public class MainActivity extends AppCompatActivity implements
             }
         }else if (text.equals("air horn")) {
             setPackage("MLG");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
            }
 
 
