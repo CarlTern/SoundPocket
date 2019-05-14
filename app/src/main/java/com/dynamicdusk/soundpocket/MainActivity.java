@@ -233,6 +233,10 @@ public class MainActivity extends AppCompatActivity implements
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
+        float[] accThresh = packages.get(key).getAccThresholds();
+        float[] gyroThresh = packages.get(key).getGyroThresholds();
+        manager.changeAccThreshold(accThresh[0], accThresh[1], accThresh[2]);
+        manager.changeGyroThreshold(gyroThresh[0], gyroThresh[1], gyroThresh[2]);
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }

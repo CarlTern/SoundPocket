@@ -7,16 +7,16 @@ import java.util.Calendar;
 public class DrumKit extends AccelerometerListener {
 
 
-    private float xThreshold = 12;
-    private float yThreshold = 4;
-    private float zThreshold = 12;
+    private float xAccThreshold = 12;
+    private float yAccThreshold = 4;
+    private float zAccThreshold = 12;
     SoundPlayer soundPlayer;
     private long timeStamp =0;
 
     public DrumKit(){
-        super.xThreshold = xThreshold;
-        super.yThreshold = yThreshold;
-        super.zThreshold = zThreshold;
+        super.xAccThreshold = xAccThreshold;
+        super.yAccThreshold = yAccThreshold;
+        super.zAccThreshold = zAccThreshold;
         timeStamp = Calendar.getInstance().getTimeInMillis();
     }
 
