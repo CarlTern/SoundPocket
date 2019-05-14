@@ -49,11 +49,17 @@ public class MainActivity extends AppCompatActivity implements
 
 
     protected void onCreate(Bundle savedInstanceState) {
+        //Voice activation creation from here
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
             return;
         }
+        runRecognizerSetup();
+        this.soundPlayer = new SoundPlayer(this);
+
+        //toHere
+
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
 
-        runRecognizerSetup();
+
 
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements
         webView.setHapticFeedbackEnabled(false);
 
 
-        this.soundPlayer = new SoundPlayer(this);
+
         this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer, this);
         webView.addJavascriptInterface(jsHandler, "Android");
         webView.loadUrl("file:///android_asset/www/splash.html");
