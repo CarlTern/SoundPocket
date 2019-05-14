@@ -12,7 +12,7 @@ public class AccelerometerManager {
 
     private static Context context = null;
 
-    private float xAccThreshold = 14;
+    private float xAccThreshold = 20;
     private float yAccThreshold = 5;
     private float zAccThreshold = 12;
     private float xGyroThreshold = 5;

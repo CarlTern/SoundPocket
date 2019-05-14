@@ -24,27 +24,23 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import edu.cmu.pocketsphinx.Assets;
-import edu.cmu.pocketsphinx.Hypothesis;
-import edu.cmu.pocketsphinx.RecognitionListener;
-import edu.cmu.pocketsphinx.SpeechRecognizer;
-import edu.cmu.pocketsphinx.SpeechRecognizerSetup;
 
-public class MainActivity extends AppCompatActivity implements
-        RecognitionListener {
-    /* We only need the keyphrase to start recognition, one menu with list of choices,
-       and one word that is required for method switchSearch - it will bring recognizer
-       back to listening for the keyphrase*/
-    private static final String KWS_SEARCH = "activate package";
+
+public class MainActivity extends AppCompatActivity {
+
+
+
+
     private String currentPackage = "Shotgun";
     /* Recognition object */
-    private SpeechRecognizer recognizer;
+
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     SoundPlayer soundPlayer;
     MyJavaScriptInterface jsHandler;
     WebView webView;
     AccelerometerManager manager = new AccelerometerManager();
     private long timeStamp = 0;
+    private VoiceManager voice;
 
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
@@ -52,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements
 
 
     protected void onCreate(Bundle savedInstanceState) {
+
+
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements
         settings.setJavaScriptEnabled(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-        runRecognizerSetup();
+
         settings.setBuiltInZoomControls(false);
         webView.setWebChromeClient(new WebChromeClient()); //making js alerts work
 
@@ -98,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements
         webView.loadUrl("file:///android_asset/www/splash.html");
         final WebView webViewCallbackAccess = webView;
 
+        voice = new VoiceManager(soundPlayer,this);
+        voice.runRecognizerSetup();
         /*
         webViewCallbackAccess.setOnKeyListener( new View.OnKeyListener()
         {
@@ -166,8 +166,7 @@ public class MainActivity extends AppCompatActivity implements
     }
     public void onDestroy() {
         super.onDestroy();
-        recognizer.cancel();
-        recognizer.shutdown();
+        voice.destroy();
     }
 
 
@@ -238,46 +237,8 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
     @SuppressLint("StaticFieldLeak")
-    private void runRecognizerSetup() {
-        // Recognizer initialization is a time-consuming and it involves IO,
-        // so we execute it in async task
-        new AsyncTask<Void, Void, Exception>() {
 
-            protected Exception doInBackground(Void... params) {
-                try {
-                    Assets assets = new Assets(MainActivity.this);
-                    File assetDir = assets.syncAssets();
-                    setupRecognizer(assetDir);
-                } catch (IOException e) {
-                    return e;
-                }
 
-                return null;
-            }
-
-            protected void onPostExecute(Exception result) {
-                if (result != null) {
-                    System.out.println(result.getMessage());
-                } else {
-                   switchSearch(KWS_SEARCH);
-                }
-            }
-
-        }.execute();
-    }
-
-    private void setupRecognizer(File assetsDir) throws IOException {
-        recognizer = SpeechRecognizerSetup.defaultSetup()
-                .setAcousticModel(new File(assetsDir, "en-us-ptm"))
-                .setDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-                //Set threshold for keyword
-                .setKeywordThreshold((float)1e-5)
-                .getRecognizer();
-        recognizer.addListener(this);
-        // Create your custom grammar-based search
-        File menuGrammar = new File(assetsDir, "words.gram");
-        recognizer.addKeywordSearch(KWS_SEARCH, menuGrammar);
-    }
 
 
     public void onStop() {
@@ -291,112 +252,6 @@ public class MainActivity extends AppCompatActivity implements
         }
         */
     }
-
-
-    public void onPartialResult(Hypothesis hypothesis) {
-
-        if (hypothesis == null)
-            return;
-        String text = hypothesis.getHypstr();
-        System.out.println(text);
-        recognizer.cancel();
-
-      /*  if (text.equals(KEYPHRASE)) {
-
-            setPackage("Mario");
-
-       } else
-         */
-           if (text.equals("shotgun")) {
-            setPackage("Shotgun");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-        }else if (text.equals("mario")) {
-            setPackage("Mario");
-            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
-                timeStamp = Calendar.getInstance().getTimeInMillis();
-            }
-        }else if (text.equals("air horn")) {
-            setPackage("MLG");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-        }else if (text.equals("warcraft")) {
-            setPackage("Warcraft3");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-        }else if (text.equals("pistol")) {
-            this.setPackage("Pistol");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-        } else if (text.equals("star wars")) {
-            this.setPackage("LightSaber");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-        } else if (text.equals("fart prank")) {
-               this.setPackage("FartPrank");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-           }else if (text.equals("drum kit")) {
-               this.setPackage("DrumKit");
-               if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
-                   soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
-           }
-
-
-        switchSearch(KWS_SEARCH);
-
-    }
-
-
-    public void onResult(Hypothesis hypothesis) {
-    }
-
-    public void onBeginningOfSpeech() {
-    }
-
-
-    public void onEndOfSpeech() {
-        if (!recognizer.getSearchName().equals(KWS_SEARCH))
-        switchSearch(KWS_SEARCH);
-        //recognizer.stop();
-        //recognizer.startListening(KEYPHRASE);
-    }
-
-    private void switchSearch(String searchName) {
-        recognizer.cancel();
-        if (searchName.equals(KWS_SEARCH))
-            recognizer.startListening(searchName);
-        else
-            recognizer.startListening(searchName, 100);
-
-    }
-
-    public void onError(Exception error) {
-
-        System.out.println(error.getMessage());
-    }
-
-    public void onTimeout() {
-       // switchSearch(KWS_SEARCH);
-    }
-
-
-
 
 
 
