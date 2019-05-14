@@ -25,16 +25,7 @@ public class Mario extends AccelerometerListener {
     }
 
 
-    @Override
-    public void onShake(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeX(float force) {
+    public void onAccX(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -47,7 +38,7 @@ public class Mario extends AccelerometerListener {
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeY(float force) {
+    public void onAccY(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_COIN);
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -62,11 +53,21 @@ public class Mario extends AccelerometerListener {
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeZ(float force) {
+    public void onAccZ(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
         //jsHandler.alert("Force: " + force);
+    }
+
+    public void onGyroX(float force) {
+    }
+
+    public void onGyroY(float force) {     
+    }
+
+
+    public void onGyroZ(float force) {
     }
 }

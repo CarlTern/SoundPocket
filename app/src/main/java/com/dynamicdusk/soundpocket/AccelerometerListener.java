@@ -12,13 +12,19 @@ public abstract class AccelerometerListener {
         return new float[]{xThreshold, yThreshold, zThreshold};
     }
 
-    public abstract void onShake(float force);
+    public abstract void onAccX(float force);
 
-    public abstract void onShakeX(float force);
+    public abstract void onAccY(float force);
 
-    public abstract void onShakeY(float force);
+    public abstract void onAccZ(float force);
 
-    public abstract void onShakeZ(float force);
+    public abstract void onGyroX(float force);
+
+    public abstract void onGyroY(float force);
+
+    public abstract void onGyroZ(float force);
+
+
 
     }
 

@@ -25,15 +25,7 @@ public class LightSaber extends AccelerometerListener {
         this.soundPlayer = soundPlayer;
     }
 
-    @Override
-    public void onShake(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(-1);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeX(float force) {
+    public void onAccX(float force) {
         if(isOn &&soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -41,7 +33,7 @@ public class LightSaber extends AccelerometerListener {
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeY(float force) {
+    public void onAccY(float force) {
         if(!isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -52,12 +44,16 @@ public class LightSaber extends AccelerometerListener {
         }
         //jsHandler.alert("Force: " + force);
     }
+    public void onAccZ(float force) {
+    }
 
-    public void onShakeZ(float force) {
-        if(isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
-        }
-        //jsHandler.alert("Force: " + force);
+    public void onGyroX(float force){
+
+    }
+    public void onGyroY(float force){
+        
+    }
+    public void onGyroZ(float force){
+        
     }
 }

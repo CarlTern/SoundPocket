@@ -24,15 +24,7 @@ public class Pistol extends AccelerometerListener {
         this.soundPlayer = soundPlayer;
     }
 
-    @Override
-    public void onShake(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(-1);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeX(float force) {
+    public void onAccX(float force) {
 
         if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             if(!silenced) {
@@ -46,7 +38,7 @@ public class Pistol extends AccelerometerListener {
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeY(float force) {
+    public void onAccY(float force) {
         if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
@@ -55,11 +47,19 @@ public class Pistol extends AccelerometerListener {
         }
     }
 
-    public void onShakeZ(float force) {
+    public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
            // soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             //timeStamp = Calendar.getInstance().getTimeInMillis();
         }
+    }
+        public void onGyroX(float force) {
+        }
+    
+        public void onGyroY(float force) {
+        }
+    
+        public void onGyroZ(float force) {
+        }
         //jsHandler.alert("Force: " + force);
     }
-}

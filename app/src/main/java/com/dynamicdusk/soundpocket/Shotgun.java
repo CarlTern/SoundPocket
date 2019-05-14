@@ -26,16 +26,7 @@ public class Shotgun extends AccelerometerListener {
         this.soundPlayer = soundPlayer;
     }
 
-
-    @Override
-    public void onShake(float force) {
-        if(soundPlayer.isSoundOn()) {
-            soundPlayer.playSound(-1);
-        }
-        //jsHandler.alert("Force: " + force);
-    }
-
-    public void onShakeX(float force) {
+    public void onAccX(float force) {
 
             if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
                 if(magazineCocked &&shots>0) {
@@ -51,7 +42,7 @@ public class Shotgun extends AccelerometerListener {
         //jsHandler.alert("Force: " + force);
     }
 
-    public void onShakeY(float force) {
+    public void onAccY(float force) {
         if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             if (shots > 0) {
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
@@ -65,7 +56,7 @@ public class Shotgun extends AccelerometerListener {
         }
     }
 
-    public void onShakeZ(float force) {
+    public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -74,5 +65,15 @@ public class Shotgun extends AccelerometerListener {
             }
         }
         //jsHandler.alert("Force: " + force);
+    }
+
+    public void onGyroX(float force){
+
+    }
+    public void onGyroY(float force){
+        
+    }
+    public void onGyroZ(float force){
+        
     }
 }

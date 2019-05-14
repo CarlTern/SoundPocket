@@ -153,13 +153,13 @@ public class AccelerometerManager {
                     forceZ = Math.abs(z - lastZ );
 
                     if (Float.compare(forceX, xAccThreshold) > 0) {
-                            listener.onShakeX(force);
+                            listener.onAccX(force);
                     }
                     if (Float.compare(forceY, yAccThreshold) > 0) {
-                            listener.onShakeY(force);
+                            listener.onAccY(force);
                     }
                     if (Float.compare(forceZ, zAccThreshold) > 0) {
-                            listener.onShakeZ(force);
+                            listener.onAccZ(force);
                     }
                     lastX = x;
                     lastY = y;
@@ -214,13 +214,13 @@ public class AccelerometerManager {
                     forceZ = Math.abs(z - lastZ );
 
                     if (Float.compare(forceX, xGyroThreshold) > 0) {
-                        listener.onShakeX(force);
+                        listener.onGyroX(force);
                     }
                     if (Float.compare(forceY, yGyroThreshold) > 0) {
-                        listener.onShakeY(force);
+                        listener.onGyroY(force);
                     }
                     if (Float.compare(forceZ, zGyroThreshold) > 0) {
-                        listener.onShakeZ(force);
+                        listener.onGyroX(force);
                     }
                     lastX = x;
                     lastY = y;
