@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -60,9 +61,8 @@ public class MainActivity extends AppCompatActivity implements
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
 
-
-
         super.onCreate(savedInstanceState);
+        this.getWindow().setStatusBarColor(Color.rgb(255, 200, 37));
         webView = new WebView(this);
         setContentView(webView);
         WebSettings settings = webView.getSettings();
