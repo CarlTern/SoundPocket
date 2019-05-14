@@ -16,6 +16,8 @@ import android.view.View;
 import android.webkit.*;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -174,7 +176,15 @@ public class MainActivity extends AppCompatActivity implements
         return super.onKeyDown(keyCode, event);
     }
 
-
+    public String[] getPackages(){
+        ArrayList <String> list= new ArrayList<String>();
+        for (String name : packages.keySet()){
+            list.add(name);
+        }
+        String[] returnie = new String[list.size()];
+        returnie = list.toArray(returnie);
+        return returnie;
+    }
     public void setPackage(String key){
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
@@ -182,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements
             manager.startListening(packages.get(key));
         }
     }
-
     @SuppressLint("StaticFieldLeak")
     private void runRecognizerSetup() {
         // Recognizer initialization is a time-consuming and it involves IO,
