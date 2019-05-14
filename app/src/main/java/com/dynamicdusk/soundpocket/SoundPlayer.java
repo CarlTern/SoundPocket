@@ -49,6 +49,14 @@ public class SoundPlayer {
     public static final int SOUND_LIGHTSABER_OPEN = R.raw.open;
     public static final int SOUND_LIGHTSABER_PULSE = R.raw.pulse;
     public static final int SOUND_LIGHTSABER_CLOSE = R.raw.close;
+    public static final int SOUND_MENU_WARCRAFT = R.raw.menuwarcraft;
+    public static final int SOUND_MENU_AIRHORN = R.raw.menuairhorn;
+    public static final int SOUND_MENU_FARTPRANK= R.raw.menufartprank;
+    public static final int SOUND_MENU_MARIO = R.raw.menumario;
+    public static final int SOUND_MENU_PISTOL = R.raw.menupistol;
+    public static final int SOUND_MENU_SHOTGUN= R.raw.menushotgun;
+    public static final int SOUND_MENU_STARWARS = R.raw.menustarwars;
+    public static final int SOUND_MENU_DRUMKIT = R.raw.menudrumkit;
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = false;
@@ -240,6 +248,38 @@ public class SoundPlayer {
                     break;
                 case SOUND_LIGHTSABER_CLOSE:
                     initPlayer(SOUND_LIGHTSABER_CLOSE);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_AIRHORN:
+                    initPlayer(SOUND_MENU_AIRHORN);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_DRUMKIT:
+                    initPlayer(SOUND_MENU_DRUMKIT);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_FARTPRANK:
+                    initPlayer(SOUND_MENU_FARTPRANK);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_MARIO:
+                    initPlayer(SOUND_MENU_MARIO);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_PISTOL:
+                    initPlayer(SOUND_MENU_PISTOL);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_SHOTGUN:
+                    initPlayer(SOUND_MENU_SHOTGUN);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_STARWARS:
+                    initPlayer(SOUND_MENU_STARWARS);
+                    mPlayer.start();
+                    break;
+                case SOUND_MENU_WARCRAFT:
+                    initPlayer(SOUND_MENU_WARCRAFT);
                     mPlayer.start();
                     break;
                 case -1:

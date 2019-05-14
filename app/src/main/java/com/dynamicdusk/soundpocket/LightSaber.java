@@ -46,6 +46,9 @@ public class LightSaber extends AccelerometerListener {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             isOn = true;
+        } else if (isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+            soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
+            isOn = false;
         }
         //jsHandler.alert("Force: " + force);
     }

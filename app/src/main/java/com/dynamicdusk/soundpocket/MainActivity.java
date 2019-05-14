@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements
         if (hypothesis == null)
             return;
         String text = hypothesis.getHypstr();
+        System.out.println(text);
         recognizer.cancel();
 
       /*  if (text.equals(KEYPHRASE)) {
@@ -251,21 +252,30 @@ public class MainActivity extends AppCompatActivity implements
          */
            if (text.equals("shotgun")) {
             setPackage("Shotgun");
+            soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
         }else if (text.equals("mario")) {
             setPackage("Mario");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
         }else if (text.equals("dab machine")) {
             setPackage("MLG");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
         }else if (text.equals("warcraft")) {
             setPackage("Warcraft3");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
         }else if (text.equals("pistol")) {
             this.setPackage("Pistol");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
         } else if (text.equals("star wars")) {
             this.setPackage("LightSaber");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
         } else if (text.equals("fart prank")) {
                this.setPackage("FartPrank");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
            }else if (text.equals("drum kit")) {
                this.setPackage("DrumKit");
+               soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
            }
+
 
         switchSearch(KWS_SEARCH);
 
