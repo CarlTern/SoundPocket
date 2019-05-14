@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onResult(Hypothesis hypothesis) {
     }
-    
+
     public void onBeginningOfSpeech() {
     }
 
