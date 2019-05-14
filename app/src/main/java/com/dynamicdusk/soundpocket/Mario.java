@@ -79,7 +79,7 @@ public class Mario extends AccelerometerListener {
 
     public void onGyroZ(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_RIGHT_O);
+            soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
     }

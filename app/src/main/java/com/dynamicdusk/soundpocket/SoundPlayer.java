@@ -60,6 +60,7 @@ public class SoundPlayer {
     public static final int SOUND_ITS_A_ME= R.raw.itsame;
     public static final int SOUND_MAMMA_MIA= R.raw.mammamia;
     public static final int SOUND_BOING= R.raw.boing;
+    public static final int SOUND_YAHOO= R.raw.yahoo;
 
 
 
@@ -297,6 +298,14 @@ public class SoundPlayer {
                     break;
                 case SOUND_BOING:
                     initPlayer(SOUND_BOING);
+                    mPlayer.start();
+                    break;
+                case SOUND_RIGHT_O:
+                    initPlayer(SOUND_RIGHT_O);
+                    mPlayer.start();
+                    break;
+                case SOUND_YAHOO:
+                    initPlayer(SOUND_YAHOO);
                     mPlayer.start();
                     break;
 
