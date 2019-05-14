@@ -4,15 +4,15 @@ import android.content.Context;
 
 public class MLG extends AccelerometerListener {
 
-    private float xThreshold = 12;
-    private float yThreshold = 8;
-    private float zThreshold = 12;
+    private float xAccThreshold = 12;
+    private float yAccThreshold = 8;
+    private float zAccThreshold = 12;
     SoundPlayer soundPlayer;
 
     public MLG(){
-        super.xThreshold = xThreshold;
-        super.yThreshold = yThreshold;
-        super.zThreshold = zThreshold;
+        super.xAccThreshold = xAccThreshold;
+        super.yAccThreshold = yAccThreshold;
+        super.zAccThreshold = zAccThreshold;
     }
     public void setSoundPlayer(SoundPlayer soundPlayer){
         this.soundPlayer = soundPlayer;

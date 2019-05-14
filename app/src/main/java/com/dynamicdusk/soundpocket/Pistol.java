@@ -6,17 +6,17 @@ import java.util.Calendar;
 public class Pistol extends AccelerometerListener {
 
 
-    private float xThreshold = 12;
-    private float yThreshold = 8;
-    private float zThreshold = 12;
+    private float xAccThreshold = 12;
+    private float yAccThreshold = 8;
+    private float zAccThreshold = 12;
     private boolean silenced = false;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
 
     public Pistol(){
-        super.xThreshold = xThreshold;
-        super.yThreshold = yThreshold;
-        super.zThreshold = zThreshold;
+        super.xAccThreshold = xAccThreshold;
+        super.yAccThreshold = yAccThreshold;
+        super.zAccThreshold = zAccThreshold;
         timeStamp = Calendar.getInstance().getTimeInMillis();
     }
 
