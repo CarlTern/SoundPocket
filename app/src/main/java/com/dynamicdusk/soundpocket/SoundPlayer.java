@@ -61,6 +61,9 @@ public class SoundPlayer {
     public static final int SOUND_MAMMA_MIA= R.raw.mammamia;
     public static final int SOUND_BOING= R.raw.boing;
     public static final int SOUND_YAHOO= R.raw.yahoo;
+    public static final int SOUND_LIGHTSABER_SWING_ONE= R.raw.lightsaberswing;
+    public static final int SOUND_LIGHTSABER_SWING_TWO= R.raw.lightsaberswing2;
+
 
 
 

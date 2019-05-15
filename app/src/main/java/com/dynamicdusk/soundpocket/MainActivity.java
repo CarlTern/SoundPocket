@@ -233,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
         return returnie;
     }
     public void setPackage(String key){
+        if(currentPackage.equals("LightSaber")){
+            packages.get(currentPackage).killLoop();
+        }
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
         float[] accThresh = packages.get(key).getAccThresholds();

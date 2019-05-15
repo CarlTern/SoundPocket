@@ -58,5 +58,9 @@ public abstract class AccelerometerListener {
         
     }
 
+    public void killLoop(){
+
+    }
+
 }
 

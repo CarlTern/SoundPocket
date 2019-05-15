@@ -17,6 +17,8 @@ public class Shotgun extends AccelerometerListener {
     private boolean xAcc;
     private boolean zGyro;
     private long shotTime;
+    private long pumpTime;
+    long now;
 
     public Shotgun(){
         super.xAccThreshold = 14;
@@ -47,8 +49,8 @@ public class Shotgun extends AccelerometerListener {
 
     public void onAccY(float force) {
         long now = Calendar.getInstance().getTimeInMillis();
-        if (soundPlayer.isSoundOn() 
-            && (now - timeStamp) > 400 
+        if (soundPlayer.isSoundOn()
+            && (now - timeStamp) > 400
             && now - shotTime > 400
             && now - sideMove > 150) {
             if (shots > 0) {
@@ -58,11 +60,23 @@ public class Shotgun extends AccelerometerListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
             }
             timeStamp = now;
+            pumpTime = now;
         }
     }
 
-    public void onAccZ(float force){
+    public void onAccZ(float force) {
+        now = Calendar.getInstance().getTimeInMillis();
         sideMove = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn()
+                && (now - timeStamp) > 400
+                && now - shotTime > 400
+                && now - pumpTime > 150) {
+            soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+            if(shots<8) {
+                shots++;
+            }
+        }
     }
 
     public void onGyroY(float force){
