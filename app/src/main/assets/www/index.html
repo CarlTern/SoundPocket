@@ -1,5 +1,6 @@
 <html>
 <head>
+
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <meta name=viewport
@@ -115,7 +116,7 @@
 
 <h2>Choose your sound</h2>
 
-<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG, buttonLightSaber)">Shotgun</button>
+<button id="buttonShotgun" class="button button2" onclick="chooseSound(buttonShotgun, buttonMario, buttonWarcraft3, buttonMLG, buttonLightSaber)" highlight=false>Shotgun</button>
 <button id="buttonMario" class="button button4" onclick="chooseSound(buttonMario, buttonWarcraft3, buttonShotgun, buttonMLG, buttonLightSaber)">Mario</button>
 <button id="buttonWarcraft3" class="button button5" onclick="chooseSound(buttonWarcraft3, buttonShotgun, buttonMario, buttonMLG, buttonLightSaber)">Warcraft 3</button>
 <button id="buttonMLG" class="button button5" onclick="chooseSound(buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario,buttonLightSaber)">MLG</button>
@@ -126,7 +127,7 @@
 
 <hr>
 <h2>Test Android callback by getting time</h2>
-<button id="soundswitch" class="button button5" onclick="this.st';">Get Time</button>
+<button id="soundswitch" class="button button5" onclick="this.st';" >Get Time</button>
 <p>Time from Android: </p><p id="androidtime"> nothing yet...</p>
 
 <script>
