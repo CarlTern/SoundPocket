@@ -65,6 +65,9 @@
             </svg>
         </button>
     </div>
+
+    <div id="lock" style="display: none;"></div>
+
     <div class="rightFloater" id="soundOffBtnDiv" style="display: none;">
         <button class="navBtn" onclick="soundOn()">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -206,18 +209,34 @@
         Android.setSoundOn(true);
      }
 
-     /* --------------- CHANGE SOUND ICON ---------------*/
+     /* --------------- CHANGE LOCK ICON ---------------*/
      function lockOff() {
         var on = document.getElementById("lockOnBtnDiv");
         var off = document.getElementById("lockOffBtnDiv");
         on.style.display = "none";
         off.style.display = "block";
+
+        var btn1 = document.getElementById("btnInstructions");
+        var btn2 = document.getElementById("btnChoosePack");
+        btn1.disabled = false;
+        btn2.disabled = false;
+
+        lock = document.getElementById("lock");
+        lock.style.display = "none";
      }
      function lockOn() {
         var on = document.getElementById("lockOnBtnDiv");
         var off = document.getElementById("lockOffBtnDiv");
         on.style.display = "block";
         off.style.display = "none";
+
+        var btn1 = document.getElementById("btnInstructions");
+        var btn2 = document.getElementById("btnChoosePack");
+        btn1.disabled = true;
+        btn2.disabled = true;
+
+        lock = document.getElementById("lock");
+        lock.style.display = "block";
      }
 
 </script>
