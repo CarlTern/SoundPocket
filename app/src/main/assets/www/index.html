@@ -12,8 +12,25 @@
 <div id="maxdivBtnPacks">
 <!-- Lets go fresh -->
 <div class="wrapNav">
-    <div class="leftFloater clearFloater">
-        <button class="navBtn" onclick="">
+    <div class="leftFloater clearFloater" id="lockOffBtnDiv">
+        <button class="navBtn" onclick="lockOn()">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 25 24.1" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            </style>
+            <g>
+            <path class="st0" d="M20.5,10.6H20V7c0-3.8-3.2-7-7.2-7.1c-0.1,0-0.3,0-0.4,0C8.3,0,5.1,3.2,5.1,7v0.1c0,0.8,0.7,1.5,1.5,1.5
+            c0.9,0,1.5-0.7,1.5-1.5V7c0-2.3,2-4.2,4.4-4.2s4.4,1.9,4.4,4.2v3.6H4.6c-0.7,0-1.3,0.7-1.3,1.6v10.4c0,0.9,0.6,1.6,1.3,1.6h15.9
+            c0.7,0,1.3-0.7,1.3-1.6V12.2C21.8,11.3,21.2,10.6,20.5,10.6z M14,17.4v3.1c0,0.4-0.3,0.7-0.7,0.7h-1.6c-0.4,0-0.7-0.3-0.7-0.7v-3.1
+            c-0.4-0.3-0.6-0.8-0.6-1.3c0-1,0.8-1.8,1.9-1.9c0.1,0,0.3,0,0.4,0c1,0,1.9,0.9,1.9,1.9C14.6,16.6,14.4,17,14,17.4z"/>
+            </g>
+            </g>
+            </svg>
+        </button>
+    </div>
+    <div class="leftFloater clearFloater" id="lockOnBtnDiv" style="display: none;">
+        <button class="navBtn" onclick="lockOff()">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 25 24.1" xml:space="preserve">
             <style type="text/css">
@@ -29,8 +46,8 @@
             </svg>
         </button>
     </div>
-    <div class="rightFloater">
-        <button class="navBtn" onclick="">
+    <div class="rightFloater" id="soundOnBtnDiv">
+        <button class="navBtn" onclick="soundOff()">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 25 25" xml:space="preserve">
             <style type="text/css">
@@ -44,6 +61,25 @@
             c0,2-0.6,3.9-1.8,5.4C17.5,18.3,17.2,18.5,16.9,18.5z M21.6,22c-0.2,0.2-0.5,0.4-0.8,0.4c0,0,0,0-0.1,0c-0.3,0-0.6-0.1-0.8-0.3
             L19.7,22c-0.4-0.4-0.5-1.1-0.1-1.5c1.8-2.2,2.8-4.9,2.8-7.8c0-3-1.1-5.8-3-8c-0.4-0.5-0.4-1.1,0.1-1.6l0.2-0.2
             c0.2-0.2,0.5-0.3,0.8-0.3c0.3,0,0.6,0.1,0.8,0.4C23.7,5.6,25,9,25,12.6C25,16.1,23.8,19.4,21.6,22z"/>
+            </g>
+            </svg>
+        </button>
+    </div>
+    <div class="rightFloater" id="soundOffBtnDiv" style="display: none;">
+        <button class="navBtn" onclick="soundOn()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 25 25" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            </style>
+            <g>
+            <path class="st0" d="M12.5,20.3c0,0.4-0.2,0.8-0.6,1c-0.2,0.1-0.3,0.1-0.5,0.1c-0.3,0-0.5-0.1-0.7-0.3L4.4,16H1.1
+            C0.5,16,0,15.5,0,14.9v-4.5c0-0.6,0.5-1.1,1.1-1.1h3.3l6.2-5.1c0.3-0.3,0.8-0.3,1.2-0.2s0.6,0.6,0.6,1L12.5,20.3L12.5,20.3z"/>
+            </g>
+            <path class="st0" d="M24.4,17.1L24.4,17.1c-0.4,0.4-1.1,0.4-1.6,0l-7.2-7.2c-0.4-0.4-0.4-1.1,0-1.6l0,0c0.4-0.4,1.1-0.4,1.6,0
+            l7.2,7.2C24.8,15.9,24.8,16.6,24.4,17.1z"/>
+            <path class="st0" d="M15.6,17.1L15.6,17.1c-0.4-0.4-0.4-1.1,0-1.6l7.2-7.2c0.4-0.4,1.1-0.4,1.6,0l0,0c0.4,0.4,0.4,1.1,0,1.6
+            l-7.2,7.2C16.7,17.5,16,17.5,15.6,17.1z"/>
             </g>
             </svg>
         </button>
@@ -141,6 +177,38 @@
     (function getPackageInfo() {
         Android.getCurrentPackage();
     })();
+
+
+    /* --------------- CHANGE SOUND ICON ---------------*/
+     function soundOff() {
+        var on = document.getElementById("soundOnBtnDiv");
+        var off = document.getElementById("soundOffBtnDiv");
+        on.style.display = "none";
+        off.style.display = "block";
+        Android.setSoundOn(false);
+     }
+     function soundOn() {
+        var on = document.getElementById("soundOnBtnDiv");
+        var off = document.getElementById("soundOffBtnDiv");
+        on.style.display = "block";
+        off.style.display = "none";
+        Android.setSoundOn(true);
+     }
+
+     /* --------------- CHANGE SOUND ICON ---------------*/
+     function lockOff() {
+        var on = document.getElementById("lockOnBtnDiv");
+        var off = document.getElementById("lockOffBtnDiv");
+        on.style.display = "none";
+        off.style.display = "block";
+     }
+     function lockOn() {
+        var on = document.getElementById("lockOnBtnDiv");
+        var off = document.getElementById("lockOffBtnDiv");
+        on.style.display = "block";
+        off.style.display = "none";
+     }
+
 </script>
 
 
