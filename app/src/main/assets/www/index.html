@@ -53,7 +53,7 @@
 <div class="wrapCenter">
     <h1 id="packTitle">Shotgun pack</h1>
     <button id="btnInstructions" class="packBtn" onclick="Android.goToSoundList()">
-        <img id="packImage" src="shotgun.svg" width="150px" height="150px"/>
+        <img id="packImage" src="" width="150px" height="150px"/>
     </button>
     <button id="btnChoosePack" class="bigStdBtn" onclick="Android.goToChoosePackage()">Choose pack</button>
 </div>
@@ -136,7 +136,6 @@
     function callbackCurrentPackage(packageName, filename) {
         packTitle.innerHTML = packageName + ' pack';
         document.getElementById("packImage").src = filename;
-
     }
 
     (function getPackageInfo() {
