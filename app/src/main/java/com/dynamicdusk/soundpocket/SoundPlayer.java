@@ -153,9 +153,9 @@ public class SoundPlayer {
                 case SOUND_FIREBALL:
                     initPlayer(SOUND_FIREBALL);
                     mPlayer.start();
-                    break;
+                break;
 
-                    case SOUND_COIN:
+                case SOUND_COIN:
                     initPlayer(SOUND_COIN);
                     mPlayer.start();
                     break;

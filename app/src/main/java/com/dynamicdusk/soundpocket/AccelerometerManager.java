@@ -149,7 +149,7 @@ public class AccelerometerManager {
                 timeDiff = now - lastUpdate;
                 if (timeDiff > 0) {
                     forceX = Math.abs(x - lastX );
-                    forceY = (y - lastY );
+                    forceY = Math.abs(y - lastY );
                     forceZ = Math.abs(z - lastZ );
 
                     if (Float.compare(forceX, xAccThreshold) > 0) {
@@ -210,7 +210,7 @@ public class AccelerometerManager {
                 timeDiff = now - lastUpdate;
                 if (timeDiff > 0) {
                     forceX = Math.abs(x - lastX );
-                    forceY = (y - lastY );
+                    forceY = Math.abs(y - lastY );
                     forceZ = Math.abs(z - lastZ );
 
                     if (Float.compare(forceX, xGyroThreshold) > 0) {
