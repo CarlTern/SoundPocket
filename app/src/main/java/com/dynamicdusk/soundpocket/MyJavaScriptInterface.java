@@ -61,8 +61,8 @@ public class MyJavaScriptInterface {
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
         }
         System.out.println("----------------------set package");
-        mainActivity.setPackage(key);
         goBack();
+        mainActivity.setPackage(key);
     }
 
 
@@ -228,10 +228,10 @@ public class MyJavaScriptInterface {
         if(soundPlayer.isSoundOn()) {
             isSoundOn = "true";
         } else{
-            isSoundOn = "false"; 
+            isSoundOn = "false";
         }
         runJavaScript("callbackSoundStatus(" + isSoundOn + ")");
-        System.out.println("callbackSoundList(" + isSoundOn + ")");
+        System.out.println("callbackSoundStatus(" + isSoundOn + ")");
     }
 
     @JavascriptInterface

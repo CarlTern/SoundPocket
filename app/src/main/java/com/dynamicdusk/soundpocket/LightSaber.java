@@ -26,7 +26,8 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void onAccX(float force) {
-        if(isOn &&soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        long now = Calendar.getInstance().getTimeInMillis();
+        if(isOn &&soundPlayer.isSoundOn()&& (now - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
