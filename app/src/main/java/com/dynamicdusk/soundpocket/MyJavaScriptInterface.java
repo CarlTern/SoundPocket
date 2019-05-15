@@ -228,10 +228,10 @@ public class MyJavaScriptInterface {
         if(soundPlayer.isSoundOn()) {
             isSoundOn = "true";
         } else{
-            isSoundOn = "false"; 
+            isSoundOn = "false";
         }
         runJavaScript("callbackSoundStatus(" + isSoundOn + ")");
-        System.out.println("callbackSoundList(" + isSoundOn + ")");
+        System.out.println("callbackSoundStatus(" + isSoundOn + ")");
     }
 
     @JavascriptInterface
