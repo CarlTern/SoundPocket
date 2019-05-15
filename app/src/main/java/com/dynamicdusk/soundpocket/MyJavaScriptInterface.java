@@ -45,7 +45,9 @@ public class MyJavaScriptInterface {
             soundPlayer.setSoundOff();
         }
     }
-    
+
+
+
 
     @JavascriptInterface
     public void setSound(String key) {
@@ -219,6 +221,17 @@ public class MyJavaScriptInterface {
         runJavaScript("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
         System.out.println("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
         //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    public void getSoundStatus() {
+        String isSoundOn;
+        if(soundPlayer.isSoundOn()) {
+            isSoundOn = "true";
+        } else{
+            isSoundOn = "false"; 
+        }
+        runJavaScript("callbackSoundStatus(" + isSoundOn + ")");
+        System.out.println("callbackSoundList(" + isSoundOn + ")");
     }
 
     @JavascriptInterface
