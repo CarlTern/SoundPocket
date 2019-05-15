@@ -108,19 +108,15 @@ body {
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-
-         -webkit-touch-callout: none; /* iOS Safari */
-            -webkit-user-select: none; /* Safari */
-             -khtml-user-select: none; /* Konqueror HTML */
-               -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-                    user-select: none; /* Non-prefixed version, currently
-                                          supported by Chrome and Opera */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
 
     transition: all .2s ease-in-out;
 }
 
 .bigStdBtn:active {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     transform: scale(1.07, 1.07);
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -145,24 +141,23 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+             -webkit-tap-highlight-color: rgba(0,0,0,0);
+             -webkit-tap-highlight-color: transparent;
 
-             -webkit-touch-callout: none; /* iOS Safari */
-                -webkit-user-select: none; /* Safari */
-                 -khtml-user-select: none; /* Konqueror HTML */
-                   -moz-user-select: none; /* Firefox */
-                    -ms-user-select: none; /* Internet Explorer/Edge */
-                        user-select: none; /* Non-prefixed version, currently
-                                              supported by Chrome and Opera */
 
     transition: all .2s ease-in-out;
 }
 
 .packBtn:active {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     transform: scale(1.07, 1.07);
     background-color: rgba(255, 128, 8, 0.2);
 }
 
 .lock {
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     height: 25px;
     padding-top: 5px;
 }
@@ -172,6 +167,8 @@ body {
 }
 
 .navBtn {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     height: 40px;
     width: 40px;
     padding-top: 5px;
@@ -182,17 +179,25 @@ body {
 }
 
 .navBtn:active svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   transform: scale(1.3);
 }
 .navBtn::-moz-focus-inner {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   border: 0;
 }
 .navBtn svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   outline: none;
   transition: transform 0.3s linear;
 }
 
 .browseBtn {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     background-color: Transparent;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -215,6 +220,8 @@ body {
 }
 
 .browseBtn:active {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     transform: scale(1.07, 1.07);
 }
 
@@ -225,6 +232,8 @@ ul {
 }
 
 .sound {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     display: block;
     height:40px;
     padding: 9px 10px 5px 10px;
@@ -236,11 +245,15 @@ ul {
 }
 
 .play {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     height: 25px;
     padding-top: 5px;
 }
 
 .listBtn {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     height: 40px;
     width: 40px;
     padding-top: 5px;
@@ -251,12 +264,18 @@ ul {
 }
 
 .listBtn:active svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   transform: scale(1.3);
 }
 .listBtn::-moz-focus-inner {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   border: 0;
 }
 .listBtn svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   outline: none;
   transition: transform 0.3s linear;
 }
@@ -273,6 +292,8 @@ ul {
 
 /* The switch - the box around the slider */
 .switch {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   position: relative;
   display: inline-block;
   width: 60px;
@@ -281,6 +302,8 @@ ul {
 
 /* Hide default HTML checkbox */
 .switch input {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   opacity: 0;
   width: 0;
   height: 0;
@@ -288,6 +311,8 @@ ul {
 
 /* The slider */
 .slider {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -300,6 +325,8 @@ ul {
 }
 
 .slider:before {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   position: absolute;
   content: "";
   height: 26px;
@@ -312,14 +339,20 @@ ul {
 }
 
 input:checked + .slider {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   background-color: #2196F3;
 }
 
 input:focus + .slider {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider:before {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -327,10 +360,14 @@ input:checked + .slider:before {
 
 /* Rounded sliders */
 .slider.round {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   border-radius: 34px;
 }
 
 .slider.round:before {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   border-radius: 50%;
 }
 
@@ -344,6 +381,7 @@ input:checked + .slider:before {
 
 /*----fade out-*/
 .fadout {
+
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
