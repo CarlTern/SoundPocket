@@ -61,8 +61,8 @@ public class MyJavaScriptInterface {
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
         }
         System.out.println("----------------------set package");
-        mainActivity.setPackage(key);
         goBack();
+        mainActivity.setPackage(key);
     }
 
 
