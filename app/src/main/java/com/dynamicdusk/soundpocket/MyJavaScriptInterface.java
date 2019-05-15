@@ -45,10 +45,7 @@ public class MyJavaScriptInterface {
             soundPlayer.setSoundOff();
         }
     }
-
-    public boolean isSoundOn() {
-        return soundPlayer.isSoundOn();
-    }
+    
 
     @JavascriptInterface
     public void setSound(String key) {
