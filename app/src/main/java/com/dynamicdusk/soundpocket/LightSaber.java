@@ -34,12 +34,15 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void onAccY(float force) {
-        if(!isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+        if(!isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 1000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
+            soundPlayer.playLoop(SoundPlayer.SOUND_LIGHTSABER_PULSE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             isOn = true;
-        } else if (isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+        } else if (isOn && soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 1000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
+            soundPlayer.killLoop();
+            timeStamp = Calendar.getInstance().getTimeInMillis();
             isOn = false;
         }
         //jsHandler.alert("Force: " + force);
