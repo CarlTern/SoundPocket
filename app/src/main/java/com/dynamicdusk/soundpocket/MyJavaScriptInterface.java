@@ -154,12 +154,9 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void playSpecificSound() {
-        String packageName = mainActivity.getPackageName();
-        String text = "";
-        String filename = "";
+    public void playSpecificSound(String sound) {
 
-        switch(specificSoundState) {
+        switch(sound) {
             //------------Shotgun
             case "Fire":
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
@@ -187,10 +184,16 @@ public class MyJavaScriptInterface {
             case "Fireball":
                 soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
                 break;
+            case "Yahoo":
+                soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
+                break;
+            case "MammaMia":
+                soundPlayer.playSound(SoundPlayer.SOUND_MAMMA_MIA);
+                break;
+            case "Boing":
+                soundPlayer.playSound(SoundPlayer.SOUND_BOING);
+                break;
         }
-        runJavaScript("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
-        System.out.println("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
-        //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
     @JavascriptInterface

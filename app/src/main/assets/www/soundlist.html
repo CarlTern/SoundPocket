@@ -86,6 +86,7 @@
         }
 
         function playSound(sound){
+            Android.playSpecificSound(sound);
             document.getElementById('playedSound').innerHTML = `${sound} is now playing.`
         }
 

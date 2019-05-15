@@ -27,7 +27,7 @@ public class Mario extends AccelerometerListener {
 
     public void onAccX(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
+            soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             hits++;
             if(levelUp && hits >10){
@@ -77,7 +77,7 @@ public class Mario extends AccelerometerListener {
     }
     public void onGyroZ(float force) {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
+            soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
     }

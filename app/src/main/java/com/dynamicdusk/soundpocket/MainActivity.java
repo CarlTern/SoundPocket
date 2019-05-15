@@ -190,7 +190,10 @@ public class MainActivity extends AppCompatActivity {
                 String[] listM = {
                         "Jump",
                         "Pipe",
-                        "Fireball"
+                        "Fireball",
+                        "Yahoo",
+                        "MammaMia",
+                        "Boing"
                 };
                 return listM;
 
