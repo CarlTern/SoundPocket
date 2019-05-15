@@ -46,7 +46,6 @@ public class Pistol extends AccelerometerListener {
             //jsHandler.alert("Force: " + force);
         }
     }
-
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
            // soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
