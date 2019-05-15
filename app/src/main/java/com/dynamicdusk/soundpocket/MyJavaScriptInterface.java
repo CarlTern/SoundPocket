@@ -154,6 +154,46 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void playSpecificSound() {
+        String packageName = mainActivity.getPackageName();
+        String text = "";
+        String filename = "";
+
+        switch(specificSoundState) {
+            //------------Shotgun
+            case "Fire":
+                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
+                break;
+            case "Dry Fire":
+                soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
+                break;
+            case "Pump":
+                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+                break;
+            case "Empty Pump":
+                soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
+                break;
+            case "Ammo Refill":
+                soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+                break;
+
+            //------------Mario
+            case "Jump":
+                soundPlayer.playSound(SoundPlayer.SOUND_COIN);
+                break;
+            case "Pipe":
+                soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
+                break;
+            case "Fireball":
+                soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
+                break;
+        }
+        runJavaScript("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
+        System.out.println("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
+        //calls the function callbackTimeFromAndroid("strDate") in JS
+    }
+
+    @JavascriptInterface
     public void goToChoosePackage() {
         System.out.println("-------------------------------package");
         loadNewHTML("browse.html");
