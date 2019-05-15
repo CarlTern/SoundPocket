@@ -58,5 +58,5 @@ public abstract class AccelerometerListener {
         
     }
 
-    }
+}
 
