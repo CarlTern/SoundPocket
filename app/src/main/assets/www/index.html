@@ -87,7 +87,7 @@
 </div>
 
 <div class="wrapCenter">
-    <h1 id="packTitle">Shotgun pack</h1>
+    <h1 id="packTitle"></h1>
     <button id="btnInstructions" class="packBtn" onclick="Android.goToSoundList()">
         <img id="packImage" src="" width="150px" height="150px"/>
     </button>
@@ -123,11 +123,6 @@
 <button id="buttonPistol" class="button button5" onclick="chooseSound(buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">Pistol</button>
 <button id="buttonFartPrank" class="button button5" onclick="chooseSound(buttonFartPrank,buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">FartPrank</button>
 <button id="buttonDrumKit" class="button button5" onclick="chooseSound(buttonDrumKit,buttonFartPrank,buttonPistol, buttonLightSaber, buttonMLG, buttonWarcraft3, buttonShotgun, buttonMario)">DrumKit</button>
-
-<hr>
-<h2>Test Android callback by getting time</h2>
-<button id="soundswitch" class="button button5" onclick="this.st';">Get Time</button>
-<p>Time from Android: </p><p id="androidtime"> nothing yet...</p>
 
 <script>
     window.oncontextmenu = function(event) {
@@ -174,7 +169,7 @@
     }
 
     function callbackCurrentPackage(packageName, filename) {
-        packTitle.innerHTML = packageName + ' pack';
+        document.getElementById("packTitle").innerHTML = packageName + ' pack';
         document.getElementById("packImage").src = filename;
     }
 
@@ -182,7 +177,20 @@
         Android.getCurrentPackage();
     })();
 
+    function callbackSoundStatus(status) {
+        if (status == 'true'){
+            soundOn();
+        } else {
+            soundOff();
+        }
+    }
+
+    (function getSoundStatus() {
+        Android.getSoundStatus();
+    })();
+
     /* --------------- CHANGE SOUND ICON ---------------*/
+
      function soundOff() {
         var on = document.getElementById("soundOnBtnDiv");
         var off = document.getElementById("soundOffBtnDiv");

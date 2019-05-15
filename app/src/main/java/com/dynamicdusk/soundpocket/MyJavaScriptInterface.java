@@ -223,6 +223,7 @@ public class MyJavaScriptInterface {
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
 
+    @JavascriptInterface
     public void getSoundStatus() {
         String isSoundOn;
         if(soundPlayer.isSoundOn()) {
@@ -230,8 +231,8 @@ public class MyJavaScriptInterface {
         } else{
             isSoundOn = "false";
         }
-        runJavaScript("callbackSoundStatus(" + isSoundOn + ")");
-        System.out.println("callbackSoundStatus(" + isSoundOn + ")");
+        runJavaScript("callbackSoundStatus(\"" + isSoundOn + "\")");
+        System.out.println("callbackSoundStatus(\"" + isSoundOn + "\")");
     }
 
     @JavascriptInterface
