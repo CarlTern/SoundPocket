@@ -6,25 +6,47 @@
 <body class="fadeMe">
     <div class="wrapCenter">
     <h1>My packs</h1>
+        <div id="listBuilder"></div>
+        <!--
         <button class="browseBtn">
             <img src="shotgun.svg" onClick='Android.setPackage("Shotgun")' width="80px" height="80px"/>
         </button>
-        <button class="browseBtn">
-            <img src="mario.svg" onClick='Android.setPackage("Mario")' width="80px" height="80px"/>
-        </button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
-        <button class="browseBtn"></button>
+        -->
     </div>
 </body>
+<script>
+        /* var packs = ["Warcraft3", "Shotgun", "Mario", "MLG", "LightSaber", "Pistol", "DrumKit", "FartPrank"]; */
+        var packs = [];
+
+        function callbackPackageList(arrayPacks) {
+            for (index in arrayPacks) {
+                packs.push(arrayPacks[index]);
+            }
+            document.getElementById('listBuilder').appendChild(makeUL(packs));
+        }
+
+        (function getPackageList() {
+            Android.getPackageList();
+        })();
+
+        /* --------------- Build list ---------------- */
+
+        function makeUL(array) {
+                var list = document.createElement('ul');
+                for(var i = 0; i < array.length; i++) {
+                    var item = document.createElement('li');
+                    item.innerHTML =  `
+
+                        <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
+                            ${array[i]}
+                        </button>
+
+
+                    `;
+                    list.appendChild(item);
+                }
+            return list;
+        }
+
+</script>
 </html>

@@ -199,6 +199,7 @@ body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     background-color: Transparent;
+    color: #fff;
     background-repeat: no-repeat;
     cursor: pointer;
     overflow: hidden;
