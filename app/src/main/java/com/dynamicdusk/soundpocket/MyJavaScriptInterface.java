@@ -236,9 +236,20 @@ public class MyJavaScriptInterface {
     }
     @JavascriptInterface
     public void getPackageList() {
-        String[] h = mainActivity.getPackages();
-        runJavaScript("callbackPackageList(\"" + h + "\")");
-        System.out.println("callbackPackageList(\"" + h + "\")");
+        String[] currentPackageList = mainActivity.getPackages();
+        StringBuilder stringArray = new StringBuilder();
+        stringArray.append("[");
+        for (String s : currentPackageList) {
+            stringArray.append("\"");
+            stringArray.append(s);
+            stringArray.append("\"");
+            stringArray.append(",");
+        }
+        stringArray.deleteCharAt(stringArray.length() -1);
+        stringArray.append("]");
+
+        runJavaScript("callbackPackageList(\"" + stringArray.toString() + "\")");
+        System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
     }
 
     @JavascriptInterface
