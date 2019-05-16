@@ -81,7 +81,7 @@ public class LightSaber extends AccelerometerListener {
         }
     }
     public void onGyroY(float force){
-        
+
     }
     public void onGyroZ(float force){
         if(isOn &&soundPlayer.isSoundOn()&& (now - timeStamp) > 500) {
