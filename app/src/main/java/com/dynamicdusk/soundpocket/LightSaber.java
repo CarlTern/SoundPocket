@@ -21,6 +21,9 @@ public class LightSaber extends AccelerometerListener {
         super.xAccThreshold = xAccThreshold;
         super.yAccThreshold = yAccThreshold;
         super.zAccThreshold = zAccThreshold;
+        super.xGyroThreshold = 1;
+        super.yGyroThreshold = 1;
+        super.zGyroThreshold = 1;
         timeStamp = Calendar.getInstance().getTimeInMillis();
     }
 
@@ -57,7 +60,7 @@ public class LightSaber extends AccelerometerListener {
             }
             killLoop();
             timeStamp = Calendar.getInstance().getTimeInMillis();
-            isOn = false;
+
         }
         //jsHandler.alert("Force: " + force);
     }
@@ -67,6 +70,7 @@ public class LightSaber extends AccelerometerListener {
 
     public void killLoop(){
         soundPlayer.killLoop();
+        isOn = false;
     }
 
     public void onGyroX(float force){
