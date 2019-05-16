@@ -197,6 +197,60 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listM;
 
+            case "DrumKit":
+                String[] listD = {
+                        "Snare",
+                        "Cymbal",
+                        "Tom"
+                };
+                return listD;
+
+            case "LightSaber":
+                String[] listL = {
+                        "Open",
+                        "Close",
+                        "Pulse",
+                        "Hit",
+                        "Swing One",
+                        "Swing Two"
+                };
+                return listL;
+
+            case "Warcraft3":
+                String[] listW = {
+                        "Work Work",
+                        "Yes Mi Lord",
+                        "Off I Go Then",
+                };
+                return listW;
+
+            case "Pistol":
+                String[] listP = {
+                        "Shoot",
+                        "Shoot Silenced",
+                        "Screw On Silencer",
+                };
+                return listP;
+
+            case "MLG":
+                String[] listMLG = {
+                        "Airhorn"
+                };
+                return listMLG;
+
+            case "FartPrank":
+                String[] listF = {
+                        "Fart 1",
+                        "Fart 2",
+                        "Fart 3",
+                        "Fart 4",
+                        "Fart 5",
+                        "Fart 6",
+                        "Fart 7",
+
+                };
+                return listF;
+
             default:
                 String[] empty = {};
                 return empty;

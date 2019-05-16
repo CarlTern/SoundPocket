@@ -7,6 +7,7 @@
     <div class="wrapCenter">
     <h1>My packs</h1>
         <div id="listBuilder"></div>
+        <p id="test"></p>
         <!--
         <button class="browseBtn">
             <img src="shotgun.svg" onClick='Android.setPackage("Shotgun")' width="80px" height="80px"/>
@@ -15,34 +16,39 @@
     </div>
 </body>
 <script>
-        /* var packs = ["Warcraft3", "Shotgun", "Mario", "MLG", "LightSaber", "Pistol", "DrumKit", "FartPrank"]; */
+
+        var packs = ["Warcraft3", "Shotgun", "Mario", "MLG", "LightSaber", "Pistol", "DrumKit", "FartPrank"];
+        document.getElementById('listBuilder').appendChild(makeUL(packs));
+
+        /* ------- Callback fungerar ej -----------------
         var packs = [];
 
-        function callbackPackageList(arrayPacks) {
-            for (index in arrayPacks) {
-                packs.push(arrayPacks[index]);
+        function callbackPackageList(arraySounds) {
+            for (index in arraySounds) {
+                packs.push(arraySounds[index]);
             }
+            document.getElementById('test').innerHTML = ` HEJ `;
             document.getElementById('listBuilder').appendChild(makeUL(packs));
         }
 
         (function getPackageList() {
             Android.getPackageList();
         })();
+        */
+
 
         /* --------------- Build list ---------------- */
 
         function makeUL(array) {
                 var list = document.createElement('ul');
+                list.className = "grid";
                 for(var i = 0; i < array.length; i++) {
                     var item = document.createElement('li');
                     item.innerHTML =  `
-
                         <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
                             ${array[i]}
                         </button>
-
-
-                    `;
+                    `
                     list.appendChild(item);
                 }
             return list;

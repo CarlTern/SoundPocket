@@ -196,6 +196,87 @@ public class MyJavaScriptInterface {
             case "Boing":
                 soundPlayer.playSound(SoundPlayer.SOUND_BOING);
                 break;
+
+            //------------DrumKit
+            case "Snare":
+                soundPlayer.playSound(SoundPlayer.SOUND_SNARE);
+                break;
+            case "Cymbal":
+                soundPlayer.playSound(SoundPlayer.SOUND_CYMBAL);
+                break;
+            case "Tom":
+                soundPlayer.playSound(SoundPlayer.SOUND_TOM);
+                break;
+
+            //------------LightSaber
+            case "Open":
+                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
+                break;
+            case "Close":
+                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
+                break;
+            case "Pulse":
+                    //Måste fixas. Loopas för länge.
+                break;
+            case "Hit":
+                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
+                break;
+            case "Swing One":
+                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_ONE);
+                break;
+            case "Swing Two":
+                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
+                break;
+
+            //------------Warcraft3
+            case "Work Work":
+                soundPlayer.playSound(SoundPlayer.SOUND_WORK_WORK);
+                break;
+            case "Yes Mi Lord":
+                soundPlayer.playSound(SoundPlayer.SOUND_YES_MI_LORD);
+                break;
+            case "Off I Go Then":
+                soundPlayer.playSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
+                break;
+
+            //------------Pistol
+            case "Shoot":
+                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
+                break;
+            case "Shoot Silenced":
+                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
+                break;
+            case "Screw On Silencer":
+                soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
+                break;
+
+            //------------MLG
+            case "Airhorn":
+                soundPlayer.playSound(SoundPlayer.SOUND_AIR_HORN);
+                break;
+
+            //------------MLG
+            case "Fart 1":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_ONE);
+                break;
+            case "Fart 2":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_TWO);
+                break;
+            case "Fart 3":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_THREE);
+                break;
+            case "Fart 4":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_FOUR);
+                break;
+            case "Fart 5":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_FIVE);
+                break;
+            case "Fart 6":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_SIX);
+                break;
+            case "Fart 7":
+                soundPlayer.playSound(SoundPlayer.SOUND_FART_SEVEN);
+                break;
         }
     }
 
