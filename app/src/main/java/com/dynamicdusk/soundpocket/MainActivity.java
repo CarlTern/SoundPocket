@@ -21,6 +21,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     AccelerometerManager manager = new AccelerometerManager();
     private long timeStamp = 0;
     private VoiceManager voice;
-
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 

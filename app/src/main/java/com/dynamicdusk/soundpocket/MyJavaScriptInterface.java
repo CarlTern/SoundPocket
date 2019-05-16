@@ -234,6 +234,12 @@ public class MyJavaScriptInterface {
         runJavaScript("callbackSoundStatus(\"" + isSoundOn + "\")");
         System.out.println("callbackSoundStatus(\"" + isSoundOn + "\")");
     }
+    @JavascriptInterface
+    public void getPackageList() {
+        String[] h = mainActivity.getPackages();
+        runJavaScript("callbackPackageList(\"" + h + "\")");
+        System.out.println("callbackPackageList(\"" + h + "\")");
+    }
 
     @JavascriptInterface
     public void getSoundList() {
