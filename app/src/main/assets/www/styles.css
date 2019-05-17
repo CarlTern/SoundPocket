@@ -357,7 +357,7 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.3);;
+  background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
@@ -388,6 +388,46 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+
+/* ---------------- MODAL --------------- */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(255,255,255,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.8);
+  color: #FF8008;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #FF8008;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /*-----select*/

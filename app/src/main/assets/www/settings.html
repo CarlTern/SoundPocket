@@ -10,7 +10,7 @@
     <div class="sound">
         <span class="leftFloater clearFloater">Voice activation</span>
         <span class="rightFloater">
-                                <button class="listBtn" id="voiceInfo" onclick="getSettingsInfo()">
+                                <button class="listBtn" id="voiceInfo">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 23.6 23.6" style="enable-background:new 0 0 23.6 23.6;" xml:space="preserve">
                                     <style type="text/css">
@@ -37,6 +37,21 @@
         </span>
     </div>
     <p id="displayText"></p>
+
+    <div id="myModal" class="modal fadeMe">
+        <div class="modal-content fadeMe">
+            <span class="close">&times;</span>
+            <h2>Voice Control</h2>
+            <img src="voice.svg" width="100px"/>
+            <p>Toggle this slider to activate voice control.</p>
+            <p>When having voice control activated you can change sound package by using the following voice commands:</p>
+            <b>Activate + <i>package name</i></b>
+            <p>Ex. to activate the Mario sound package say:</p>
+            <p><b>Activate Mario</b></p>
+            <small></br>Hint! The voice control can be a bit tricky. You may have to practise to get it right.</small>
+            </span>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -46,8 +61,22 @@
             document.getElementById('displayText').innerHTML = ` Voice activation: ${checked} `;
         }
 
-        function getSettingsInfo(){
-            document.getElementById('displayText').innerHTML = ` Information about Voice activation. `;
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("voiceInfo");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
 
 
