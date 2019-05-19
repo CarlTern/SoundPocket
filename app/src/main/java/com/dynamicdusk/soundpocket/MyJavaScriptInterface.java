@@ -324,7 +324,7 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
-    public void ToggleVoice() {
+    public void toggleVoice() {
         if(mainActivity.getVoiceStatus()){
             mainActivity.stopVoice();
         } else if(mainActivity.getVoiceStatus()==false){
