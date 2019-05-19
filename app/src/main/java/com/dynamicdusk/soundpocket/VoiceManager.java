@@ -17,7 +17,7 @@ public class VoiceManager implements RecognitionListener {
     /* We only need the keyphrase to start recognition, one menu with list of choices,
    and one word that is required for method switchSearch - it will bring recognizer
    back to listening for the keyphrase*/
-    private static final String KWS_SEARCH = "activate package";
+    private static final String KWS_SEARCH = "activate";
     private MainActivity mainActivity;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
@@ -57,6 +57,8 @@ public class VoiceManager implements RecognitionListener {
         recognizer.cancel();
         recognizer.shutdown();
     }
+
+
 
     private void setupRecognizer(File assetsDir) throws IOException {
         recognizer = SpeechRecognizerSetup.defaultSetup()

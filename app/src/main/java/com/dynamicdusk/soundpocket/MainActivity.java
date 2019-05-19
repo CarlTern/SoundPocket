@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     AccelerometerManager manager = new AccelerometerManager();
     private long timeStamp = 0;
     private VoiceManager voice;
+    private boolean isVoiceOn = false;
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
+
     }
 
     public void onWindowFocusChanged(boolean bool){
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         voice.destroy();
+
     }
 
 
@@ -303,19 +306,27 @@ public class MainActivity extends AppCompatActivity {
     }
     @SuppressLint("StaticFieldLeak")
 
-
-
-
     public void onStop() {
 
         super.onStop();
         // Add below if you want voice recognition to end when minimizing app
-        /*
-        if (recognizer != null) {
-            recognizer.cancel();
-            recognizer.shutdown();
-        }
-        */
+
+        //voice.destroy();
+
+    }
+
+    public void startVoice(){
+        voice.runRecognizerSetup();
+        isVoiceOn = true;
+    }
+
+    public void stopVoice(){
+        voice.destroy();
+        isVoiceOn = false;
+    }
+
+    public boolean getVoiceStatus(){
+        return isVoiceOn;
     }
 
 

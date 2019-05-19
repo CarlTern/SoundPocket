@@ -280,6 +280,8 @@ public class MyJavaScriptInterface {
         }
     }
 
+
+
     @JavascriptInterface
     public void goToChoosePackage() {
         System.out.println("-------------------------------package");
@@ -315,6 +317,27 @@ public class MyJavaScriptInterface {
         runJavaScript("callbackSoundStatus(\"" + isSoundOn + "\")");
         System.out.println("callbackSoundStatus(\"" + isSoundOn + "\")");
     }
+
+    @JavascriptInterface
+    public void ToggleVoice() {
+        if(mainActivity.getVoiceStatus()){
+            mainActivity.stopVoice();
+        } else if(mainActivity.getVoiceStatus()==false){
+            mainActivity.startVoice();
+        }
+    }
+    @JavascriptInterface
+    public void getVoiceStatus() {
+        String isVoiceOn;
+        if(mainActivity.getVoiceStatus()) {
+            isVoiceOn = "true";
+        } else{
+            isVoiceOn = "false";
+        }
+        runJavaScript("callbackVoiceStatus(\"" + isVoiceOn + "\")");
+        System.out.println("callbackVoiceStatus(\"" + isVoiceOn + "\")");
+    }
+
     @JavascriptInterface
     public void getPackageList() {
         String[] currentPackageList = mainActivity.getPackages();
