@@ -70,6 +70,18 @@ body {
     padding-right: 8px;
 }
 
+.wrapFoot {
+        width: 94%;
+        line-height: 50px;
+        height: 50px;
+        margin-bottom: 30px;
+        padding-left: 8px;
+        padding-right: 8px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+}
+
 .leftFloater {
     float: left;
 }
@@ -195,6 +207,35 @@ body {
   transition: transform 0.3s linear;
 }
 
+.listBtn {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    height: 40px;
+    width: 40px;
+    border: none;
+    padding-bottom: 12px;
+    background: none;
+    cursor: pointer;
+    user-select:none;
+}
+
+.listBtn:active svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+  transform: scale(1.3);
+}
+.listBtn::-moz-focus-inner {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+  border: 0;
+}
+.listBtn svg {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+  outline: none;
+  transition: transform 0.3s linear;
+}
+
 .browseBtn {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
@@ -237,7 +278,7 @@ ul {
     -webkit-tap-highlight-color: transparent;
     display: block;
     height:40px;
-    padding: 9px 10px 5px 10px;
+    padding: 12px 10px 2px 10px;
     border-bottom: 1px solid #fff;
     text-decoration: none;
     font-family: Helvetica, Arial, sans-serif;
@@ -257,7 +298,7 @@ ul {
     -webkit-tap-highlight-color: transparent;
     height: 40px;
     width: 40px;
-    padding-top: 5px;
+    margin-top: 0px;
     border: none;
     background: none;
     cursor: pointer;
@@ -296,43 +337,33 @@ ul {
 
 /* ------- Slider -------- */
 
-/* The switch - the box around the slider */
 .switch {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 34px;
 }
 
 .slider:before {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
   position: absolute;
   content: "";
   height: 26px;
@@ -342,41 +373,62 @@ ul {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 50%;
 }
 
 input:checked + .slider {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-  background-color: #2196F3;
+  background-color: #FF8008;
 }
 
 input:focus + .slider {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #FF8008;
 }
 
 input:checked + .slider:before {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
-.slider.round {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-  border-radius: 34px;
+/* ---------------- MODAL --------------- */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(255,255,255,0.4);
 }
 
-.slider.round:before {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-  border-radius: 50%;
+/* Modal Content */
+.modal-content {
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.8);
+  color: #FF8008;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
 }
 
+/* The Close Button */
+.close {
+  color: #FF8008;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /*-----select*/
 

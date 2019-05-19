@@ -99,6 +99,11 @@ public class MyJavaScriptInterface {
     }
 
     @JavascriptInterface
+    public void goToSettings() {
+        loadNewHTML("settings.html");
+    }
+
+    @JavascriptInterface
     public void goToPackageInstruction(String specificSound) {
         specificSoundState = specificSound;
         loadNewHTML("package_instructions.html");
