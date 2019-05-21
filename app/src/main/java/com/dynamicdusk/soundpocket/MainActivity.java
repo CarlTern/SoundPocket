@@ -292,6 +292,17 @@ public class MainActivity extends AppCompatActivity {
         returnie = list.toArray(returnie);
         return returnie;
     }
+
+    public void setPackageByVoice(String key) {
+        setPackage(key);
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.reload(); //denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
+            }
+        });
+
+    }
     public void setPackage(String key){
         if(currentPackage.equals("LightSaber")){
             packages.get(currentPackage).killLoop();
@@ -305,13 +316,6 @@ public class MainActivity extends AppCompatActivity {
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                webView.reload(); //denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
-            }
-        });
-
     }
     @SuppressLint("StaticFieldLeak")
 

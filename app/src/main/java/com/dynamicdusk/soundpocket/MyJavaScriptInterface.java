@@ -26,6 +26,7 @@ public class MyJavaScriptInterface {
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
     String specificSoundState = "";
+    Boolean betaPacksActiveState = false;
 
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
@@ -33,6 +34,20 @@ public class MyJavaScriptInterface {
         this.context = context;
         this.soundPlayer = soundPlayer;
         this.mainActivity = mainActivity;
+    }
+
+    //------Beta back functions
+    @JavascriptInterface
+    public void activateBetaPacks() {
+        betaPacksActiveState = true;
+    }
+    @JavascriptInterface
+    public void inactivateBetaPacks() {
+        betaPacksActiveState = false;
+    }
+    @JavascriptInterface
+    public void getBetaPackState() {
+        runJavaScript("callbackgetBetaPackState(" + betaPacksActiveState + ")");
     }
 
 
@@ -364,7 +379,7 @@ public class MyJavaScriptInterface {
         stringArray.deleteCharAt(stringArray.length() -1);
         stringArray.append("]");
 
-        runJavaScript("callbackPackageList(" + stringArray.toString() + ")");
+        runJavaScript("callbackPackageList(" + stringArray.toString() + ", " + betaPacksActiveState + ")");
         System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
     }
 
