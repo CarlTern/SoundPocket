@@ -105,13 +105,21 @@
 
         (function onLoad() {
             Android.getVoiceStatus();
+            Android.getBetaPackState();
         })();
 
         /* --------- BETA SLIDER STUFF --------- */
         function setBetaPackages(){
             /* Activate beta packs */
+            if(betaActivation.checked == true) {
+                Android.activateBetaPacks()
+            } else {
+                Android.inactivateBetaPacks();
+            }
         }
-
+        function callbackgetBetaPackState(isActive) {
+            betaActivation.checked = isActive;
+        }
 
         /* --------- VOICE MODAL STUFF -------- */
         var voiceModal = document.getElementById("voiceModal");

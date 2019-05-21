@@ -87,49 +87,49 @@ public class VoiceManager implements RecognitionListener {
        } else
          */
         if (text.equals("shotgun")) {
-            mainActivity.setPackage("Shotgun");
+            mainActivity.setPackageByVoice("Shotgun");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("mario")) {
-            mainActivity.setPackage("Mario");
+            mainActivity.setPackageByVoice("Mario");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("air horn")) {
-            mainActivity.setPackage("MLG");
+            mainActivity.setPackageByVoice("MLG");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("warcraft")) {
-            mainActivity.setPackage("Warcraft3");
+            mainActivity.setPackageByVoice("Warcraft3");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("pistol")) {
-            mainActivity.setPackage("Pistol");
+            mainActivity.setPackageByVoice("Pistol");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         } else if (text.equals("star wars")) {
-            mainActivity.setPackage("LightSaber");
+            mainActivity.setPackageByVoice("LightSaber");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         } else if (text.equals("fart prank")) {
-            mainActivity.setPackage("FartPrank");
+            mainActivity.setPackageByVoice("FartPrank");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("drum kit")) {
-            mainActivity.setPackage("DrumKit");
+            mainActivity.setPackageByVoice("DrumKit");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
                 timeStamp = Calendar.getInstance().getTimeInMillis();

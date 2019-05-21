@@ -24,7 +24,9 @@ public class AccelerometerManager {
     private static Sensor accSensor;
     private static SensorManager acceleratorManager;
     private static SensorManager gyroManager;
+    private static SensorManager rotationManager;
     private static Sensor gyroSensor;
+    private static Sensor rotationSensor;
     private static Boolean supported;
     private static boolean running = false;
 
@@ -85,8 +87,7 @@ public class AccelerometerManager {
         acceleratorManager = (SensorManager) context.
                 getSystemService(Context.SENSOR_SERVICE);
 
-        List<Sensor> gyroSensors = acceleratorManager.getSensorList(
-                Sensor.TYPE_GYROSCOPE);
+        List<Sensor> gyroSensors = acceleratorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
 
         if (gyroSensors.size() > 0) {
             this.gyroSensor = gyroSensors.get(0);
@@ -94,9 +95,9 @@ public class AccelerometerManager {
             running = gyroManager.registerListener(
                     gyroEventListener, gyroSensor,
                     SensorManager.SENSOR_DELAY_GAME);
+        }
 
-        List<Sensor> accSensors = acceleratorManager.getSensorList(
-                Sensor.TYPE_ACCELEROMETER);
+        List<Sensor> accSensors = acceleratorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
 
         if (accSensors.size() > 0) {
             this.accSensor = accSensors.get(0);
@@ -104,10 +105,18 @@ public class AccelerometerManager {
             running = acceleratorManager.registerListener(
                     accEventListener, accSensor,
                     SensorManager.SENSOR_DELAY_GAME);
-
-                listener = accelerometerListener;
-            }
         }
+
+        List<Sensor> rotationSensors = acceleratorManager.getSensorList(Sensor.TYPE_GAME_ROTATION_VECTOR);
+
+        if (accSensors.size() > 0) {
+            this.rotationSensor = rotationSensors.get(0);
+
+            running = acceleratorManager.registerListener(
+                    rotationEventListener, rotationSensor,
+                    SensorManager.SENSOR_DELAY_GAME);
+        }
+        listener = accelerometerListener;
     }
 
     private SensorEventListener accEventListener = new SensorEventListener() {
@@ -227,6 +236,69 @@ public class AccelerometerManager {
                     }
                     if (listener.isGyroCont()){
                         listener.onContGyro(x, y, z);
+                    }
+                    lastX = x;
+                    lastY = y;
+                    lastZ = z;
+                    lastUpdate = now;
+                }
+            }
+        }
+    };
+
+    private SensorEventListener rotationEventListener = new SensorEventListener() {
+
+        private long now = 0;
+        private long timeDiff = 0;
+        private long lastUpdate = 0;
+        private float x = 0;
+        private float y = 0;
+        private float z = 0;
+        private float lastX = 0;
+        private float lastY = 0;
+        private float lastZ = 0;
+        private float force = 0;
+        private float forceX = 0;
+        private float forceY = 0;
+        private float forceZ = 0;
+
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+        public void onSensorChanged(SensorEvent event) {
+// use the event timestamp as reference
+// so the manager precision won't depends
+// on the AccelerometerListener implementation
+// processing time
+            now = event.timestamp;
+            x = event.values[0];
+            y = event.values[1];
+            z = event.values[2];
+
+// if not interesting in shake events
+// just remove the whole if then else block
+            if (lastUpdate == 0) {
+                lastUpdate = now;
+                lastX = x;
+                lastY = y;
+                lastZ = z;
+            } else {
+                timeDiff = now - lastUpdate;
+                if (timeDiff > 0) {
+                    forceX = Math.abs(x - lastX );
+                    forceY = Math.abs(y - lastY );
+                    forceZ = Math.abs(z - lastZ );
+
+                    if (Float.compare(forceX, xAccThreshold) > 0) {
+
+                    }
+                    if (Float.compare(forceY, yAccThreshold) > 0) {
+
+                    }
+                    if (Float.compare(forceZ, zAccThreshold) > 0) {
+
+                    }
+                    if (listener.isAccCont()){
+
                     }
                     lastX = x;
                     lastY = y;
