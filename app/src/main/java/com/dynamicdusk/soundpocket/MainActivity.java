@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         final WebView webViewCallbackAccess = webView;
 
         voice = new VoiceManager(soundPlayer,this);
-        voice.runRecognizerSetup();
+        //voice.runRecognizerSetup(); // this activates voice at app start
         /*
         webViewCallbackAccess.setOnKeyListener( new View.OnKeyListener()
         {
