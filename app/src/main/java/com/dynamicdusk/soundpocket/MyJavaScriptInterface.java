@@ -63,6 +63,7 @@ public class MyJavaScriptInterface {
         System.out.println("----------------------set package");
         goBack();
         mainActivity.setPackage(key);
+        System.out.println("--------setPackage key: " + key);
     }
 
 
@@ -105,6 +106,9 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void goToPackageInstruction(String specificSound) {
+        System.out.println("-------------------------------goToPackageInstruction");
+        System.out.println("-------------------------------goToPackageInstruction, specificSound: " + specificSound);
+
         specificSoundState = specificSound;
         loadNewHTML("package_instructions.html");
         System.out.println("-------------------------------instructions");
@@ -115,6 +119,8 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void getSpecificSoundInfo() {
+        System.out.println("-------------------------------getSpecificSoundInfo");
+
         String packageName = mainActivity.getPackageName();
         String text = "";
         String filename = "";

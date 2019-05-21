@@ -18,15 +18,25 @@
     </div>
 </div>
 <div class="wrapCenter">
-    <h1>How to: *sound name*</h1>
+    <h1>How to: </h1><h1 id="title">*sound name*</h1>
     <img src="avatar.svg"/>
-    <p>Move the phone to make the *sound name*. </p>
+    <p>Move the phone to make the <div id="title2">*sound name*</div>.</p>
 </div>
 <div class="emptySpace">
 
 </div>
 
 <script>
+  (function getSpecificSoundInfo() {
+        Android.getSpecificSoundInfo();
+    })();
+
+    function callbackSpecificSoundInfo(packagename, title, text, filename) {
+
+        document.getElementById('title').innerHTML = title;
+        document.getElementById('title2').innerHTML = title;
+
+    }
 </script>
 
 

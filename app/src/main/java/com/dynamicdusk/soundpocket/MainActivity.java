@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
-        webView.reload();
+        //webView.reload(); denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
     }
     @SuppressLint("StaticFieldLeak")
 
