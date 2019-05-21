@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         final WebView webViewCallbackAccess = webView;
 
         voice = new VoiceManager(soundPlayer,this);
-        voice.runRecognizerSetup();
+        //voice.runRecognizerSetup();
         /*
         webViewCallbackAccess.setOnKeyListener( new View.OnKeyListener()
         {
