@@ -51,7 +51,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(String key) {
-        System.out.println("----------------------set package");
+        System.out.println("----------------------setSound: " + key);
         mainActivity.setPackage(key);
     }
 
@@ -60,7 +60,7 @@ public class MyJavaScriptInterface {
         if(key.equals("Mario")){
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
         }
-        System.out.println("----------------------set package");
+        System.out.println("----------------------set package: " + key);
         goBack();
         mainActivity.setPackage(key);
         System.out.println("--------setPackage key: " + key);
@@ -295,7 +295,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void goToChoosePackage() {
-        System.out.println("-------------------------------package");
+        System.out.println("-------------------------------goToChoosePackage");
         loadNewHTML("browse.html");
     }
 
@@ -351,6 +351,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void getPackageList() {
+        System.out.println("------getPackageList");
         String[] currentPackageList = mainActivity.getPackages();
         StringBuilder stringArray = new StringBuilder();
         stringArray.append("[");
@@ -363,7 +364,7 @@ public class MyJavaScriptInterface {
         stringArray.deleteCharAt(stringArray.length() -1);
         stringArray.append("]");
 
-        runJavaScript("callbackPackageList(\"" + stringArray.toString() + "\")");
+        runJavaScript("callbackPackageList(" + stringArray.toString() + ")");
         System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
     }
 
