@@ -36,9 +36,37 @@
             </label>
         </span>
     </div>
-    <p id="displayText"></p>
+    <div class="sound">
+        <span class="leftFloater clearFloater">Beta packages</span>
+        <span class="rightFloater">
+                                <button class="listBtn" id="betaInfo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 23.6 23.6" style="enable-background:new 0 0 23.6 23.6;" xml:space="preserve">
+                                    <style type="text/css">
+                                    .st0{fill:#FFFFFF;}
+                                    </style>
+                                    <g>
+                                    <path class="st0" d="M11.8,0C5.3,0,0,5.3,0,11.8s5.3,11.8,11.8,11.8s11.8-5.3,11.8-11.8S18.3,0,11.8,0z M14.3,18.3
+                                    c-0.6,0.2-1.1,0.4-1.5,0.5C12.5,19,12,19,11.6,19c-0.7,0-1.3-0.2-1.7-0.5s-0.6-0.8-0.6-1.4c0-0.2,0-0.4,0-0.7
+                                    c0-0.2,0.1-0.5,0.1-0.8l0.8-2.7c0.1-0.3,0.1-0.5,0.2-0.7c0-0.2,0.1-0.4,0.1-0.6c0-0.3-0.1-0.6-0.2-0.7c-0.1-0.1-0.4-0.2-0.8-0.2
+                                    c-0.2,0-0.4,0-0.6,0.1C8.6,10.9,8.4,11,8.3,11l0.2-0.8C9,10,9.4,9.8,9.9,9.7c0.5-0.1,0.9-0.2,1.3-0.2c0.7,0,1.3,0.2,1.7,0.5
+                                    c0.4,0.4,0.6,0.8,0.6,1.4c0,0.1,0,0.3,0,0.6c0,0.3-0.1,0.6-0.2,0.8l-0.8,2.7c-0.1,0.2-0.1,0.5-0.2,0.7c0,0.3-0.1,0.5-0.1,0.6
+                                    c0,0.4,0.1,0.6,0.2,0.7c0.2,0.1,0.4,0.2,0.8,0.2c0.2,0,0.4,0,0.6-0.1c0.2-0.1,0.4-0.1,0.5-0.2L14.3,18.3z M14.1,7.4
+                                    c-0.4,0.3-0.8,0.5-1.3,0.5c-0.5,0-0.9-0.2-1.3-0.5C11.2,7.1,11,6.7,11,6.2c0-0.5,0.2-0.9,0.5-1.2c0.4-0.3,0.8-0.5,1.3-0.5
+                                    c0.5,0,0.9,0.2,1.3,0.5c0.4,0.3,0.5,0.7,0.5,1.2C14.7,6.7,14.5,7.1,14.1,7.4z"/>
+                                    </g>
+                                    </svg>
+                                </button>
+                            </span>
+        <span class="rightFloater">
+            <label class="switch">
+                <input type="checkbox" id="betaActivation" onclick="setBetaPackages()">
+                <span class="slider"></span>
+            </label>
+        </span>
+    </div>
 
-    <div id="myModal" class="modal fadeMe">
+    <div id="voiceModal" class="modal fadeMe">
         <div class="modal-content fadeMe">
             <span class="close">&times;</span>
             <h2>Voice Control</h2>
@@ -52,10 +80,19 @@
             </span>
         </div>
     </div>
+
+    <div id="betaModal" class="modal fadeMe">
+        <div class="modal-content fadeMe">
+            <span class="close">&times;</span>
+            <h2>Beta Packages</h2>
+            <p>Toggle this slider to activate beta packages.</p>
+            <p>When having beta packages activated you can change try out not yet fully tested packages.</p>
+        </div>
+    </div>
 </div>
 
 <script>
-        /* --------- SLIDER STUFF (FINNS MER ATT FIXA, FUNKAR INTE HELT!) --------- */
+        /* --------- VOICE SLIDER STUFF (FINNS MER ATT FIXA, FUNKAR INTE HELT!) --------- */
         function callbackVoiceStatus(status){
             if (status == "true"){
                 document.getElementById("voiceActivation").checked = true;
@@ -70,27 +107,44 @@
             Android.getVoiceStatus();
         })();
 
-
-        /* --------- MODAL STUFF -------- */
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("voiceInfo");
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-        modal.style.display = "block";
+        /* --------- BETA SLIDER STUFF --------- */
+        function setBetaPackages(){
+            /* Activate beta packs */
         }
 
+
+        /* --------- VOICE MODAL STUFF -------- */
+        var voiceModal = document.getElementById("voiceModal");
+        var voiceBtn = document.getElementById("voiceInfo");
+        var span = document.getElementsByClassName("close")[0];
+
+        voiceBtn.onclick = function() {
+        voiceModal.style.display = "block";
+        }
+
+        /* --------- BETA MODAL STUFF -------- */
+        var betaModal = document.getElementById("betaModal");
+        var betaBtn = document.getElementById("betaInfo");
+        var span = document.getElementsByClassName("close")[0];
+
+        betaBtn.onclick = function() {
+            betaModal.style.display = "block";
+        }
+
+        /* --------- MODAL STUFF ---------- */
         span.onclick = function() {
-        modal.style.display = "none";
+            voiceModal.style.display = "none";
+            betaModal.style.display = "none";
         }
 
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == voiceModal) {
+                voiceModal.style.display = "none";
+            }
+            if (event.target == betaModal) {
+                betaModal.style.display = "none";
             }
         }
-
-
     </script>
 </body>
 </html>
