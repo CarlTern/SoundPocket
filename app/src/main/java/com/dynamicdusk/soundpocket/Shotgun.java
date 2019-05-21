@@ -17,7 +17,6 @@ public class Shotgun extends AccelerometerListener {
     private boolean xAcc;
     private boolean zGyro;
     private long shotTime;
-    private long pumpTime;
     long now;
 
     public Shotgun(){
@@ -52,7 +51,7 @@ public class Shotgun extends AccelerometerListener {
         if (soundPlayer.isSoundOn()
             && (now - timeStamp) > 400
             && now - shotTime > 400
-            && now - sideMove > 150) {
+            && now - sideMove > 300) {
             if (shots > 0) {
                 soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);       
                 magazineCocked = true;
@@ -60,27 +59,19 @@ public class Shotgun extends AccelerometerListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
             }
             timeStamp = now;
-            pumpTime = now;
         }
     }
 
     public void onAccZ(float force) {
         now = Calendar.getInstance().getTimeInMillis();
-        sideMove = Calendar.getInstance().getTimeInMillis();
-        if (soundPlayer.isSoundOn()
-                && (now - timeStamp) > 400
-                && now - shotTime > 400
-                && now - pumpTime > 150) {
-            soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
-            if(shots<8) {
-                shots++;
-            }
-        }
+        sideMove = now;
     }
 
     public void onGyroY(float force){
-        if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if(soundPlayer.isSoundOn()
+                && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400
+                && now - sideMove < 150) {
             soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             if(shots<8) {
@@ -100,13 +91,16 @@ public class Shotgun extends AccelerometerListener {
     }
 
     private void playShot(){
-        if(magazineCocked &&shots>0) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if(magazineCocked &&shots>0
+                && now - sideMove > 50) {
             soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             magazineCocked = false;
             shots--;
             timeStamp = Calendar.getInstance().getTimeInMillis();
-        } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
+        } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 400
+                && now - sideMove > 50) {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
