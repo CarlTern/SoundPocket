@@ -55,12 +55,23 @@
 </div>
 
 <script>
-
-        function setVoiceActivation(){
-            var checked = document.getElementById("voiceActivation").checked;
-            document.getElementById('displayText').innerHTML = ` Voice activation: ${checked} `;
+        /* --------- SLIDER STUFF (FINNS MER ATT FIXA, FUNKAR INTE HELT!) --------- */
+        function callbackVoiceStatus(status){
+            if (status == "true"){
+                document.getElementById("voiceActivation").checked = true;
+            }
         }
 
+        function setVoiceActivation(){
+            Android.toggleVoice();
+        }
+
+        (function onLoad() {
+            Android.getVoiceStatus();
+        })();
+
+
+        /* --------- MODAL STUFF -------- */
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("voiceInfo");
         var span = document.getElementsByClassName("close")[0];
