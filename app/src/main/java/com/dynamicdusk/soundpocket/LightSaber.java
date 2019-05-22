@@ -115,5 +115,8 @@ public class LightSaber extends AccelerometerListener {
             timeStamp = now;
         }
     }
+    public boolean isOn(){
+        return isOn;
+    }
 
 }

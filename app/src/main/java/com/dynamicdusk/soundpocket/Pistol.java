@@ -6,8 +6,8 @@ import java.util.Calendar;
 public class Pistol extends AccelerometerListener {
 
 
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
+    private float xAccThreshold = 15;
+    private float yAccThreshold = 9.5f;
     private float zAccThreshold = 12;
     private boolean silenced = false;
     private long timeStamp = 0;

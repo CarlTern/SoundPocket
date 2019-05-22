@@ -5,10 +5,12 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.AsyncTask;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private long timeStamp = 0;
     private VoiceManager voice;
     private boolean isVoiceOn = false;
+    private LightSaber saber = new LightSaber();
+
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
         packages.put("MLG", new MLG());
-        packages.put("LightSaber", new LightSaber());
+        packages.put("LightSaber", saber);
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         final WebView webViewCallbackAccess = webView;
 
         voice = new VoiceManager(soundPlayer,this);
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
         //voice.runRecognizerSetup(); // this activates voice at app start
         /*
         webViewCallbackAccess.setOnKeyListener( new View.OnKeyListener()
@@ -314,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setPackage(String key){
-        if(currentPackage.equals("LightSaber")){
+        if(currentPackage.equals("LightSaber")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
         packages.get(key).setSoundPlayer(this.soundPlayer);
@@ -351,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean getVoiceStatus(){
         return isVoiceOn;
     }
+
 
 
 

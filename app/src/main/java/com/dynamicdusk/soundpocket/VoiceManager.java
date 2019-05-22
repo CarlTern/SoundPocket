@@ -54,8 +54,10 @@ public class VoiceManager implements RecognitionListener {
         }.execute();
     }
     public void destroy(){
-        recognizer.cancel();
-        recognizer.shutdown();
+        if(recognizer!=null) {
+            recognizer.cancel();
+            recognizer.shutdown();
+        }
     }
 
 
@@ -98,13 +100,13 @@ public class VoiceManager implements RecognitionListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("air horn")) {
+        }else if (text.equals("air horn")&& MyJavaScriptInterface.betaPacksActiveState) {
             mainActivity.setPackageByVoice("MLG");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("warcraft")) {
+        }else if (text.equals("warcraft")&& MyJavaScriptInterface.betaPacksActiveState) {
             mainActivity.setPackageByVoice("Warcraft3");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
@@ -122,13 +124,19 @@ public class VoiceManager implements RecognitionListener {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        } else if (text.equals("fart prank")) {
+        } else if (text.equals("lasso")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("Lasso");
+            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                soundPlayer.playSound(SoundPlayer.SOUND_MENU_LASSO);
+                timeStamp = Calendar.getInstance().getTimeInMillis();
+            }
+        } else if (text.equals("fart prank")&& MyJavaScriptInterface.betaPacksActiveState) {
             mainActivity.setPackageByVoice("FartPrank");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("drum kit")) {
+        }else if (text.equals("drum kit")&& MyJavaScriptInterface.betaPacksActiveState) {
             mainActivity.setPackageByVoice("DrumKit");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
@@ -160,8 +168,6 @@ public class VoiceManager implements RecognitionListener {
         recognizer.cancel();
         if (searchName.equals(KWS_SEARCH))
             recognizer.startListening(searchName);
-        else
-            recognizer.startListening(searchName, 100);
 
     }
 

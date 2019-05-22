@@ -70,6 +70,7 @@ public class SoundPlayer {
     public static final int SOUND_LASSO_SPIN_MOST= R.raw.lassospinmost;
     public static final int SOUND_LASSO_SPIN_MOST_REVERSE= R.raw.lassospinmostreverse;
     public static final int SOUND_LASSO_THROW= R.raw.lassothrow;
+    public static final int SOUND_MENU_LASSO= R.raw.menulasso;
 
 
     protected MediaPlayer mPlayer;

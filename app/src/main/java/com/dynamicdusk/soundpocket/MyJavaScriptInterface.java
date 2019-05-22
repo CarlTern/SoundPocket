@@ -26,7 +26,7 @@ public class MyJavaScriptInterface {
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
     String specificSoundState = "";
-    Boolean betaPacksActiveState = false;
+    public static Boolean betaPacksActiveState = false;
 
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
@@ -41,6 +41,7 @@ public class MyJavaScriptInterface {
     public void activateBetaPacks() {
         betaPacksActiveState = true;
     }
+
     @JavascriptInterface
     public void inactivateBetaPacks() {
         betaPacksActiveState = false;

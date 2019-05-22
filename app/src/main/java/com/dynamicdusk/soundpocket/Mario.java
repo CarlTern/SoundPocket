@@ -4,10 +4,6 @@ import java.util.Calendar;
 
 public class Mario extends AccelerometerListener {
 
-
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
-    private float zAccThreshold = 12;
     int hits = 0;
     boolean levelUp = false;
     int points = 0;
@@ -15,9 +11,12 @@ public class Mario extends AccelerometerListener {
     private SoundPlayer soundPlayer;
 
     public Mario(){
-        super.xAccThreshold = xAccThreshold;
-        super.yAccThreshold = yAccThreshold;
-        super.zAccThreshold = zAccThreshold;
+        super.xAccThreshold = 19;
+        super.yAccThreshold = 11;
+        super.zAccThreshold = 12;
+        super.xGyroThreshold = 5;
+        super.yGyroThreshold = 8;
+        super.zGyroThreshold = 2;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
