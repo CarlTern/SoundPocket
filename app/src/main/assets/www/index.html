@@ -48,7 +48,7 @@
         </button>
     </div>
     <div class="rightFloater" id="soundOnBtnDiv">
-        <button class="navBtn" onclick="soundOff()">
+        <button class="navBtn" id="btnSoundOff" onclick="soundOff()">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 25 25" xml:space="preserve">
             <style type="text/css">
@@ -70,7 +70,7 @@
     <div id="lock" style="display: none;"></div>
 
     <div class="rightFloater" id="soundOffBtnDiv" style="display: none;">
-        <button class="navBtn" id="sound" onclick="soundOn()">
+        <button class="navBtn" id="btnSoundOn" onclick="soundOn()">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 25 25" xml:space="preserve">
             <style type="text/css">
@@ -106,7 +106,7 @@
         </div>
 
         <div class="rightFloater" id="settingsBtnDiv">
-            <button class="navBtn" id="settings" onclick="Android.goToSettings()">
+            <button class="navBtn" id="btnSettings" onclick="Android.goToSettings()">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 486.9 486.9" style="enable-background:new 0 0 486.9 486.9;" xml:space="preserve">
             <style type="text/css">
@@ -252,8 +252,15 @@
 
         var btn1 = document.getElementById("btnInstructions");
         var btn2 = document.getElementById("btnChoosePack");
+        var btn3 = document.getElementById("btnSoundOn");
+        var btn4 = document.getElementById("btnSoundOff");
+        var btn5 = document.getElementById("btnSettings");
+
         btn1.disabled = false;
         btn2.disabled = false;
+        btn3.disabled = false;
+        btn4.disabled = false;
+        btn5.disabled = false;
 
         lock = document.getElementById("lock");
         lock.style.display = "none";
@@ -266,8 +273,15 @@
 
         var btn1 = document.getElementById("btnInstructions");
         var btn2 = document.getElementById("btnChoosePack");
+        var btn3 = document.getElementById("btnSoundOn");
+        var btn4 = document.getElementById("btnSoundOff");
+        var btn5 = document.getElementById("btnSettings");
+
         btn1.disabled = true;
         btn2.disabled = true;
+        btn3.disabled = true;
+        btn4.disabled = true;
+        btn5.disabled = true;
 
         lock = document.getElementById("lock");
         lock.style.display = "block";

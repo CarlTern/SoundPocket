@@ -26,6 +26,7 @@ public class MyJavaScriptInterface {
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
     String specificSoundState = "";
+    Boolean betaPacksActiveState = false;
 
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
@@ -33,6 +34,20 @@ public class MyJavaScriptInterface {
         this.context = context;
         this.soundPlayer = soundPlayer;
         this.mainActivity = mainActivity;
+    }
+
+    //------Beta back functions
+    @JavascriptInterface
+    public void activateBetaPacks() {
+        betaPacksActiveState = true;
+    }
+    @JavascriptInterface
+    public void inactivateBetaPacks() {
+        betaPacksActiveState = false;
+    }
+    @JavascriptInterface
+    public void getBetaPackState() {
+        runJavaScript("callbackgetBetaPackState(" + betaPacksActiveState + ")");
     }
 
 
@@ -51,7 +66,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setSound(String key) {
-        System.out.println("----------------------set package");
+        System.out.println("----------------------setSound: " + key);
         mainActivity.setPackage(key);
     }
 
@@ -60,7 +75,7 @@ public class MyJavaScriptInterface {
         if(key.equals("Mario")){
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
         }
-        System.out.println("----------------------set package");
+        System.out.println("----------------------set package: " + key);
         goBack();
         mainActivity.setPackage(key);
         System.out.println("--------setPackage key: " + key);
@@ -173,92 +188,92 @@ public class MyJavaScriptInterface {
         switch(sound) {
             //------------Shotgun
             case "Fire":
-                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
                 break;
             case "Dry Fire":
-                soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_DRY_FIRE);
                 break;
             case "Pump":
-                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
                 break;
             case "Empty Pump":
-                soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_EMPTY_PUMP);
                 break;
             case "Ammo Refill":
-                soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_AMMO_LOAD);
                 break;
 
             //------------Mario
             case "Jump":
-                soundPlayer.playSound(SoundPlayer.SOUND_COIN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_COIN);
                 break;
             case "Pipe":
-                soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_PIPE);
                 break;
             case "Fireball":
-                soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FIREBALL);
                 break;
             case "Yahoo":
-                soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_YAHOO);
                 break;
             case "MammaMia":
-                soundPlayer.playSound(SoundPlayer.SOUND_MAMMA_MIA);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_MAMMA_MIA);
                 break;
             case "Boing":
-                soundPlayer.playSound(SoundPlayer.SOUND_BOING);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_BOING);
                 break;
 
             //------------DrumKit
             case "Snare":
-                soundPlayer.playSound(SoundPlayer.SOUND_SNARE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_SNARE);
                 break;
             case "Cymbal":
-                soundPlayer.playSound(SoundPlayer.SOUND_CYMBAL);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_CYMBAL);
                 break;
             case "Tom":
-                soundPlayer.playSound(SoundPlayer.SOUND_TOM);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_TOM);
                 break;
 
             //------------LightSaber
             case "Open":
-                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
                 break;
             case "Close":
-                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
                 break;
             case "Pulse":
                     //Måste fixas. Loopas för länge.
                 break;
             case "Hit":
-                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
                 break;
             case "Swing One":
-                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_ONE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_SWING_ONE);
                 break;
             case "Swing Two":
-                soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
                 break;
 
             //------------Warcraft3
             case "Work Work":
-                soundPlayer.playSound(SoundPlayer.SOUND_WORK_WORK);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_WORK_WORK);
                 break;
             case "Yes Mi Lord":
-                soundPlayer.playSound(SoundPlayer.SOUND_YES_MI_LORD);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_YES_MI_LORD);
                 break;
             case "Off I Go Then":
-                soundPlayer.playSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_OFF_I_GO_THEN);
                 break;
 
             //------------Pistol
             case "Shoot":
-                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_PISTOL);
                 break;
             case "Shoot Silenced":
-                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_PISTOL_SILENCED);
                 break;
             case "Screw On Silencer":
-                soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
                 break;
 
             //------------Lasso
@@ -277,30 +292,30 @@ public class MyJavaScriptInterface {
 
             //------------MLG
             case "Airhorn":
-                soundPlayer.playSound(SoundPlayer.SOUND_AIR_HORN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_AIR_HORN);
                 break;
 
-            //------------MLG
+            //------------Fart Joke
             case "Fart 1":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_ONE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_ONE);
                 break;
             case "Fart 2":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_TWO);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_TWO);
                 break;
             case "Fart 3":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_THREE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_THREE);
                 break;
             case "Fart 4":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_FOUR);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_FOUR);
                 break;
             case "Fart 5":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_FIVE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_FIVE);
                 break;
             case "Fart 6":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_SIX);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_SIX);
                 break;
             case "Fart 7":
-                soundPlayer.playSound(SoundPlayer.SOUND_FART_SEVEN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_FART_SEVEN);
                 break;
         }
     }
@@ -309,7 +324,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void goToChoosePackage() {
-        System.out.println("-------------------------------package");
+        System.out.println("-------------------------------goToChoosePackage");
         loadNewHTML("browse.html");
     }
 
@@ -365,6 +380,7 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void getPackageList() {
+        System.out.println("------getPackageList");
         String[] currentPackageList = mainActivity.getPackages();
         StringBuilder stringArray = new StringBuilder();
         stringArray.append("[");
@@ -377,7 +393,7 @@ public class MyJavaScriptInterface {
         stringArray.deleteCharAt(stringArray.length() -1);
         stringArray.append("]");
 
-        runJavaScript("callbackPackageList(\"" + stringArray.toString() + "\")");
+        runJavaScript("callbackPackageList(" + stringArray.toString() + ", " + betaPacksActiveState + ")");
         System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
     }
 

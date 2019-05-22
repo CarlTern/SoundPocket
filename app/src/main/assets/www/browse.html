@@ -14,41 +14,90 @@
         </button>
         -->
     </div>
+    <div id="betaModal" class="modal fadeMe">
+        <div class="modal-content fadeMe">
+            <span class="close" id="span">&times;</span>
+            <h2>Beta Packages</h2>
+            <p>The package you tried to activate is a beta package. It's not yet fully calibrated to behave intuitively.</p>
+            <p>You can activate beta packages in settings.</p>
+        </div>
+    </div>
 </body>
 <script>
-
-        var packs = ["Warcraft3", "Shotgun", "Mario", "MLG", "LightSaber", "Pistol", "DrumKit", "FartPrank", "Lasso"];
-        document.getElementById('listBuilder').appendChild(makeUL(packs));
-
-        /* ------- Callback fungerar ej -----------------
-        var packs = [];
-
-        function callbackPackageList(arraySounds) {
-            for (index in arraySounds) {
-                packs.push(arraySounds[index]);
-            }
-            document.getElementById('test').innerHTML = ` HEJ `;
-            document.getElementById('listBuilder').appendChild(makeUL(packs));
-        }
 
         (function getPackageList() {
             Android.getPackageList();
         })();
+
+        function callbackPackageList(arraySounds, betaIsActive) {
+            var packs = [];
+
+            for (index in arraySounds) {
+                packs.push(arraySounds[index]);
+            }
+            document.getElementById('listBuilder').appendChild(makeUL(packs, betaIsActive));
+        }
+
+        (function setModalStuff() {
+                /* --------- BETA MODAL STUFF -------- */
+            var betaModal = document.getElementById("betaModal");
+            var betaBtn = document.getElementById("betaInfo");
+
+            span.onclick = function() {
+                betaModal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == betaModal) {
+                    betaModal.style.display = "none";
+                }
+            }
+        })();
+
+        function showBetaModal() {
+            betaModal.style.display = "block";
+        }
+
+
+        /* ------- Callback fungerar ej -----------------
+
+
+
+
         */
 
 
         /* --------------- Build list ---------------- */
 
-        function makeUL(array) {
+        function makeUL(array, betaIsActive) {
                 var list = document.createElement('ul');
-                list.className = "grid";
+                list.className = "browseGrid";
                 for(var i = 0; i < array.length; i++) {
                     var item = document.createElement('li');
-                    item.innerHTML =  `
-                        <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
-                            ${array[i]}
-                        </button>
-                    `
+                    if(array[i] == 'Pistol' || array[i] == 'Shotgun' || array[i] == 'Mario' || array[i] == 'LightSaber') {
+                        item.innerHTML =  `
+                            <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
+                                ${array[i]}
+                            </button>
+                       `
+                    } else {
+                        if(betaIsActive) {
+                            item.innerHTML =  `
+                                <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
+                                    ${array[i]}
+                                </button>
+                            `
+                        } else {
+                            item.innerHTML =  `
+                                <button class="browseBtn betapack" onClick='showBetaModal()'>
+                                    ${array[i]}
+                                </button>
+                            `
+                        }
+
+                    }
+
+
                     list.appendChild(item);
                 }
             return list;

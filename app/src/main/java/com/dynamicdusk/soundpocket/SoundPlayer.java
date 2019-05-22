@@ -76,6 +76,8 @@ public class SoundPlayer {
     protected boolean soundOn = true;
     Context context;
     private MediaPlayer looper;
+    private MediaPlayer mPlayerSpecificSound;
+
 
     public SoundPlayer(Context context) {
         this.context = context;
@@ -86,6 +88,17 @@ public class SoundPlayer {
         mPlayer = MediaPlayer.create(context, chosenSound);
         
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
+    }
+    protected void initPlayerSpecificSound(int chosenSound) {
+
+        mPlayerSpecificSound = MediaPlayer.create(context, chosenSound);
+
+        mPlayerSpecificSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 mp.release();
@@ -128,5 +141,10 @@ public class SoundPlayer {
             initPlayer(sound);
         }
         mPlayer.start();
+    }
+
+    public void playSpecificSound(int sound) {
+        initPlayerSpecificSound(sound);
+        mPlayerSpecificSound.start();
     }
 }

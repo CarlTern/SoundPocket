@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 3000);
+        }, 500);
 
     }
 
@@ -295,9 +297,21 @@ public class MainActivity extends AppCompatActivity {
         for (String name : packages.keySet()){
             list.add(name);
         }
+        list.add("NOT WORKING");
         String[] returnie = new String[list.size()];
         returnie = list.toArray(returnie);
         return returnie;
+    }
+
+    public void setPackageByVoice(String key) {
+        setPackage(key);
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.reload(); //denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
+            }
+        });
+
     }
     public void setPackage(String key){
         if(currentPackage.equals("LightSaber")){
@@ -312,7 +326,6 @@ public class MainActivity extends AppCompatActivity {
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
-        //webView.reload(); denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
     }
     @SuppressLint("StaticFieldLeak")
 
