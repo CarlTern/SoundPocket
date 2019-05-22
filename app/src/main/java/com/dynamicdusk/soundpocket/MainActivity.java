@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
+        packages.put("Lasso", new Lasso());
 
         super.onCreate(savedInstanceState);
         this.getWindow().setStatusBarColor(Color.rgb(255, 200, 37));
@@ -234,6 +235,15 @@ public class MainActivity extends AppCompatActivity {
                         "Screw On Silencer",
                 };
                 return listP;
+
+                case "Lasso":
+                String[] listLasso = {
+                        "Lasso spin",
+                        "Lasso spin two",
+                        "Lasso spin three",
+                        "Lasso throw",
+                };
+                return listLasso;
 
             case "MLG":
                 String[] listMLG = {
