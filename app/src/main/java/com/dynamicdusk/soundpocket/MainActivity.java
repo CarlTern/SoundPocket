@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
             return;
         }
-        packages.put("Warcraft3", new Warcraft3());
+        packages.put("Warcraft", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
         packages.put("Air horn", new MLG());
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listL;
 
-            case "Warcraft3":
+            case "Warcraft":
                 String[] listW = {
                         "Work Work",
                         "Yes Mi Lord",

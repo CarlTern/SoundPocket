@@ -82,6 +82,9 @@ public class MyJavaScriptInterface {
         }else if (key.equals("Shotgun")){
             soundPlayer.playSound(SoundPlayer.SOUND_ILL_BE_BACK);
         }
+        else if (key.equals("Warcraft")){
+            soundPlayer.playSound(SoundPlayer.SOUND_RIGHT_O);
+        }
         System.out.println("----------------------set package: " + key);
         goBack();
         mainActivity.setPackage(key);
@@ -261,7 +264,7 @@ public class MyJavaScriptInterface {
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
                 break;
 
-            //------------Warcraft3
+            //------------Warcraft
             case "Work Work":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_WORK_WORK);
                 break;

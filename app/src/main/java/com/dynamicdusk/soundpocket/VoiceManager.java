@@ -107,7 +107,7 @@ public class VoiceManager implements RecognitionListener {
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("warcraft")&& MyJavaScriptInterface.betaPacksActiveState) {
-            mainActivity.setPackageByVoice("Warcraft3");
+            mainActivity.setPackageByVoice("Warcraft");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
