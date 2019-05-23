@@ -48,8 +48,9 @@ public class Pistol extends AccelerometerListener {
     }
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-           // soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
-            //timeStamp = Calendar.getInstance().getTimeInMillis();
+            //soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+            soundPlayer.playSound(SoundPlayer.SOUND_RELOAD);
+            timeStamp = Calendar.getInstance().getTimeInMillis();
         }
     }
         public void onGyroX(float force) {
