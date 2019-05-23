@@ -77,6 +77,8 @@ public class MyJavaScriptInterface {
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
         } else if (key.equals("LightSaber")){
             soundPlayer.playSound(SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU);
+        } else if (key.equals("Pistol")){
+            soundPlayer.playSound(SoundPlayer.SOUND_JAMES_BOND_THEME);
         }
         System.out.println("----------------------set package: " + key);
         goBack();
