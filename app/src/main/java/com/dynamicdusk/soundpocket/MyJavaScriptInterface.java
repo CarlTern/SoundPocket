@@ -280,19 +280,22 @@ public class MyJavaScriptInterface {
             case "Screw On Silencer":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
                 break;
+            case "Reload":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_RELOAD);
+                break;
 
             //------------Lasso
             case "Lasso spin":
-                soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN);
                 break;
             case "Lasso spin two":
-                soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
                 break;
             case "Lasso spin three":
-                soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
                 break;
             case "Lasso throw":
-                soundPlayer.playSound(SoundPlayer.SOUND_LASSO_THROW);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
                 break;
 
             //------------MLG

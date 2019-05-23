@@ -240,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
                         "Shoot",
                         "Shoot Silenced",
                         "Screw On Silencer",
+                        "Reload"
                 };
                 return listP;
 
