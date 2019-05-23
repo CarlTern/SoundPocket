@@ -101,7 +101,7 @@ public class VoiceManager implements RecognitionListener {
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("air horn")&& MyJavaScriptInterface.betaPacksActiveState) {
-            mainActivity.setPackageByVoice("MLG");
+            mainActivity.setPackageByVoice("Air horn");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -119,7 +119,7 @@ public class VoiceManager implements RecognitionListener {
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         } else if (text.equals("star wars")) {
-            mainActivity.setPackageByVoice("LightSaber");
+            mainActivity.setPackageByVoice("Star Wars");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
                 timeStamp = Calendar.getInstance().getTimeInMillis();

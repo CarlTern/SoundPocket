@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         packages.put("Warcraft3", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
-        packages.put("MLG", new MLG());
-        packages.put("LightSaber", saber);
+        packages.put("Air horn", new MLG());
+        packages.put("Star Wars", saber);
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listD;
 
-            case "LightSaber":
+            case "Star Wars":
                 String[] listL = {
                         "Open",
                         "Close",
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listLasso;
 
-            case "MLG":
+            case "Air horn":
                 String[] listMLG = {
                         "Airhorn"
                 };
@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setPackage(String key){
-        if(currentPackage.equals("LightSaber")&&saber.isOn()){
+        if(currentPackage.equals("Star Wars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
         packages.get(key).setSoundPlayer(this.soundPlayer);

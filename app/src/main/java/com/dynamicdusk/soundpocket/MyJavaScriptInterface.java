@@ -75,10 +75,12 @@ public class MyJavaScriptInterface {
     public void setPackage(String key) {
         if(key.equals("Mario")){
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
-        } else if (key.equals("LightSaber")){
+        } else if (key.equals("Star Wars")){
             soundPlayer.playSound(SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU);
         } else if (key.equals("Pistol")){
             soundPlayer.playSound(SoundPlayer.SOUND_JAMES_BOND_THEME);
+        }else if (key.equals("Shotgun")){
+            soundPlayer.playSound(SoundPlayer.SOUND_ILL_BE_BACK);
         }
         System.out.println("----------------------set package: " + key);
         goBack();
@@ -239,7 +241,7 @@ public class MyJavaScriptInterface {
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_TOM);
                 break;
 
-            //------------LightSaber
+            //------------Star Wars
             case "Open":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
                 break;
@@ -298,7 +300,7 @@ public class MyJavaScriptInterface {
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
                 break;
 
-            //------------MLG
+            //------------Air horn
             case "Airhorn":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_AIR_HORN);
                 break;

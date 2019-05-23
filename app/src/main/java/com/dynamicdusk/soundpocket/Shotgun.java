@@ -31,7 +31,7 @@ public class Shotgun extends AccelerometerListener {
         super.yAccThreshold = 14;
         super.zAccThreshold = 6;
         super.xGyroThreshold = 5;
-        super.yGyroThreshold = 2;
+        super.yGyroThreshold = 2.6f;
         super.zGyroThreshold = 4;
     }
 
