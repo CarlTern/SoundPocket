@@ -72,6 +72,9 @@ public class SoundPlayer {
     public static final int SOUND_LASSO_THROW= R.raw.lassothrow;
     public static final int SOUND_MENU_LASSO= R.raw.menulasso;
 
+    public static final int SOUND_THE_FORCE_IS_WITH_YOU= R.raw.theforceiswithyou;
+
+
 
     protected MediaPlayer mPlayer;
     protected boolean soundOn = true;

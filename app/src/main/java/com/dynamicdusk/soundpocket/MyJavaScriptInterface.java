@@ -75,6 +75,8 @@ public class MyJavaScriptInterface {
     public void setPackage(String key) {
         if(key.equals("Mario")){
             soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
+        } else if (key.equals("LightSaber")){
+            soundPlayer.playSound(SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU);
         }
         System.out.println("----------------------set package: " + key);
         goBack();
