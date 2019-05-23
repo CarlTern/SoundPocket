@@ -75,6 +75,7 @@ public class SoundPlayer {
     public static final int SOUND_JAMES_BOND_THEME= R.raw.jamesbondtheme;
     public static final int SOUND_THE_FORCE_IS_WITH_YOU= R.raw.theforceiswithyou;
     public static final int SOUND_ILL_BE_BACK= R.raw.illbeback;
+    public static final int SOUND_COMEDY_DRUM= R.raw.comedydrum;
 
 
 

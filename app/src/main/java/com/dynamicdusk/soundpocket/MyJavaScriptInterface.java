@@ -73,17 +73,18 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setPackage(String key) {
-        if(key.equals("Mario")){
-            soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
-        } else if (key.equals("Star Wars")){
-            soundPlayer.playSound(SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU);
-        } else if (key.equals("Pistol")){
-            soundPlayer.playSound(SoundPlayer.SOUND_JAMES_BOND_THEME);
-        }else if (key.equals("Shotgun")){
-            soundPlayer.playSound(SoundPlayer.SOUND_ILL_BE_BACK);
-        }
-        else if (key.equals("Warcraft")){
-            soundPlayer.playSound(SoundPlayer.SOUND_RIGHT_O);
+        if(key.equals("Mario") && soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_ITS_A_ME));
+        }else if (key.equals("Star Wars")&& soundPlayer.isSoundOn() ){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU));
+        }else if (key.equals("Pistol")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_JAMES_BOND_THEME));
+        }else if (key.equals("Shotgun")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_ILL_BE_BACK));
+        }else if (key.equals("Warcraft")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_RIGHT_O));
+        }else if (key.equals("DrumKit")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_COMEDY_DRUM));
         }
         System.out.println("----------------------set package: " + key);
         goBack();
