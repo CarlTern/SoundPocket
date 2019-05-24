@@ -6,9 +6,9 @@ import java.util.Calendar;
 
 public class Warcraft3 extends AccelerometerListener {
 
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
-    private float zAccThreshold = 12;
+    private float xAccThreshold = 20;
+    private float yAccThreshold = 25;
+    private float zAccThreshold = 25;
     SoundPlayer soundPlayer;
     private long timeStamp = 0;
 

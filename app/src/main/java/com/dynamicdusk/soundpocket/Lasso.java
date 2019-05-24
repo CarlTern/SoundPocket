@@ -4,17 +4,25 @@ import java.util.Calendar;
 
 public class Lasso extends AccelerometerListener{
     private long timeStamp = 0;
+    private long timeStampSpin = 0;
     private SoundPlayer soundPlayer;
     private int spinLevel;
     private boolean firstSpin = true;
 
     public Lasso(){
-        super.xAccThreshold = 12;
+        super.xAccThreshold = 60;
+        super.yAccThreshold = 8;
+        super.zAccThreshold = 12;
+        super.xGyroThreshold = 2f;
+        super.yGyroThreshold = 2f;
+        super.zGyroThreshold = 2f;
+        /*super.xAccThreshold = 20;
         super.yAccThreshold = 8;
         super.zAccThreshold = 12;
         super.xGyroThreshold = 5;
         super.yGyroThreshold = 10;
         super.zGyroThreshold = 5;
+        */
         timeStamp = Calendar.getInstance().getTimeInMillis();
         spinLevel = 0;
     }
@@ -45,7 +53,8 @@ public class Lasso extends AccelerometerListener{
     }
 
     public void onGyroZ(float force) {
-        if(Calendar.getInstance().getTimeInMillis() - timeStamp>1500 && firstSpin==false){
+
+       /* if(Calendar.getInstance().getTimeInMillis() - timeStamp>1500 && firstSpin==false){
             if(spinLevel==1){
                 soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_REVERSE);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -62,18 +71,19 @@ public class Lasso extends AccelerometerListener{
             spinLevel=0;
             firstSpin=true;
         }
-        if(soundPlayer.isSoundOn() && spinLevel==0 &&(Calendar.getInstance().getTimeInMillis() - timeStamp) > 1000) {
+        */
+        if(soundPlayer.isSoundOn() && spinLevel==0 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin) > 1000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
+            timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel=1;
             firstSpin=false;
-        }else if (soundPlayer.isSoundOn() && spinLevel==1 &&(Calendar.getInstance().getTimeInMillis() - timeStamp)>1000){
+        }else if (soundPlayer.isSoundOn() && spinLevel==1 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>1000){
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
+            timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel=2;
-        }else if (soundPlayer.isSoundOn() && spinLevel==2 &&(Calendar.getInstance().getTimeInMillis() - timeStamp)>1000){
+        }else if (soundPlayer.isSoundOn() && spinLevel>=2 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>1000){
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
+            timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel =3;
         }
 
