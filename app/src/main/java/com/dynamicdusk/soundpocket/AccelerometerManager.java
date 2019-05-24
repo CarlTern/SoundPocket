@@ -94,7 +94,7 @@ public class AccelerometerManager {
 
             running = gyroManager.registerListener(
                     gyroEventListener, gyroSensor,
-                    SensorManager.SENSOR_DELAY_GAME);
+                    SensorManager.SENSOR_DELAY_FASTEST);
         }
 
         List<Sensor> accSensors = acceleratorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
@@ -104,7 +104,7 @@ public class AccelerometerManager {
 
             running = acceleratorManager.registerListener(
                     accEventListener, accSensor,
-                    SensorManager.SENSOR_DELAY_GAME);
+                    SensorManager.SENSOR_DELAY_FASTEST);
         }
 
         List<Sensor> rotationSensors = acceleratorManager.getSensorList(Sensor.TYPE_GAME_ROTATION_VECTOR);
@@ -114,7 +114,7 @@ public class AccelerometerManager {
 
             running = acceleratorManager.registerListener(
                     rotationEventListener, rotationSensor,
-                    SensorManager.SENSOR_DELAY_GAME);
+                    SensorManager.SENSOR_DELAY_FASTEST);
         }
         listener = accelerometerListener;
     }
