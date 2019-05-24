@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
         packages.put("Air horn", new MLG());
-        packages.put("Star Wars", saber);
+        packages.put("StarWars", saber);
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listD;
 
-            case "Star Wars":
+            case "StarWars":
                 String[] listL = {
                         "Open",
                         "Close",
@@ -301,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
         for (String name : packages.keySet()){
             list.add(name);
         }
-        list.add("NOT WORKING");
+
         String[] returnie = new String[list.size()];
         returnie = list.toArray(returnie);
         return returnie;
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void starWarsCheck(){
-        if(currentPackage.equals("Star Wars")&&saber.isOn()){
+        if(currentPackage.equals("StarWars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
     }

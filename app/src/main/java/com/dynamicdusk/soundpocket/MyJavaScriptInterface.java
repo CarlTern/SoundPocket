@@ -77,7 +77,7 @@ public class MyJavaScriptInterface {
     public void setPackage(String key) {
         if(key.equals("Mario") && soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_ITS_A_ME));
-        }else if (key.equals("Star Wars")&& soundPlayer.isSoundOn() ){
+        }else if (key.equals("StarWars")&& soundPlayer.isSoundOn() ){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU));
         }else if (key.equals("Pistol")&& soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_JAMES_BOND_THEME));
@@ -359,6 +359,27 @@ public class MyJavaScriptInterface {
                 break;
             case "Mario":
                 filename = "mario.svg";
+                break;
+            case "FartPrank":
+                filename = "fartprank.svg";
+                break;
+            case "DrumKit":
+                filename = "drumkit.svg";
+                break;
+            case "StarWars":
+                filename = "starwars.svg";
+                break;
+            case "Pistol":
+                filename = "pistol.svg";
+                break;
+            case "Lasso":
+                filename = "lasso.svg";
+                break;
+            case "Warcraft":
+                filename = "warcraft.svg";
+                break;
+            case "Air horn":
+                filename = "air horn.svg";
                 break;
         }
         runJavaScript("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");

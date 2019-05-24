@@ -93,9 +93,7 @@
     <div class="wrapCenter">
         <h1 id="packTitle"></h1>
         <button id="btnInstructions" class="packBtn" onclick="Android.goToSoundList()">
-            <!-- Bild till sen
                 <img id="packImage" src="" width="150px" height="150px"/>
-            -->
         </button>
         <button id="btnChoosePack" class="bigStdBtn" onclick="Android.goToChoosePackage()">Choose pack</button>
     </div>
@@ -206,8 +204,8 @@
 
     function callbackCurrentPackage(packageName, filename) {
         document.getElementById("packTitle").innerHTML = packageName + ' pack';
-        document.getElementById("btnInstructions").innerHTML = packageName;
-        // for images later on: document.getElementById("packImage").src = filename;
+
+        document.getElementById("packImage").src = filename;
     }
 
     (function getPackageInfo() {
