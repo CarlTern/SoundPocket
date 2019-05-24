@@ -440,6 +440,8 @@ input:checked + .slider:before {
   margin: auto;
   padding: 20px;
   width: 80%;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
 }
 
 /* The Close Button */
