@@ -17,6 +17,8 @@ public class Shotgun extends AccelerometerListener {
     private boolean magazineCocked = false;
     private boolean magazinePulledForward;
     private long timeStamp = 0;
+    private long downAcc = 0;
+    private long uppAcc = 0;
     private SoundPlayer soundPlayer;
     private long sideMove;
     //State booleand
@@ -79,6 +81,27 @@ public class Shotgun extends AccelerometerListener {
         if(soundPlayer.isSoundOn()
                 && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400
                 && now - sideMove < 150) {
+
+                if(soundPlayer.isSoundOn()){
+
+                    if (force < 0) {
+                        downAcc = now;
+                    } else {
+                        uppAcc = now;
+                    }
+
+                    if (now - downAcc < 80 && now - uppAcc < 80) {
+
+                        if (downAcc - uppAcc < 0) {
+                            downMove(force);
+                        } else {
+                            uppMove(force);
+
+                        }
+                    }
+                }
+            }
+
             soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             if(shots<8) {
@@ -112,6 +135,14 @@ public class Shotgun extends AccelerometerListener {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
+    }
+
+    private void downMove(float force) {
+
+    }
+
+    private void uppMove(float force) {
+
     }
 
     public void vibrate(){
