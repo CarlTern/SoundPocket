@@ -76,6 +76,8 @@ public class SoundPlayer {
     public static final int SOUND_THE_FORCE_IS_WITH_YOU= R.raw.theforceiswithyou;
     public static final int SOUND_ILL_BE_BACK= R.raw.illbeback;
     public static final int SOUND_COMEDY_DRUM= R.raw.comedydrum;
+    public static final int SOUND_YA= R.raw.ya;
+    public static final int SOUND_HOO= R.raw.hoo;
     public static final int SOUND_SHOTGUN_RELOAD_SPLIT_1= R.raw.shotgunreloadsplit1;
     public static final int SOUND_SHOTGUN_RELOAD_SPLIT_2=R.raw.shotgunreloadsplit2 ;
 
