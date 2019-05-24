@@ -120,7 +120,7 @@ public class VoiceManager implements RecognitionListener {
             }
         } else if (text.equals("star wars")) {
             mainActivity.setPackageByVoice("StarWars");
-            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2500) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
