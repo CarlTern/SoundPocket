@@ -4,10 +4,6 @@ import java.util.Calendar;
 
 public class Mario extends AccelerometerListener {
 
-
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
-    private float zAccThreshold = 12;
     int hits = 0;
     boolean levelUp = false;
     int points = 0;
@@ -15,9 +11,12 @@ public class Mario extends AccelerometerListener {
     private SoundPlayer soundPlayer;
 
     public Mario(){
-        super.xAccThreshold = xAccThreshold;
-        super.yAccThreshold = yAccThreshold;
-        super.zAccThreshold = zAccThreshold;
+        super.xAccThreshold = 21;
+        super.yAccThreshold = 11;
+        super.zAccThreshold = 12;
+        super.xGyroThreshold = 5;
+        super.yGyroThreshold = 6;
+        super.zGyroThreshold = 2.8f;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -29,11 +28,7 @@ public class Mario extends AccelerometerListener {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
             timeStamp = Calendar.getInstance().getTimeInMillis();
-            hits++;
-            if(levelUp && hits >10){
-                soundPlayer.playSound(SoundPlayer.SOUND_STAGE_WON);
-                levelUp = false;
-            }
+
         }
         //jsHandler.alert("Force: " + force);
     }
@@ -79,6 +74,11 @@ public class Mario extends AccelerometerListener {
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
+            hits++;
+            if(levelUp && hits >10){
+                soundPlayer.playSound(SoundPlayer.SOUND_STAGE_WON);
+                levelUp = false;
+            }
         }
     }
 }

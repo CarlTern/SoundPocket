@@ -26,6 +26,7 @@ public class MyJavaScriptInterface {
     SoundPlayer soundPlayer;
     MainActivity mainActivity;
     String specificSoundState = "";
+    public static Boolean betaPacksActiveState = false;
 
 
     public MyJavaScriptInterface(WebView w, Context context, SoundPlayer soundPlayer, MainActivity mainActivity) {
@@ -33,6 +34,21 @@ public class MyJavaScriptInterface {
         this.context = context;
         this.soundPlayer = soundPlayer;
         this.mainActivity = mainActivity;
+    }
+
+    //------Beta back functions
+    @JavascriptInterface
+    public void activateBetaPacks() {
+        betaPacksActiveState = true;
+    }
+
+    @JavascriptInterface
+    public void inactivateBetaPacks() {
+        betaPacksActiveState = false;
+    }
+    @JavascriptInterface
+    public void getBetaPackState() {
+        runJavaScript("callbackgetBetaPackState(" + betaPacksActiveState + ")");
     }
 
 
@@ -57,8 +73,18 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void setPackage(String key) {
-        if(key.equals("Mario")){
-            soundPlayer.playSound(SoundPlayer.SOUND_ITS_A_ME);
+        if(key.equals("Mario") && soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_ITS_A_ME));
+        }else if (key.equals("Star Wars")&& soundPlayer.isSoundOn() ){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU));
+        }else if (key.equals("Pistol")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_JAMES_BOND_THEME));
+        }else if (key.equals("Shotgun")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_ILL_BE_BACK));
+        }else if (key.equals("Warcraft")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_RIGHT_O));
+        }else if (key.equals("DrumKit")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_COMEDY_DRUM));
         }
         System.out.println("----------------------set package: " + key);
         goBack();
@@ -219,7 +245,7 @@ public class MyJavaScriptInterface {
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_TOM);
                 break;
 
-            //------------LightSaber
+            //------------Star Wars
             case "Open":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
                 break;
@@ -239,7 +265,7 @@ public class MyJavaScriptInterface {
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
                 break;
 
-            //------------Warcraft3
+            //------------Warcraft
             case "Work Work":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_WORK_WORK);
                 break;
@@ -260,8 +286,25 @@ public class MyJavaScriptInterface {
             case "Screw On Silencer":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
                 break;
+            case "Reload":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_RELOAD);
+                break;
 
-            //------------MLG
+            //------------Lasso
+            case "Lasso spin":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN);
+                break;
+            case "Lasso spin two":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
+                break;
+            case "Lasso spin three":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
+                break;
+            case "Lasso throw":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
+                break;
+
+            //------------Air horn
             case "Airhorn":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_AIR_HORN);
                 break;
@@ -364,7 +407,7 @@ public class MyJavaScriptInterface {
         stringArray.deleteCharAt(stringArray.length() -1);
         stringArray.append("]");
 
-        runJavaScript("callbackPackageList(" + stringArray.toString() + ")");
+        runJavaScript("callbackPackageList(" + stringArray.toString() + ", " + betaPacksActiveState + ")");
         System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
     }
 

@@ -6,12 +6,13 @@ import java.util.Calendar;
 public class Pistol extends AccelerometerListener {
 
 
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
+    private float xAccThreshold = 15;
+    private float yAccThreshold = 9.5f;
     private float zAccThreshold = 12;
     private boolean silenced = false;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
+    private int shots = 0;
 
     public Pistol(){
         super.xAccThreshold = xAccThreshold;
@@ -26,14 +27,20 @@ public class Pistol extends AccelerometerListener {
 
     public void onAccX(float force) {
 
-        if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            if(!silenced) {
-                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
-                timeStamp = Calendar.getInstance().getTimeInMillis();
-            } else {
-                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
-                timeStamp = Calendar.getInstance().getTimeInMillis();
-            }
+        if (soundPlayer.isSoundOn()&&(Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+               if(shots>0) {
+                   if (!silenced) {
+                       soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
+                       timeStamp = Calendar.getInstance().getTimeInMillis();
+                   } else {
+                       soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
+                       timeStamp = Calendar.getInstance().getTimeInMillis();
+                   }
+                   shots--;
+               } else{
+                   soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
+                   timeStamp = Calendar.getInstance().getTimeInMillis();
+               }
         }
         //jsHandler.alert("Force: " + force);
     }
@@ -48,8 +55,10 @@ public class Pistol extends AccelerometerListener {
     }
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-           // soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
-            //timeStamp = Calendar.getInstance().getTimeInMillis();
+            //soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
+            soundPlayer.playSound(SoundPlayer.SOUND_RELOAD);
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+            shots=8;
         }
     }
         public void onGyroX(float force) {

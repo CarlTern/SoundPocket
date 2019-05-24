@@ -6,9 +6,9 @@ import java.util.Random;
 public class FartPrank extends AccelerometerListener {
 
 
-    private float xAccThreshold = 12;
-    private float yAccThreshold = 8;
-    private float zAccThreshold = 12;
+    private float xAccThreshold = 3;
+    private float yAccThreshold = 3;
+    private float zAccThreshold = 3;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     Random rand = new Random();

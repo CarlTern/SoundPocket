@@ -7,10 +7,16 @@
     <div class="wrapCenter">
         <h1 id="packName"></h1>
         <div id="listBuilder"></div>
-        <p id="playedSound"></p>
+        <p id="log"></p>
+
+        <div id="modal" class="modal fadeMe">
+
+        </div>
     </div>
 
     <script>
+        var modal = document.getElementById("modal");
+        var span = document.getElementsByClassName("close")[0];
 
         var sounds = [];
 
@@ -87,15 +93,36 @@
 
         function playSound(sound){
             Android.playSpecificSound(sound);
-            document.getElementById('playedSound').innerHTML = `${sound} is now playing.`
         }
 
         function goToTutorial(sound){
-            document.getElementById('playedSound').innerHTML = `Navigated to ${sound} tutorial.`
-            Android.goToPackageInstruction(sound)
+            /* Android.goToPackageInstruction(sound) */
+
+            buildModal(sound);
+            modal.style.display = "block";
         }
 
+        function closeModal() {
+            modal.style.display = "none";
+        }
 
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function buildModal(sound){
+            modal.innerHTML = `
+                <div class="modal-content fadeMe">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Master the ${sound} sound</h2>
+                <img src="${sound}1.svg" width="100px"/>
+                <img src="${sound}2.svg" width="100px"/>
+                <p>Here there will be instructions for ${sound}.</p>
+                </div>
+            `
+        }
     </script>
 </body>
 </html>

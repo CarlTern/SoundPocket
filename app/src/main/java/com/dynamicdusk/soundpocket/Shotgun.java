@@ -1,10 +1,16 @@
 package com.dynamicdusk.soundpocket;
 
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class Shotgun extends AccelerometerListener {
+
 
     private int shots = 0;
     private boolean loaded;
@@ -18,14 +24,15 @@ public class Shotgun extends AccelerometerListener {
     private boolean zGyro;
     private long shotTime;
     long now;
+    private MainActivity main = new MainActivity();
 
     public Shotgun(){
         super.xAccThreshold = 14;
-        super.yAccThreshold = 8;
+        super.yAccThreshold = 14;
         super.zAccThreshold = 6;
         super.xGyroThreshold = 5;
-        super.yGyroThreshold = 10;
-        super.zGyroThreshold = 2.5f;
+        super.yGyroThreshold = 2.6f;
+        super.zGyroThreshold = 4;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -95,6 +102,7 @@ public class Shotgun extends AccelerometerListener {
         if(magazineCocked &&shots>0
                 && now - sideMove > 50) {
             soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
+            //vibrate();
             timeStamp = Calendar.getInstance().getTimeInMillis();
             magazineCocked = false;
             shots--;
@@ -103,6 +111,15 @@ public class Shotgun extends AccelerometerListener {
                 && now - sideMove > 50) {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
+        }
+    }
+
+    public void vibrate(){
+// Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= 26) {
+            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(150);
         }
     }
 }

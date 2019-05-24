@@ -54,8 +54,10 @@ public class VoiceManager implements RecognitionListener {
         }.execute();
     }
     public void destroy(){
-        recognizer.cancel();
-        recognizer.shutdown();
+        if(recognizer!=null) {
+            recognizer.cancel();
+            recognizer.shutdown();
+        }
     }
 
 
@@ -87,49 +89,55 @@ public class VoiceManager implements RecognitionListener {
        } else
          */
         if (text.equals("shotgun")) {
-            mainActivity.setPackage("Shotgun");
+            mainActivity.setPackageByVoice("Shotgun");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                soundPlayer.playSound(SoundPlayer.SOUND_MENU_SHOTGUN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("mario")) {
-            mainActivity.setPackage("Mario");
+            mainActivity.setPackageByVoice("Mario");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_MARIO);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("air horn")) {
-            mainActivity.setPackage("MLG");
+        }else if (text.equals("air horn")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("Air horn");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_AIRHORN);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("warcraft")) {
-            mainActivity.setPackage("Warcraft3");
+        }else if (text.equals("warcraft")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("Warcraft");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_WARCRAFT);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         }else if (text.equals("pistol")) {
-            mainActivity.setPackage("Pistol");
+            mainActivity.setPackageByVoice("Pistol");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_PISTOL);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
         } else if (text.equals("star wars")) {
-            mainActivity.setPackage("LightSaber");
+            mainActivity.setPackageByVoice("Star Wars");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_STARWARS);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        } else if (text.equals("fart prank")) {
-            mainActivity.setPackage("FartPrank");
+        } else if (text.equals("lasso")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("Lasso");
+            if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
+                soundPlayer.playSound(SoundPlayer.SOUND_MENU_LASSO);
+                timeStamp = Calendar.getInstance().getTimeInMillis();
+            }
+        } else if (text.equals("fart prank")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("FartPrank");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_FARTPRANK);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
             }
-        }else if (text.equals("drum kit")) {
-            mainActivity.setPackage("DrumKit");
+        }else if (text.equals("drum kit")&& MyJavaScriptInterface.betaPacksActiveState) {
+            mainActivity.setPackageByVoice("DrumKit");
             if((Calendar.getInstance().getTimeInMillis() - timeStamp) > 2000) {
                 soundPlayer.playSound(SoundPlayer.SOUND_MENU_DRUMKIT);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -160,8 +168,6 @@ public class VoiceManager implements RecognitionListener {
         recognizer.cancel();
         if (searchName.equals(KWS_SEARCH))
             recognizer.startListening(searchName);
-        else
-            recognizer.startListening(searchName, 100);
 
     }
 

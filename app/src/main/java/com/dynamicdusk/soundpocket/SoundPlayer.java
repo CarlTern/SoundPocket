@@ -63,7 +63,19 @@ public class SoundPlayer {
     public static final int SOUND_YAHOO= R.raw.yahoo;
     public static final int SOUND_LIGHTSABER_SWING_ONE= R.raw.lightsaberswing;
     public static final int SOUND_LIGHTSABER_SWING_TWO= R.raw.lightsaberswing2;
-
+    public static final int SOUND_LASSO_SPIN= R.raw.lassospin;
+    public static final int SOUND_LASSO_SPIN_REVERSE= R.raw.lassospinreverse;
+    public static final int SOUND_LASSO_SPIN_MORE= R.raw.lassospinmore;
+    public static final int SOUND_LASSO_SPIN_MORE_REVERSE= R.raw.lassospinmorereverse;
+    public static final int SOUND_LASSO_SPIN_MOST= R.raw.lassospinmost;
+    public static final int SOUND_LASSO_SPIN_MOST_REVERSE= R.raw.lassospinmostreverse;
+    public static final int SOUND_LASSO_THROW= R.raw.lassothrow;
+    public static final int SOUND_MENU_LASSO= R.raw.menulasso;
+    public static final int SOUND_RELOAD = R.raw.reload;
+    public static final int SOUND_JAMES_BOND_THEME= R.raw.jamesbondtheme;
+    public static final int SOUND_THE_FORCE_IS_WITH_YOU= R.raw.theforceiswithyou;
+    public static final int SOUND_ILL_BE_BACK= R.raw.illbeback;
+    public static final int SOUND_COMEDY_DRUM= R.raw.comedydrum;
 
 
 

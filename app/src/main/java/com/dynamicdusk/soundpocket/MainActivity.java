@@ -5,10 +5,12 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.AsyncTask;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private long timeStamp = 0;
     private VoiceManager voice;
     private boolean isVoiceOn = false;
+    private LightSaber saber = new LightSaber();
+
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
@@ -58,14 +62,15 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
             return;
         }
-        packages.put("Warcraft3", new Warcraft3());
+        packages.put("Warcraft", new Warcraft3());
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
-        packages.put("MLG", new MLG());
-        packages.put("LightSaber", new LightSaber());
+        packages.put("Air horn", new MLG());
+        packages.put("Star Wars", saber);
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
+        packages.put("Lasso", new Lasso());
 
         super.onCreate(savedInstanceState);
         this.getWindow().setStatusBarColor(Color.rgb(255, 200, 37));
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         final WebView webViewCallbackAccess = webView;
 
         voice = new VoiceManager(soundPlayer,this);
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
         //voice.runRecognizerSetup(); // this activates voice at app start
         /*
         webViewCallbackAccess.setOnKeyListener( new View.OnKeyListener()
@@ -210,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listD;
 
-            case "LightSaber":
+            case "Star Wars":
                 String[] listL = {
                         "Open",
                         "Close",
@@ -221,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listL;
 
-            case "Warcraft3":
+            case "Warcraft":
                 String[] listW = {
                         "Work Work",
                         "Yes Mi Lord",
@@ -234,10 +240,20 @@ public class MainActivity extends AppCompatActivity {
                         "Shoot",
                         "Shoot Silenced",
                         "Screw On Silencer",
+                        "Reload"
                 };
                 return listP;
 
-            case "MLG":
+                case "Lasso":
+                String[] listLasso = {
+                        "Lasso spin",
+                        "Lasso spin two",
+                        "Lasso spin three",
+                        "Lasso throw",
+                };
+                return listLasso;
+
+            case "Air horn":
                 String[] listMLG = {
                         "Airhorn"
                 };
@@ -292,8 +308,19 @@ public class MainActivity extends AppCompatActivity {
         returnie = list.toArray(returnie);
         return returnie;
     }
+
+    public void setPackageByVoice(String key) {
+        setPackage(key);
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                webView.reload(); //denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
+            }
+        });
+
+    }
     public void setPackage(String key){
-        if(currentPackage.equals("LightSaber")){
+        if(currentPackage.equals("Star Wars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
         packages.get(key).setSoundPlayer(this.soundPlayer);
@@ -305,13 +332,6 @@ public class MainActivity extends AppCompatActivity {
         if (manager.isSupported(this)) {
             manager.startListening(packages.get(key));
         }
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                webView.reload(); //denna kraschar webbläsaren. Vad är syftet? Kan göras genom att man kallar på reload genom en tråd.
-            }
-        });
-
     }
     @SuppressLint("StaticFieldLeak")
 
@@ -337,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean getVoiceStatus(){
         return isVoiceOn;
     }
+
 
 
 
