@@ -74,7 +74,7 @@
                 list.className = "browseGrid";
                 for(var i = 0; i < array.length; i++) {
                     var item = document.createElement('li');
-                    if(array[i] == 'Pistol' || array[i] == 'Shotgun' || array[i] == 'Mario' || array[i] == 'Star Wars') {
+                    if(array[i] == 'Pistol' || array[i] == 'Shotgun' || array[i] == 'Mario' || array[i] == 'Star Wars' || array[i] == 'Lasso' || array[i] == 'DrumKit') {
                         item.innerHTML =  `
                             <button class="browseBtn" onClick='Android.setPackage("${array[i]}")'>
                                 ${array[i]}

@@ -8,7 +8,7 @@ public class DrumKit extends AccelerometerListener {
 
 
     private float xAccThreshold = 20;
-    private float yAccThreshold = 18;
+    private float yAccThreshold = 20;
     private float zAccThreshold = 20;
     SoundPlayer soundPlayer;
     private long timeStamp =0;
