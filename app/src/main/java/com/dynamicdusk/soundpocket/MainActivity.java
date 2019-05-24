@@ -319,10 +319,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void setPackage(String key){
+
+    public void starWarsCheck(){
         if(currentPackage.equals("Star Wars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
+    }
+
+
+    public void setPackage(String key){
+        starWarsCheck();
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
         float[] accThresh = packages.get(key).getAccThresholds();

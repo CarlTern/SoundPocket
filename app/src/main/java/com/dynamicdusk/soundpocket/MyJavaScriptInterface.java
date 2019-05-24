@@ -55,10 +55,12 @@ public class MyJavaScriptInterface {
     @JavascriptInterface
     public void setSoundOn(boolean bool) {
         //alert("set soundOn to " + bool);
+
         if(bool) {
             soundPlayer.setSoundOn();
         } else {
             soundPlayer.setSoundOff();
+            mainActivity.starWarsCheck();
         }
     }
 
