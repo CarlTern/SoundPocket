@@ -87,6 +87,10 @@ public class MyJavaScriptInterface {
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_RIGHT_O));
         }else if (key.equals("DrumKit")&& soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_COMEDY_DRUM));
+        }else if (key.equals("Lasso")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_WHISTLE));
+        }else if (key.equals("FartPrank")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_FART_FIVE));
         }
         System.out.println("----------------------set package: " + key);
         goBack();

@@ -33,6 +33,7 @@ public class Lasso extends AccelerometerListener{
 
     public void onAccX(float force) {
         if (soundPlayer.isSoundOn() && spinLevel == 3 && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 1000) {
+            soundPlayer.killSound();
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_THROW);
             spinLevel=0;
             timeStamp = Calendar.getInstance().getTimeInMillis();
@@ -72,6 +73,10 @@ public class Lasso extends AccelerometerListener{
             firstSpin=true;
         }
         */
+
+       if(Calendar.getInstance().getTimeInMillis() - timeStampSpin > 2000){
+        spinLevel =0;
+        }
         if(soundPlayer.isSoundOn() && spinLevel==0 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin) > 1000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN);
             timeStampSpin = Calendar.getInstance().getTimeInMillis();

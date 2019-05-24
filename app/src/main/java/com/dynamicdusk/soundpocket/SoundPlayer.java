@@ -79,7 +79,8 @@ public class SoundPlayer {
     public static final int SOUND_YA= R.raw.ya;
     public static final int SOUND_HOO= R.raw.hoo;
     public static final int SOUND_SHOTGUN_RELOAD_SPLIT_1= R.raw.shotgunreloadsplit1;
-    public static final int SOUND_SHOTGUN_RELOAD_SPLIT_2=R.raw.shotgunreloadsplit2 ;
+    public static final int SOUND_SHOTGUN_RELOAD_SPLIT_2=R.raw.shotgunreloadsplit2;
+    public static final int SOUND_WHISTLE=R.raw.whistle;
 
 
 
@@ -145,6 +146,11 @@ public class SoundPlayer {
         looper.setLooping(false);
         looper.stop();
         looper.release();
+    }
+
+    public void killSound(){
+        mPlayer.stop();
+        mPlayer.release();
     }
 
     public void playSound(int sound) {
