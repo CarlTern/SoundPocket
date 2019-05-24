@@ -7,13 +7,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.AsyncTask;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -319,10 +317,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void setPackage(String key){
+
+    public void starWarsCheck(){
         if(currentPackage.equals("Star Wars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
+    }
+
+
+    public void setPackage(String key){
+        starWarsCheck();
         packages.get(key).setSoundPlayer(this.soundPlayer);
         currentPackage = key;
         float[] accThresh = packages.get(key).getAccThresholds();
