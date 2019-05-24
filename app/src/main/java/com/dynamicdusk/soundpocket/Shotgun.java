@@ -22,18 +22,19 @@ public class Shotgun extends AccelerometerListener {
     private SoundPlayer soundPlayer;
     private long sideMove;
     //State booleand
-    private boolean xAcc;
-    private boolean zGyro;
+    private long accX;
+    private long gyroZ;
+    private long drawBack;
     private long shotTime;
     long now;
     private MainActivity main = new MainActivity();
 
     public Shotgun(){
-        super.xAccThreshold = 14;
-        super.yAccThreshold = 14;
-        super.zAccThreshold = 6;
-        super.xGyroThreshold = 5;
-        super.yGyroThreshold = 2.6f;
+        super.xAccThreshold = 16;
+        super.yAccThreshold = 6;
+        super.zAccThreshold = 20;
+        super.xGyroThreshold = 20;
+        super.yGyroThreshold = 8;
         super.zGyroThreshold = 4;
     }
 
@@ -42,66 +43,42 @@ public class Shotgun extends AccelerometerListener {
     }
 
     public void onAccX(float force) {
-
-            if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400) {
-                if (zGyro == true && (Calendar.getInstance().getTimeInMillis() - shotTime < 200)){
-                    playShot();
-                    zGyro = false;
-                    xAcc = false;
-                } else {
-                    xAcc = true;
-                    shotTime = Calendar.getInstance().getTimeInMillis();
-                }
+        now = Calendar.getInstance().getTimeInMillis();
+        accX = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn() && now - timeStamp > 400) {
+            if (now - gyroZ < 200){
+                playShot();
+            }
         }
     }
 
     public void onAccY(float force) {
-        long now = Calendar.getInstance().getTimeInMillis();
-        if (soundPlayer.isSoundOn()
-            && (now - timeStamp) > 400
-            && now - shotTime > 400
-            && now - sideMove > 300) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn()) {
             if (shots > 0) {
-                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);       
-                magazineCocked = true;
-            } else if ((now - timeStamp) > 500){
-                soundPlayer.playSound(SoundPlayer.SOUND_EMPTY_PUMP);
+                if (force < 0) {
+                    downAcc = now;
+                } else {
+                    uppAcc = now;
+                }
+                if (now - downAcc < 100 && now - uppAcc < 100) {
+                    if (downAcc - uppAcc < 0) {
+                        downMove(force);
+                    } else {
+                        uppMove(force);
+                    }
+                }
             }
-            timeStamp = now;
         }
     }
 
     public void onAccZ(float force) {
-        now = Calendar.getInstance().getTimeInMillis();
-        sideMove = now;
     }
-
+    // TODO GYRO FIX
     public void onGyroY(float force){
         now = Calendar.getInstance().getTimeInMillis();
         if(soundPlayer.isSoundOn()
-                && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 400
-                && now - sideMove < 150) {
-
-                if(soundPlayer.isSoundOn()){
-
-                    if (force < 0) {
-                        downAcc = now;
-                    } else {
-                        uppAcc = now;
-                    }
-
-                    if (now - downAcc < 80 && now - uppAcc < 80) {
-
-                        if (downAcc - uppAcc < 0) {
-                            downMove(force);
-                        } else {
-                            uppMove(force);
-
-                        }
-                    }
-                }
-            }
-
+                && (now - timeStamp) > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             if(shots<8) {
@@ -110,39 +87,44 @@ public class Shotgun extends AccelerometerListener {
         }
     }
     public void onGyroZ(float force){
-        if (xAcc == true && (Calendar.getInstance().getTimeInMillis() - shotTime < 200)){
+        now = Calendar.getInstance().getTimeInMillis();
+        gyroZ = now;
+        if (now - accX < 200) {
             playShot();
-            zGyro = false;
-            xAcc = false;
-        } else {
-            zGyro = true;
-            shotTime = Calendar.getInstance().getTimeInMillis();
         }
     }
 
     private void playShot(){
         now = Calendar.getInstance().getTimeInMillis();
-        if(magazineCocked &&shots>0
-                && now - sideMove > 50) {
+        if(magazineCocked && shots>0 && now - timeStamp > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
-            //vibrate();
-            timeStamp = Calendar.getInstance().getTimeInMillis();
             magazineCocked = false;
             shots--;
-            timeStamp = Calendar.getInstance().getTimeInMillis();
-        } else if ((Calendar.getInstance().getTimeInMillis() - timeStamp) > 400
-                && now - sideMove > 50) {
+        } else if ( now - timeStamp > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
         }
+        timeStamp = now;
     }
 
     private void downMove(float force) {
-
+        now = Calendar.getInstance().getTimeInMillis();
+        if (now - timeStamp > 300){
+            drawBack = now;
+        }
     }
 
     private void uppMove(float force) {
-
+        now = Calendar.getInstance().getTimeInMillis();
+        if (now - drawBack < 500 && now - timeStamp > 300) {
+            if (shots > 0) {
+                soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_RELOAD);
+                magazineCocked = true;
+                timeStamp = now;
+            } else {
+                soundPlayer.playSound((SoundPlayer.SOUND_EMPTY_PUMP));
+                timeStamp = now;
+            }
+        }
     }
 
     public void vibrate(){
