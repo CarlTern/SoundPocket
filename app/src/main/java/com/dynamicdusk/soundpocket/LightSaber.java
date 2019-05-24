@@ -21,9 +21,9 @@ public class LightSaber extends AccelerometerListener {
         super.xAccThreshold = 40;
         super.yAccThreshold = 22;
         super.zAccThreshold = 12;
-        super.xGyroThreshold = 0.002f;
-        super.yGyroThreshold = 0.002f;
-        super.zGyroThreshold = 0.002f;
+        super.xGyroThreshold = 2f;
+        super.yGyroThreshold = 2f;
+        super.zGyroThreshold = 2f;
 
         timeStamp = Calendar.getInstance().getTimeInMillis();
         moveStamp = Calendar.getInstance().getTimeInMillis();
@@ -75,20 +75,23 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void onGyroX(float force){
-        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 500) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 600) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_ONE);
             moveStamp = Calendar.getInstance().getTimeInMillis();
         }
     }
     public void onGyroY(float force){
-        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 500) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 600) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
             moveStamp = Calendar.getInstance().getTimeInMillis();
         }
     }
 
     public void onGyroZ(float force){
-        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 500) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if(isOn &&soundPlayer.isSoundOn()&& (now - moveStamp) > 600) {
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_SWING_TWO);
             moveStamp = Calendar.getInstance().getTimeInMillis();
         }
