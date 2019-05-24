@@ -68,7 +68,7 @@
 
     <div id="voiceModal" class="modal fadeMe">
         <div class="modal-content fadeMe">
-            <span class="close">&times;</span>
+            <span id="closeVoice" class="close">&times;</span>
             <h2>Voice Control</h2>
             <img src="voice.svg" width="100px"/>
             <p>Toggle this slider to activate voice control.</p>
@@ -83,7 +83,7 @@
 
     <div id="betaModal" class="modal fadeMe">
         <div class="modal-content fadeMe">
-            <span class="close">&times;</span>
+            <span id="closeBeta" class="close">&times;</span>
             <h2>Beta Packages</h2>
             <p>Toggle this slider to activate beta packages.</p>
             <p>When having beta packages activated you can change try out not yet fully tested packages.</p>
@@ -124,7 +124,7 @@
         /* --------- VOICE MODAL STUFF -------- */
         var voiceModal = document.getElementById("voiceModal");
         var voiceBtn = document.getElementById("voiceInfo");
-        var span = document.getElementsByClassName("close")[0];
+        var spanVoice = document.getElementById("closeVoice");
 
         voiceBtn.onclick = function() {
             voiceModal.style.display = "block";
@@ -133,14 +133,18 @@
         /* --------- BETA MODAL STUFF -------- */
         var betaModal = document.getElementById("betaModal");
         var betaBtn = document.getElementById("betaInfo");
-        var span = document.getElementsByClassName("close")[0];
+        var spanBeta = document.getElementById("closeBeta");
 
         betaBtn.onclick = function() {
             betaModal.style.display = "block";
         }
 
         /* --------- MODAL STUFF ---------- */
-        span.onclick = function() {
+        spanVoice.onclick = function() {
+            voiceModal.style.display = "none";
+            betaModal.style.display = "none";
+        }
+        spanBeta.onclick = function() {
             voiceModal.style.display = "none";
             betaModal.style.display = "none";
         }
