@@ -91,6 +91,8 @@ public class MyJavaScriptInterface {
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_WHISTLE));
         }else if (key.equals("FartPrank")&& soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_FART_FIVE));
+        }else if (key.equals("Air horn")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_EXPLOSION));
         }
         System.out.println("----------------------set package: " + key);
         goBack();

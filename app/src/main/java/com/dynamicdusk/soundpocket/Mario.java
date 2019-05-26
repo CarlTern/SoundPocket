@@ -49,7 +49,7 @@ public class Mario extends AccelerometerListener {
 
             if (now - downAcc < 80 && now - uppAcc < 80) {
 
-                if (downAcc - uppAcc < 0 && (now - timeStampUpDown) > 400) {
+                if (downAcc - uppAcc < 1 && (now - timeStampUpDown) > 400) {
                     downMove(force);
                 } else if((now - timeStampUpDown) > 400){
                     uppMove(force);
@@ -80,10 +80,11 @@ public class Mario extends AccelerometerListener {
     }
 
     public void onGyroX(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        /*if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
+        */
     }
 
     public void onGyroY(float force) {
@@ -108,10 +109,10 @@ public class Mario extends AccelerometerListener {
             now = Calendar.getInstance().getTimeInMillis();
             soundPlayer.playSound(SoundPlayer.SOUND_COIN);
             points++;
-            if(points>10){
+            if(points>30){
                 soundPlayer.playSound(SoundPlayer.SOUND_POWER_UP);
                 levelUp =true;
-                points = 5;
+                points = 0;
             }
             timeStampUpDown = now;
 

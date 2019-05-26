@@ -82,6 +82,7 @@ public class SoundPlayer {
     public static final int SOUND_SHOTGUN_RELOAD_SPLIT_2=R.raw.shotgunreloadsplit2;
     public static final int SOUND_WHISTLE=R.raw.whistle;
     public static final int SOUND_LASSO_LONG=R.raw.lassolong;
+    public static final int SOUND_EXPLOSION=R.raw.explosion;
 
 
 
