@@ -90,7 +90,7 @@
     </div>
 </div>
 
-    <div class="wrapCenter">
+    <div class="wrapCenter mt-60">
         <h1 id="packTitle"></h1>
         <button id="btnInstructions" class="packBtn breathing-button" onclick="Android.goToSoundList()">
                 <img id="packImage" src="" width="150px" height="150px"/>
@@ -100,10 +100,6 @@
     </div>
 
     <div class="wrapFoot">
-        <div class="leftFloater clearFloater">
-            <p id="message"></p>
-        </div>
-
         <div class="rightFloater" id="settingsBtnDiv">
             <button class="navBtn" id="btnSettings" onclick="Android.goToSettings()">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -204,7 +200,7 @@
     }
 
     function callbackCurrentPackage(packageName, filename) {
-        document.getElementById("packTitle").innerHTML = packageName + ' pack';
+        document.getElementById("packTitle").innerHTML = packageName;
 
         document.getElementById("packImage").src = filename;
     }
