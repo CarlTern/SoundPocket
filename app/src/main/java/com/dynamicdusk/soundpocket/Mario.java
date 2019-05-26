@@ -8,10 +8,14 @@ public class Mario extends AccelerometerListener {
     boolean levelUp = false;
     int points = 0;
     private long timeStamp = 0;
+    private long timeStampUpDown = 0;
     private SoundPlayer soundPlayer;
+    private long now =0;
+    private long uppAcc = 0;
+    private long downAcc = 0;
 
     public Mario(){
-        super.xAccThreshold = 21;
+        super.xAccThreshold = 45;
         super.yAccThreshold = 11;
         super.zAccThreshold = 12;
         super.xGyroThreshold = 5;
@@ -30,23 +34,42 @@ public class Mario extends AccelerometerListener {
             timeStamp = Calendar.getInstance().getTimeInMillis();
 
         }
-        //jsHandler.alert("Force: " + force);
     }
 
     public void onAccY(float force) {
 
+        now = Calendar.getInstance().getTimeInMillis();
+        if(soundPlayer.isSoundOn()){
+
+            if (force < 0) {
+                downAcc = now;
+            } else {
+                uppAcc = now;
+            }
+
+            if (now - downAcc < 80 && now - uppAcc < 80) {
+
+                if (downAcc - uppAcc < 0 && (now - timeStampUpDown) > 400) {
+                    downMove(force);
+                } else if((now - timeStampUpDown) > 400){
+                    uppMove(force);
+
+                }
+            }
+        }
+    /*
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             soundPlayer.playSound(SoundPlayer.SOUND_COIN);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
             points++;
             if(points>10){
                 soundPlayer.playSound(SoundPlayer.SOUND_POWER_UP);
                 levelUp =true;
                 points = 5;
-
             }
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+
         }
-        //jsHandler.alert("Force: " + force);
+        */
     }
 
     public void onAccZ(float force) {
@@ -54,7 +77,6 @@ public class Mario extends AccelerometerListener {
             soundPlayer.playSound(SoundPlayer.SOUND_BOING);
             timeStamp = Calendar.getInstance().getTimeInMillis();
         }
-        //jsHandler.alert("Force: " + force);
     }
 
     public void onGyroX(float force) {
@@ -80,5 +102,23 @@ public class Mario extends AccelerometerListener {
                 levelUp = false;
             }
         }
+    }
+
+    private void uppMove(float force){
+            now = Calendar.getInstance().getTimeInMillis();
+            soundPlayer.playSound(SoundPlayer.SOUND_COIN);
+            points++;
+            if(points>10){
+                soundPlayer.playSound(SoundPlayer.SOUND_POWER_UP);
+                levelUp =true;
+                points = 5;
+            }
+            timeStampUpDown = now;
+
+    }
+    private void downMove(float force) {
+        now = Calendar.getInstance().getTimeInMillis();
+            soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
+            timeStampUpDown = now;
     }
 }
