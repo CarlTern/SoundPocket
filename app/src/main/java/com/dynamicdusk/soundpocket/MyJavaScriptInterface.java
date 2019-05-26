@@ -258,9 +258,6 @@ public class MyJavaScriptInterface {
             case "Close":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
                 break;
-            case "Pulse":
-                    //Måste fixas. Loopas för länge.
-                break;
             case "Hit":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
                 break;

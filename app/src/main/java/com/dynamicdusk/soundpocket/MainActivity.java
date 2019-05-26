@@ -219,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
                 String[] listL = {
                         "Open",
                         "Close",
-                        "Pulse",
                         "Hit",
                         "Swing One",
                         "Swing Two"
