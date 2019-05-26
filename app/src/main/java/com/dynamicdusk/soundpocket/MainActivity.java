@@ -7,9 +7,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     private VoiceManager voice;
     private boolean isVoiceOn = false;
     private LightSaber saber = new LightSaber();
-
 
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
@@ -245,8 +246,6 @@ public class MainActivity extends AppCompatActivity {
                 case "Lasso":
                 String[] listLasso = {
                         "Lasso spin",
-                        "Lasso spin two",
-                        "Lasso spin three",
                         "Lasso throw",
                 };
                 return listLasso;
@@ -360,6 +359,16 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean getVoiceStatus(){
         return isVoiceOn;
+    }
+
+    public void vibrate(){
+// Vibrate for 500 milliseconds
+        Vibrator v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= 26) {
+            v.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            v.vibrate(150);
+        }
     }
 
 

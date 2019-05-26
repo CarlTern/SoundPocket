@@ -44,18 +44,18 @@ public class Lasso extends AccelerometerListener{
     }
 
     public void onGyroZ(float force) {
-       if(Calendar.getInstance().getTimeInMillis() - timeStampSpin > 2000){
+       if(Calendar.getInstance().getTimeInMillis() - timeStampSpin > 3000){
         spinLevel =0;
         }
-        if(soundPlayer.isSoundOn() && spinLevel==0 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin) > 1000) {
+        if(soundPlayer.isSoundOn() && spinLevel==0 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin) > 2000) {
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN);
             timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel=1;
-        }else if (soundPlayer.isSoundOn() && spinLevel==1 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>1000){
+        }else if (soundPlayer.isSoundOn() && spinLevel==1 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>2000){
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
             timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel=2;
-        }else if (soundPlayer.isSoundOn() && spinLevel>=2 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>1000){
+        }else if (soundPlayer.isSoundOn() && spinLevel>=2 &&(Calendar.getInstance().getTimeInMillis() - timeStampSpin)>1180){
             soundPlayer.playSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
             timeStampSpin = Calendar.getInstance().getTimeInMillis();
             spinLevel =3;

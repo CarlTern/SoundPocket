@@ -298,13 +298,7 @@ public class MyJavaScriptInterface {
 
             //------------Lasso
             case "Lasso spin":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN);
-                break;
-            case "Lasso spin two":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
-                break;
-            case "Lasso spin three":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_LONG);
                 break;
             case "Lasso throw":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);

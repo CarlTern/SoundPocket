@@ -127,12 +127,4 @@ public class Shotgun extends AccelerometerListener {
         }
     }
 
-    public void vibrate(){
-// Vibrate for 500 milliseconds
-        if (Build.VERSION.SDK_INT >= 26) {
-            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(150);
-        }
-    }
 }
