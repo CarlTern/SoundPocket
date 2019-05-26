@@ -18,7 +18,7 @@ public class LightSaber extends AccelerometerListener {
     private long downAcc = 0;
 
     public LightSaber(){
-        super.xAccThreshold = 40;
+        super.xAccThreshold = 30;
         super.yAccThreshold = 22;
         super.zAccThreshold = 12;
         super.xGyroThreshold = 2f;
