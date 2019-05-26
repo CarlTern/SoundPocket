@@ -117,12 +117,32 @@
                 <div class="modal-content fadeMe">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Master the ${sound} sound</h2>
-                <img src="${sound}1.svg" width="100px"/>
-                <img src="${sound}2.svg" width="100px"/>
+                <img id="image" src="" width="100px"/>
                 <p>Here there will be instructions for ${sound}.</p>
                 </div>
             `
+            setImages(sound);
+            changeImage();
         }
+
+        /* ------------------ "Animation" of picture ------------------- */
+        
+        var currentPos = 0;
+        var images = [];
+
+        function setImages(sound) {
+            currentPos = 0;
+            images = [sound + "1.svg", sound + "2.svg"];
+        }
+
+        function changeImage() {
+            if (++currentPos >= images.length){
+                currentPos = 0;
+            }
+            document.getElementById("image").src = images[currentPos];
+        }
+
+        setInterval(changeImage, 1000);
     </script>
 </body>
 </html>
