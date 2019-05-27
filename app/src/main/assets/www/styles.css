@@ -524,8 +524,8 @@ input:checked + .slider:before {
   }
 
   25% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
   }
 
   60% {
@@ -547,9 +547,9 @@ input:checked + .slider:before {
   }
 
   25% {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
   }
 
   60% {
@@ -563,4 +563,11 @@ input:checked + .slider:before {
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
+}
+
+.paused{
+    -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused;
+    animation-play-state:paused;
 }

@@ -257,6 +257,8 @@
         btn4.disabled = false;
         btn5.disabled = false;
 
+        btn1.classList.remove("paused");
+
         lock = document.getElementById("lock");
         lock.style.display = "none";
         Android.setLock(false);
@@ -279,6 +281,8 @@
         btn3.disabled = true;
         btn4.disabled = true;
         btn5.disabled = true;
+
+        btn1.classList.add("paused");
 
         lock = document.getElementById("lock");
         lock.style.display = "block";
