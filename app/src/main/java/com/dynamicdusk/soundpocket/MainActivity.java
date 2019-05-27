@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
+
         this.soundPlayer = new SoundPlayer(this);
         this.jsHandler = new MyJavaScriptInterface(webView, this, soundPlayer, this);
         webView.addJavascriptInterface(jsHandler, "Android");
@@ -139,10 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        packages.get("Shotgun").setSoundPlayer(this.soundPlayer);
-        if (AccelerometerManager.isSupported(this)) {
-            manager.startListening(packages.get("Shotgun"));
-        }
+        setPackage("Shotgun");
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -368,6 +366,30 @@ public class MainActivity extends AppCompatActivity {
         } else {
             v.vibrate(150);
         }
+    }
+
+    public void setLock(final boolean lock){
+        final View decorView = getWindow().getDecorView();
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (lock){
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                }else {
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                }
+                // Stuff that updates the UI
+
+            }
+        });
+
     }
 
 

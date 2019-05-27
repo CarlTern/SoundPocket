@@ -444,6 +444,7 @@ public class MyJavaScriptInterface {
 
         runJavaScript("callbackPackageList(" + stringArray.toString() + ", " + betaPacksActiveState + ")");
         System.out.println("callbackPackageList(\"" + stringArray.toString() + "\")");
+
     }
 
     @JavascriptInterface
@@ -495,5 +496,10 @@ public class MyJavaScriptInterface {
                 webView.goBack();
             }
         });
+    }
+
+    @JavascriptInterface
+    public void setLock(boolean lock){
+        mainActivity.setLock(lock);
     }
 }
