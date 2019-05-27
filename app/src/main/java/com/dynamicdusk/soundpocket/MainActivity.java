@@ -140,10 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        packages.get("Shotgun").setSoundPlayer(this.soundPlayer);
-        if (AccelerometerManager.isSupported(this)) {
-            manager.startListening(packages.get("Shotgun"));
-        }
+        setPackage("Shotgun");
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
