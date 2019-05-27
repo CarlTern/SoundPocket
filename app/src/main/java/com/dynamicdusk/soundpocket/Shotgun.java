@@ -22,7 +22,7 @@ public class Shotgun extends AccelerometerListener {
     private SoundPlayer soundPlayer;
     private long sideMove;
     //State booleand
-    private long accX;
+    private long rightMove;
     private long gyroZ;
     private long drawBack;
     private long shotTime;
@@ -44,10 +44,18 @@ public class Shotgun extends AccelerometerListener {
 
     public void onAccX(float force) {
         now = Calendar.getInstance().getTimeInMillis();
-        accX = Calendar.getInstance().getTimeInMillis();
-        if (soundPlayer.isSoundOn() && now - timeStamp > 400) {
-            if (now - gyroZ < 200){
-                playShot();
+        if (soundPlayer.isSoundOn()) {
+            if (force < 0) {
+                downAcc = now;
+            } else {
+                uppAcc = now;
+            }
+            if (now - downAcc < 100 && now - uppAcc < 100) {
+                if (downAcc - uppAcc < 0) {
+                    rightMove(force);
+                } else {
+                    leftMove(force);
+                }
             }
         }
     }
@@ -55,18 +63,16 @@ public class Shotgun extends AccelerometerListener {
     public void onAccY(float force) {
         now = Calendar.getInstance().getTimeInMillis();
         if (soundPlayer.isSoundOn()) {
-            if (shots > 0) {
-                if (force < 0) {
-                    downAcc = now;
+            if (force < 0) {
+                downAcc = now;
+            } else {
+                uppAcc = now;
+            }
+            if (now - downAcc < 100 && now - uppAcc < 100) {
+                if (downAcc - uppAcc < 0) {
+                    downMove(force);
                 } else {
-                    uppAcc = now;
-                }
-                if (now - downAcc < 100 && now - uppAcc < 100) {
-                    if (downAcc - uppAcc < 0) {
-                        downMove(force);
-                    } else {
-                        uppMove(force);
-                    }
+                    uppMove(force);
                 }
             }
         }
@@ -89,18 +95,18 @@ public class Shotgun extends AccelerometerListener {
     public void onGyroZ(float force){
         now = Calendar.getInstance().getTimeInMillis();
         gyroZ = now;
-        if (now - accX < 200) {
+        if (now - rightMove < 200) {
             playShot();
         }
     }
 
     private void playShot(){
         now = Calendar.getInstance().getTimeInMillis();
-        if(magazineCocked && shots>0 && now - timeStamp > 400) {
+        if(magazineCocked && now - timeStamp > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_SHOTGUN_SHOT);
             magazineCocked = false;
             shots--;
-        } else if ( now - timeStamp > 400) {
+        } else if (now - timeStamp > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
         }
         timeStamp = now;
@@ -127,4 +133,24 @@ public class Shotgun extends AccelerometerListener {
         }
     }
 
+    private void rightMove(float force) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if (now - gyroZ < 200) {
+            playShot();
+        }
+        rightMove = now;
+    }
+
+    private void leftMove(float force){
+
+    }
+
+    public void vibrate(){
+// Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= 26) {
+            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            ((Vibrator) main.getSystemService(main.VIBRATOR_SERVICE)).vibrate(150);
+        }
+    }
 }
