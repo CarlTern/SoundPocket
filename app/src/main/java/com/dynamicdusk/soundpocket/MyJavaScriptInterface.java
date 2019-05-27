@@ -181,7 +181,7 @@ public class MyJavaScriptInterface {
             case "Empty Pump":
                 startPositionText = "Pointing straight forward away from body.";
                 endPositionText = "Pointing straight forward away from body.";
-                howToText = "With a quick jerking motion, move your phone towards your body and then away from it again (Your shotgun must be unloaded in order to dry-pump it).";
+                howToText = "With a quick jerking motion, move your phone towards your body and then away from it again (Your shotgun must be unloaded in order to empty-pump it).";
                 break;
             case "Ammo Refill":
                 startPositionText = "Pointing straight forward.";
@@ -252,24 +252,24 @@ public class MyJavaScriptInterface {
             case "Hit":
                 startPositionText = "Pointing 90 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a quick motion, tilt your phone 90 degrees down so that it's now pointing horizontally forward.";
+                howToText = "With a quick motion, tilt your phone 90 degrees down so that it's now pointing horizontally forward (The lightsaber needs to be activated in order to hit).";
                 break;
             case "Swing One":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction (The lightsaber needs to be activated in order to swing).";
                 break;
             case "Swing Two":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction (The lightsaber needs to be activated in order to swing).";
                 break;
 
             //------------Pistol
             case "Shoot":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing 45 degrees up.";
-                howToText = "With a quick motion, tilt your phone 45 degrees up (Your pistol must be loaded and the silencer must be off in order to shoot).";
+                howToText = "With a quick motion, tilt your phone 45 degrees up (Your pistol must be loaded and the silencer must be off in order to shoot loudly).";
                 break;
             case "Shoot Silenced":
                 startPositionText = "Pointing straight forward.";
@@ -296,7 +296,7 @@ public class MyJavaScriptInterface {
             case "Throw":
                 startPositionText = "Pointing 90 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a quick motion, tilt your phone 90 degrees down so that it's now pointing horizontally forward. The lasso needs to have been spun up for at least 4 seconds in order to throw it.";
+                howToText = "With a quick motion, tilt your phone 90 degrees down so that it's now pointing horizontally forward. The lasso needs to have been spun up for at least 4 seconds in order to be able to throw it.";
                 break;
 
             //------------Warcraft
@@ -324,40 +324,40 @@ public class MyJavaScriptInterface {
                 break;
 
             //------------FartPrank
-            case "Fart1":
+            case "Fart 1":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart2":
+            case "Fart 2":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart3":
+            case "Fart 3":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart4":
+            case "Fart 4":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart5":
+            case "Fart 5":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart6":
+            case "Fart 6":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
-            case "Fart7":
+            case "Fart 7":
                 startPositionText = "Pointing 45 degrees up.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "With a gentle motion, tilt your phone in any direction.";
+                howToText = "With a gentle motion, tilt your phone in any direction. Prank your friend by putting your phone in their back-pocket!";
                 break;
 
                 //----------etc.
