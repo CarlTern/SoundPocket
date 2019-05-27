@@ -154,7 +154,11 @@
 
         function setImages(sound) {
             currentPos = 0;
-            images = [sound + "1.svg", sound + "2.svg"];
+            if (sound == "Pump"){
+                images = [sound + "1.svg", sound + "2.svg", sound + "3.svg"];
+            } else {
+                images = [sound + "1.svg", sound + "2.svg"];
+            }
         }
 
         function changeImage() {
