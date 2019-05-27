@@ -166,22 +166,22 @@ public class MyJavaScriptInterface {
             case "Fire":
                 startPositionText = "Pointing straight forward";
                 endPositionText = "Pointing 45 degrees up";
-                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up (Your shotgun must be loaded and pumped in order to fire).";
                 break;
             case "Dry Fire":
                 startPositionText = "Pointing straight forward";
                 endPositionText = "Pointing 45 degrees up";
-                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up (Your shotgun must be unloaded in order to dry-fire).";
                 break;
             case "Pump":
                 startPositionText = "Pointing straight forward away from body";
                 endPositionText = "Pointing straight forward away from body";
-                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again.";
+                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be loaded in order to pump it).";
                 break;
             case "Empty Pump":
                 startPositionText = "Pointing straight forward away from body";
                 endPositionText = "Pointing straight forward away from body";
-                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again.";
+                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be unloaded in order to dry-pump it).";
                 break;
             case "Ammo Refill":
                 startPositionText = "Pointing straight forward";
