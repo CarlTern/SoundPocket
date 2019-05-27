@@ -176,90 +176,110 @@ public class MyJavaScriptInterface {
             case "Pump":
                 startPositionText = "Pointing straight forward away from body";
                 endPositionText = "Pointing straight forward away from body";
-                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be loaded in order to pump it).";
+                howToText = "Hold your phone pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be loaded in order to pump it).";
                 break;
             case "Empty Pump":
                 startPositionText = "Pointing straight forward away from body";
                 endPositionText = "Pointing straight forward away from body";
-                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be unloaded in order to dry-pump it).";
+                howToText = "Hold your phone pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again (Your shotgun must be unloaded in order to dry-pump it).";
                 break;
             case "Ammo Refill":
                 startPositionText = "Pointing straight forward";
                 endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left";
-                howToText = "Hold your phone pointing forward horizontally. In a jerking motion, tilt it 90 degrees to the left or right";
+                howToText = "Hold your phone pointing forward horizontally. In a fast jerking motion, tilt it 90 degrees to the left or right";
                 break;
 
             //------------Mario
             case "Jump":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing vertically up";
+                endPositionText = "Pointing vertically up";
+                howToText = "In a fast jerking motion, move your phone upwards";
                 break;
             case "Pipe":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing vertically up";
+                endPositionText = "Pointing vertically up";
+                howToText = "In a fast jerking motion, move your phone downwards";
                 break;
             case "Fireball":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
+                break;
+            case "Yahoo":
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward";
+                howToText = "In a fast motion, move your phone straight up";
+                break;
+            case "MammaMia":
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left";
+                howToText = "Hold your phone pointing forward horizontally. In a fast jerking motion, tilt it 90 degrees to the left or right";
+                break;
+            case "Boing":
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward";
+                howToText = "In a fast motion, move your phone sideways.";
                 break;
 
             //------------Drumkit
             case "Snare":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing 45 degrees up";
+                endPositionText = "Pointing straight forward";
+                howToText = "Hold your phone pointing 45 degrees up. With a quick motion, tilt it 45 degrees down so that it's now pointing horizontally forward.";
                 break;
             case "Cymbal":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward";
+                howToText = "In a fast jerking motion, move your phone forward away from your body.";
                 break;
             case "Tom":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward";
+                howToText = "In a fast motion, move your phone sideways.";
                 break;
 
             //------------Star Wars
             case "Open":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing vertically up";
+                endPositionText = "Pointing vertically up";
+                howToText = "In a fast jerking motion, move your phone upwards (this activates the lightsaber)";
                 break;
             case "Close":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing vertically up";
+                endPositionText = "Pointing vertically up";
+                howToText = "In a fast jerking motion, move your phone downwards (this deactivates the lightsaber)";
                 break;
             case "Hit":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing 90 degrees up";
+                endPositionText = "Pointing straight forward";
+                howToText = "Hold your phone pointing 90 degrees up. With a quick motion, tilt it 90 degrees down so that it's now pointing horizontally forward.";
                 break;
             case "Swing One":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing 45 degrees up";
+                endPositionText = "Pointing straight forward";
+                howToText = "Hold your phone pointing upwards. With a gentle motion, tilt it in any direction.";
                 break;
             case "Swing Two":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing 45 degrees up";
+                endPositionText = "Pointing straight forward";
+                howToText = "Hold your phone pointing upwards. With a gentle motion, tilt it in any direction.";
                 break;
 
             //------------Pistol
             case "Shoot":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up (Your pistol must be loaded and the silencer must be off in order to shoot).";
                 break;
             case "Shoot Silenced":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up (Your pistol must be loaded and the silencer must be off in order to shoot silenced).";
+                break;
+            case "Dry fire":
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up (Your pistol must be unloaded to dry fire).";
                 break;
             case "Screw On Silencer":
                 startPositionText = "fill in start position";
