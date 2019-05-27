@@ -288,12 +288,12 @@ public class MyJavaScriptInterface {
                 break;
 
             //------------Lasso
-            case "Lasso Spin":
+            case "Spin":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
                 howToText = "Move your phone forwards and backwards in small movements, while pointing it vertically upwards in order to speed up the lasso.";
                 break;
-            case "Lasso Throw":
+            case "Throw":
                 startPositionText = "Pointing 90 degrees up.";
                 endPositionText = "Pointing straight forward.";
                 howToText = "With a quick motion, tilt your phone 90 degrees down so that it's now pointing horizontally forward. The lasso needs to have been spun up for at least 4 seconds in order to throw it.";
@@ -465,10 +465,10 @@ public class MyJavaScriptInterface {
                 break;
 
             //------------Lasso
-            case "Lasso Spin":
+            case "Spin":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_LONG);
                 break;
-            case "Lasso Throw":
+            case "Throw":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
                 break;
 

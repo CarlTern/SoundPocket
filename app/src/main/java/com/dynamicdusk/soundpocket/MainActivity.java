@@ -247,8 +247,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case "Lasso":
                 String[] listLasso = {
-                        "Lasso Spin",
-                        "Lasso Throw",
+                        "Spin",
+                        "Throw",
                 };
                 return listLasso;
 
