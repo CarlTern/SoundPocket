@@ -5,7 +5,7 @@
 </head>
 <body class="fadeMe">
     <div class="wrapCenter">
-        <h1 id="packName"></h1>
+        <h1 id="packName" class="mt-40"></h1>
         <div id="listBuilder"></div>
         <p id="log"></p>
 
@@ -21,7 +21,7 @@
         var sounds = [];
 
         function callbackCurrentPackage(stringPack) {
-            document.getElementById('packName').innerHTML = `${stringPack} pack`
+            document.getElementById('packName').innerHTML = `${stringPack}`
         }
 
         function callbackSoundList(arraySounds) {
@@ -116,13 +116,33 @@
             modal.innerHTML = `
                 <div class="modal-content fadeMe">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Master the ${sound} sound</h2>
-                <img src="${sound}1.svg" width="100px"/>
-                <img src="${sound}2.svg" width="100px"/>
-                <p>Here there will be instructions for ${sound}.</p>
+                <h2>${sound}</h2>
+                <img id="image" src="" width="100px"/>
+                <p> The image above demonstrates how to trigger the "${sound}" sound. Some movements require a certain amount of force in order to play the sound.</p>
                 </div>
             `
+            setImages(sound);
+            changeImage();
         }
+
+        /* ------------------ "Animation" of picture ------------------- */
+
+        var currentPos = 0;
+        var images = [];
+
+        function setImages(sound) {
+            currentPos = 0;
+            images = [sound + "1.svg", sound + "2.svg"];
+        }
+
+        function changeImage() {
+            if (++currentPos >= images.length){
+                currentPos = 0;
+            }
+            document.getElementById("image").src = images[currentPos];
+        }
+
+        setInterval(changeImage, 1000);
     </script>
 </body>
 </html>

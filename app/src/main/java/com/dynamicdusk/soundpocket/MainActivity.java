@@ -7,9 +7,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isVoiceOn = false;
     private LightSaber saber = new LightSaber();
 
-
     private HashMap<String, AccelerometerListener> packages = new HashMap<String, AccelerometerListener>();
 
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         packages.put("Shotgun", new Shotgun());
         packages.put("Mario", new Mario());
         packages.put("Air horn", new MLG());
-        packages.put("Star Wars", saber);
+        packages.put("StarWars", saber);
         packages.put("Pistol", new Pistol());
         packages.put("DrumKit", new DrumKit());
         packages.put("FartPrank", new FartPrank());
@@ -214,11 +215,10 @@ public class MainActivity extends AppCompatActivity {
                 };
                 return listD;
 
-            case "Star Wars":
+            case "StarWars":
                 String[] listL = {
                         "Open",
                         "Close",
-                        "Pulse",
                         "Hit",
                         "Swing One",
                         "Swing Two"
@@ -245,8 +245,6 @@ public class MainActivity extends AppCompatActivity {
                 case "Lasso":
                 String[] listLasso = {
                         "Lasso spin",
-                        "Lasso spin two",
-                        "Lasso spin three",
                         "Lasso throw",
                 };
                 return listLasso;
@@ -301,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         for (String name : packages.keySet()){
             list.add(name);
         }
-        list.add("NOT WORKING");
+
         String[] returnie = new String[list.size()];
         returnie = list.toArray(returnie);
         return returnie;
@@ -319,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void starWarsCheck(){
-        if(currentPackage.equals("Star Wars")&&saber.isOn()){
+        if(currentPackage.equals("StarWars")&&saber.isOn()){
             packages.get(currentPackage).killLoop();
         }
     }
@@ -360,6 +358,16 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean getVoiceStatus(){
         return isVoiceOn;
+    }
+
+    public void vibrate(){
+// Vibrate for 500 milliseconds
+        Vibrator v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= 26) {
+            v.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            v.vibrate(150);
+        }
     }
 
 

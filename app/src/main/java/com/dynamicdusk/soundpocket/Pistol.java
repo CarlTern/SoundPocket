@@ -1,5 +1,9 @@
 package com.dynamicdusk.soundpocket;
 
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+
 import java.util.Calendar;
 
 
@@ -13,6 +17,7 @@ public class Pistol extends AccelerometerListener {
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     private int shots = 0;
+    private MainActivity main = new MainActivity();
 
     public Pistol(){
         super.xAccThreshold = xAccThreshold;
@@ -69,5 +74,6 @@ public class Pistol extends AccelerometerListener {
     
         public void onGyroZ(float force) {
         }
-        //jsHandler.alert("Force: " + force);
+
+
     }

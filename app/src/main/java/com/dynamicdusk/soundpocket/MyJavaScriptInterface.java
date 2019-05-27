@@ -77,7 +77,7 @@ public class MyJavaScriptInterface {
     public void setPackage(String key) {
         if(key.equals("Mario") && soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_ITS_A_ME));
-        }else if (key.equals("Star Wars")&& soundPlayer.isSoundOn() ){
+        }else if (key.equals("StarWars")&& soundPlayer.isSoundOn() ){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_THE_FORCE_IS_WITH_YOU));
         }else if (key.equals("Pistol")&& soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_JAMES_BOND_THEME));
@@ -87,6 +87,12 @@ public class MyJavaScriptInterface {
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_RIGHT_O));
         }else if (key.equals("DrumKit")&& soundPlayer.isSoundOn()){
             soundPlayer.playSpecificSound((SoundPlayer.SOUND_COMEDY_DRUM));
+        }else if (key.equals("Lasso")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_WHISTLE));
+        }else if (key.equals("FartPrank")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_FART_FIVE));
+        }else if (key.equals("Air horn")&& soundPlayer.isSoundOn()){
+            soundPlayer.playSpecificSound((SoundPlayer.SOUND_EXPLOSION));
         }
         System.out.println("----------------------set package: " + key);
         goBack();
@@ -254,9 +260,6 @@ public class MyJavaScriptInterface {
             case "Close":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_CLOSE);
                 break;
-            case "Pulse":
-                    //Måste fixas. Loopas för länge.
-                break;
             case "Hit":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LIGHTSABER_HIT);
                 break;
@@ -294,13 +297,7 @@ public class MyJavaScriptInterface {
 
             //------------Lasso
             case "Lasso spin":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN);
-                break;
-            case "Lasso spin two":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MORE);
-                break;
-            case "Lasso spin three":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_SPIN_MOST);
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_LONG);
                 break;
             case "Lasso throw":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
@@ -355,6 +352,27 @@ public class MyJavaScriptInterface {
                 break;
             case "Mario":
                 filename = "mario.svg";
+                break;
+            case "FartPrank":
+                filename = "fartprank.svg";
+                break;
+            case "DrumKit":
+                filename = "drumkit.svg";
+                break;
+            case "StarWars":
+                filename = "starwars.svg";
+                break;
+            case "Pistol":
+                filename = "pistol.svg";
+                break;
+            case "Lasso":
+                filename = "lasso.svg";
+                break;
+            case "Warcraft":
+                filename = "warcraft.svg";
+                break;
+            case "Air horn":
+                filename = "air horn.svg";
                 break;
         }
         runJavaScript("callbackCurrentPackage(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + filename + "\")");
