@@ -164,29 +164,29 @@ public class MyJavaScriptInterface {
         switch(specificSound) {
             //------------Shotgun
             case "Fire":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
                 break;
             case "Dry Fire":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing 45 degrees up";
+                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
                 break;
             case "Pump":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward away from body";
+                endPositionText = "Pointing straight forward away from body";
+                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again.";
                 break;
             case "Empty Pump":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward away from body";
+                endPositionText = "Pointing straight forward away from body";
+                howToText = "Hold your phone away from your body pointing forward horizontally. With a fast jerking motion, move it towards your body and then away from it again.";
                 break;
             case "Ammo Refill":
-                startPositionText = "fill in start position";
-                endPositionText = "fill in end position";
-                howToText = "fill in instruction text";
+                startPositionText = "Pointing straight forward";
+                endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left";
+                howToText = "Hold your phone pointing forward horizontally. In a jerking motion, tilt it 90 degrees to the left or right";
                 break;
 
             //------------Mario
@@ -201,6 +201,145 @@ public class MyJavaScriptInterface {
                 howToText = "fill in instruction text";
                 break;
             case "Fireball":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Drumkit
+            case "Snare":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Cymbal":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Tom":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Star Wars
+            case "Open":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Close":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Hit":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Swing One":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Swing Two":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Pistol
+            case "Shoot":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Shoot Silenced":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Screw On Silencer":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Reload":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Lasso
+            case "Lasso Spin":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Lasso Throw":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Warcraft
+            case "Work Work":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Yes Mi Lord":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Off I Go Then":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------Airhorn
+            case "Airhorn":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+
+            //------------FartPrank
+            case "Fart1":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart2":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart3":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart4":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart5":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart6":
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
+                break;
+            case "Fart7":
                 startPositionText = "fill in start position";
                 endPositionText = "fill in end position";
                 howToText = "fill in instruction text";
@@ -311,10 +450,10 @@ public class MyJavaScriptInterface {
                 break;
 
             //------------Lasso
-            case "Lasso spin":
+            case "Lasso Spin":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_LONG);
                 break;
-            case "Lasso throw":
+            case "Lasso Throw":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_LASSO_THROW);
                 break;
 
