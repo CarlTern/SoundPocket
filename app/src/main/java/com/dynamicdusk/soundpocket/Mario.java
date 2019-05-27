@@ -17,7 +17,7 @@ public class Mario extends AccelerometerListener {
     public Mario(){
         super.xAccThreshold = 39;
         super.yAccThreshold = 11;
-        super.zAccThreshold = 12;
+        super.zAccThreshold = 16;
         super.xGyroThreshold = 5;
         super.yGyroThreshold = 6;
         super.zGyroThreshold = 2.8f;
