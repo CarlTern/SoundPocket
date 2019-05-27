@@ -117,11 +117,11 @@
                 <div class="modal-content fadeMe">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>${sound}</h2>
-                <img id="image" src="" width="100px"/>
+                <img id="image" src="" width="150px"/>
                 <p id="startPos">startPos</p>
                 <p id="endPos">endPos</p>
                 <p id="howTo">howTo</p>
-                <p id="textLog"></p>
+                <small id="hint"></small>
                 </div>
             `
             setTexts(sound);
@@ -134,7 +134,7 @@
             Android.getSpecificSoundInfo(sound);
         }
 
-        function callbackSpecificSoundInfo(startPos, endPos, howTo) {
+        function callbackSpecificSoundInfo(startPos, endPos, howTo, hint) {
             document.getElementById("startPos").innerHTML = `
                 <b>Start position:</b> ${startPos}
             `
@@ -144,6 +144,11 @@
             document.getElementById("howTo").innerHTML = `
                 <b>How:</b><br> ${howTo}
             `
+            if (hint != ""){
+                document.getElementById("hint").innerHTML = `
+                    <b>Hint! ${hint}</b>
+                `
+            }
         }
 
 
