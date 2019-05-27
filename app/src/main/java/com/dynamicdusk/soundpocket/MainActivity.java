@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 String[] listP = {
                         "Shoot",
                         "Shoot Silenced",
-                        "Dry fire",
+                        "Dry Fire",
                         "Screw On Silencer",
                         "Reload"
                 };
