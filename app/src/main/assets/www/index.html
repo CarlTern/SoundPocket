@@ -259,6 +259,8 @@
 
         lock = document.getElementById("lock");
         lock.style.display = "none";
+        Android.setLock(false);
+
      }
      function lockOn() {
         var on = document.getElementById("lockOnBtnDiv");
@@ -280,6 +282,7 @@
 
         lock = document.getElementById("lock");
         lock.style.display = "block";
+        Android.setLock(true);
      }
 
 </script>
