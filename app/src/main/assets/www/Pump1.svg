@@ -4,7 +4,7 @@
 	 viewBox="0 0 185 119.5" style="enable-background:new 0 0 185 119.5;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FF8008;}
-	.st1{fill:#FFC737;}
+	.st1{fill:#FFC737;fill-opacity:0.5;}
 </style>
 <circle class="st0" cx="38.6" cy="38.6" r="38.6"/>
 <path class="st0" d="M38.6,80.8C17.3,80.8,0,98,0,119.4h77.1C77.1,98,59.8,80.8,38.6,80.8z"/>
