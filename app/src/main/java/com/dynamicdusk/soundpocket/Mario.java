@@ -16,11 +16,11 @@ public class Mario extends AccelerometerListener {
 
     public Mario(){
         super.xAccThreshold = 39;
-        super.yAccThreshold = 11;
+        super.yAccThreshold = 7;
         super.zAccThreshold = 16;
         super.xGyroThreshold = 5;
         super.yGyroThreshold = 6;
-        super.zGyroThreshold = 2.8f;
+        super.zGyroThreshold = 3.4f;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -107,6 +107,12 @@ public class Mario extends AccelerometerListener {
 
     private void uppMove(float force){
             now = Calendar.getInstance().getTimeInMillis();
+        try {
+            soundPlayer.killSound();
+        } catch (IllegalStateException exception) {
+
+        }
+
             soundPlayer.playSound(SoundPlayer.SOUND_COIN);
             points++;
             if(points>30){
@@ -119,6 +125,11 @@ public class Mario extends AccelerometerListener {
     }
     private void downMove(float force) {
         now = Calendar.getInstance().getTimeInMillis();
+        try {
+            soundPlayer.killSound();
+        } catch (IllegalStateException exception) {
+
+        }
             soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
             timeStampUpDown = now;
     }
