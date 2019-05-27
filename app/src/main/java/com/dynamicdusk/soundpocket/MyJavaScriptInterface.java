@@ -138,6 +138,7 @@ public class MyJavaScriptInterface {
         loadNewHTML("settings.html");
     }
 
+    /*
     @JavascriptInterface
     public void goToPackageInstruction(String specificSound) {
         System.out.println("-------------------------------goToPackageInstruction");
@@ -150,55 +151,69 @@ public class MyJavaScriptInterface {
         //runJavaScript("window.location = 'package_instructions_war.html';");
         //calls the function callbackTimeFromAndroid("strDate") in JS
     }
+    */
 
     @JavascriptInterface
-    public void getSpecificSoundInfo() {
+    public void getSpecificSoundInfo(String specificSound) {
         System.out.println("-------------------------------getSpecificSoundInfo");
 
-        String packageName = mainActivity.getPackageName();
-        String text = "";
-        String filename = "";
+        String startPositionText = "";
+        String endPositionText = "";
+        String howToText = "";
 
-        switch(specificSoundState) {
+        switch(specificSound) {
             //------------Shotgun
             case "Fire":
-                text = "fill in instruction text";
-                filename = "shotgun-fire-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Dry Fire":
-                text = "fill in instruction text";
-                filename = "shotgun-dry-fire-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Pump":
-                text = "fill in instruction text";
-                filename = "shotgun-pump-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Empty Pump":
-                text = "fill in instruction text";
-                filename = "shotgun-empty-pump-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Ammo Refill":
-                text = "fill in instruction text";
-                filename = "shotgun-ammo-refill-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
 
             //------------Mario
             case "Jump":
-                text = "fill in instruction text";
-                filename = "mario-jump-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Pipe":
-                text = "fill in instruction text";
-                filename = "mario-pipe-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
             case "Fireball":
-                text = "fill in instruction text";
-                filename = "mario-fireball-instruction.svg";
+                startPositionText = "fill in start position";
+                endPositionText = "fill in end position";
+                howToText = "fill in instruction text";
                 break;
+
+                //----------etc.
         }
-        runJavaScript("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
-        System.out.println("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + specificSoundState + "\"," + "\"" + text + "\"," + "\"" + filename + "\")");
-        //calls the function callbackTimeFromAndroid("strDate") in JS
+        runJavaScript("callbackSpecificSoundInfo(\"" + startPositionText + "\"," + "\"" + endPositionText + "\"," + "\"" + howToText + "\")");
+        System.out.println("callbackSpecificSoundInfo(\"" + startPositionText + "\"," + "\"" + endPositionText + "\"," + "\"" + howToText + "\")");
+        /*
+        runJavaScript("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + startPositionText + "\"," + "\"" + endPositionText + "\"" + howToText + "\")");
+        System.out.println("callbackSpecificSoundInfo(\"" + mainActivity.getCurrentPackage() + "\"," + "\"" + startPositionText + "\"," + "\"" + endPositionText + "\"" + howToText + "\")");
+        */
     }
 
     @JavascriptInterface

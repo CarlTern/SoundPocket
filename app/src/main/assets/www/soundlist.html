@@ -118,12 +118,34 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>${sound}</h2>
                 <img id="image" src="" width="100px"/>
-                <p> The image above demonstrates how to trigger the "${sound}" sound. Some movements require a certain amount of force in order to play the sound.</p>
+                <p id="startPos">startPos</p>
+                <p id="endPos">endPos</p>
+                <p id="howTo">howTo</p>
+                <p id="textLog"></p>
                 </div>
             `
+            setTexts(sound);
             setImages(sound);
             changeImage();
         }
+
+        /* ------------------ Texts ------------------ */
+        function setTexts(sound) {
+            Android.getSpecificSoundInfo(sound);
+        }
+
+        function callbackSpecificSoundInfo(startPos, endPos, howTo) {
+            document.getElementById("startPos").innerHTML = `
+                <b>Start position:</b> ${startPos}
+            `
+            document.getElementById("endPos").innerHTML = `
+                <b>End position:</b> ${endPos}
+            `
+            document.getElementById("howTo").innerHTML = `
+                <b>How:</b><br> ${howTo}
+            `
+        }
+
 
         /* ------------------ "Animation" of picture ------------------- */
 
