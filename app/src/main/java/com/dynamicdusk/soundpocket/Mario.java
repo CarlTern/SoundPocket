@@ -47,7 +47,8 @@ public class Mario extends AccelerometerListener {
                 uppAcc = now;
             }
 
-            if (now - downAcc < 80 && now - uppAcc < 80) {
+            //ju högre vänstra värdet är, desto mer sannolikt att få downmovement
+            if (now - downAcc < 120 && now - uppAcc < 80) {
 
                 if (downAcc - uppAcc < 1 && (now - timeStampUpDown) > 400) {
                     downMove(force);
