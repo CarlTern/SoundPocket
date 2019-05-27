@@ -30,10 +30,10 @@ public class Shotgun extends AccelerometerListener {
     private MainActivity main = new MainActivity();
 
     public Shotgun(){
-        super.xAccThreshold = 16;
+        super.xAccThreshold = 13;
         super.yAccThreshold = 6;
         super.zAccThreshold = 20;
-        super.xGyroThreshold = 20;
+        super.xGyroThreshold = 15;
         super.yGyroThreshold = 8;
         super.zGyroThreshold = 4;
     }
