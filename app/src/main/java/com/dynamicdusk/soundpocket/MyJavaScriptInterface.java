@@ -282,6 +282,12 @@ public class MyJavaScriptInterface {
                 howToText = "With a quick motion, tilt your phone 45 degrees up.";
                 hintText = "Your pistol must be loaded and the silencer must be off in order to shoot loudly.";
                 break;
+            case "Dry Shot":
+                startPositionText = "Pointing straight forward.";
+                endPositionText = "Pointing 45 degrees up.";
+                howToText = "With a quick motion, tilt your phone 45 degrees up.";
+                hintText = "Your pistol must be unloaded in order to shoot a dry shot.";
+                break;
             case "Shoot Silenced":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing 45 degrees up.";
@@ -473,6 +479,9 @@ public class MyJavaScriptInterface {
             //------------Pistol
             case "Shoot":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_PISTOL);
+                break;
+            case "Dry Shot":
+                soundPlayer.playSpecificSound(SoundPlayer.SOUND_DRY_FIRE);
                 break;
             case "Shoot Silenced":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_PISTOL_SILENCED);
