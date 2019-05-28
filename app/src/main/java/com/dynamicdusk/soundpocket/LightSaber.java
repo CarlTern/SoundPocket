@@ -16,6 +16,8 @@ public class LightSaber extends AccelerometerListener {
     private boolean isOn = false;
     private long uppAcc = 0;
     private long downAcc = 0;
+    private long uppMove = 0;
+    private long downMove = 0;
 
     public LightSaber(){
 
@@ -116,17 +118,17 @@ public class LightSaber extends AccelerometerListener {
     }
 
     private void uppMove(float force){
-        if (!isOn) {
-            now = Calendar.getInstance().getTimeInMillis();
+        now = Calendar.getInstance().getTimeInMillis();
+        if (!isOn && now - downMove > 500){
             soundPlayer.playSound(SoundPlayer.SOUND_LIGHTSABER_OPEN);
             soundPlayer.playLoop(SoundPlayer.SOUND_LIGHTSABER_PULSE);
-            timeStamp = now;
+            uppMove = now;
             isOn = true;
         }
     }
     private void downMove(float force) {
         now = Calendar.getInstance().getTimeInMillis();
-        if (isOn && now - hitTime > 400) {
+        if (isOn && now - hitTime > 400 && now -uppMove > 500) {
             isOn = false;
 
             try {
@@ -141,7 +143,7 @@ public class LightSaber extends AccelerometerListener {
                 e.printStackTrace();
             }
             killLoop();
-            timeStamp = now;
+            downMove = now;
         }
     }
     public boolean isOn(){
