@@ -118,10 +118,14 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>${sound}</h2>
                 <img id="image" src="" width="150px"/>
+
+                <!--
                 <p id="startPos">startPos</p>
                 <p id="endPos">endPos</p>
-                <p id="howTo">howTo</p>
-                <small id="hint"></small>
+                -->
+
+                <p id="howTo" class="mt-40">howTo</p>
+                <small id="hint" class="mt-60"></small>
                 </div>
             `
             setTexts(sound);
@@ -135,14 +139,18 @@
         }
 
         function callbackSpecificSoundInfo(startPos, endPos, howTo, hint) {
+
+            /* ------
             document.getElementById("startPos").innerHTML = `
                 <b>Start position:</b> ${startPos}
             `
             document.getElementById("endPos").innerHTML = `
                 <b>End position:</b> ${endPos}
             `
+            ------ */
+
             document.getElementById("howTo").innerHTML = `
-                <b>How:</b><br> ${howTo}
+                <b>How?</b><br> ${howTo}
             `
             if (hint != ""){
                 document.getElementById("hint").innerHTML = `
