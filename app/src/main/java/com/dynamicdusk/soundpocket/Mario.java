@@ -113,7 +113,6 @@ public class Mario extends AccelerometerListener {
         } catch (IllegalStateException exception) {
 
         }
-
             soundPlayer.playSound(SoundPlayer.SOUND_COIN);
             points++;
             if(points>30){
@@ -122,8 +121,8 @@ public class Mario extends AccelerometerListener {
                 points = 0;
             }
             timeStampUpDown = now;
-
     }
+
     private void downMove(float force) {
         now = Calendar.getInstance().getTimeInMillis();
         try {
