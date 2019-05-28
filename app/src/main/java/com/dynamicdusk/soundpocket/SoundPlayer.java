@@ -151,8 +151,10 @@ public class SoundPlayer {
     }
 
     public void killSound(){
-        mPlayer.stop();
-        mPlayer.release();
+        if(mPlayer!=null) {
+            mPlayer.stop();
+            mPlayer.release();
+        }
     }
 
     public void playSound(int sound) {
