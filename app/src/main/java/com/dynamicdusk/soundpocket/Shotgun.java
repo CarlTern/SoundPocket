@@ -26,12 +26,14 @@ public class Shotgun extends AccelerometerListener {
     private long gyroZ;
     private long drawBack;
     private long leftMove;
+    private long leftAcc;
+    private long rightAcc;
     private long shotTime;
     long now;
     private MainActivity main = new MainActivity();
 
     public Shotgun(){
-        super.xAccThreshold = 13;
+        super.xAccThreshold = 7;
         super.yAccThreshold = 6;
         super.zAccThreshold = 20;
         super.xGyroThreshold = 15;
@@ -46,13 +48,13 @@ public class Shotgun extends AccelerometerListener {
     public void onAccX(float force) {
         now = Calendar.getInstance().getTimeInMillis();
         if (soundPlayer.isSoundOn()) {
-            if (force < 0) {
-                downAcc = now;
+            if (force > 0) {
+                rightAcc = now;
             } else {
-                uppAcc = now;
+                leftAcc = now;
             }
-            if (now - downAcc < 100 && now - uppAcc < 100) {
-                if (downAcc - uppAcc < 0) {
+            if (now - rightAcc < 100 && now - leftAcc < 100) {
+                if (rightAcc - leftAcc < 0) {
                     rightMove(force);
                 } else {
                     leftMove(force);

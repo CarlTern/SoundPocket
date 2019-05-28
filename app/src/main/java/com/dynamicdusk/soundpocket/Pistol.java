@@ -10,19 +10,23 @@ import java.util.Calendar;
 public class Pistol extends AccelerometerListener {
 
 
-    private float xAccThreshold = 40;
-    private float yAccThreshold = 19;
-    private float zAccThreshold = 25;
     private boolean silenced = false;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     private int shots = 0;
+    private long rightAcc;
+    private long leftAcc;
+    private long rightMove;
+    private long leftMove;
+    private long gyroZ;
+    private long now;
     private MainActivity main = new MainActivity();
 
     public Pistol(){
-        super.xAccThreshold = xAccThreshold;
-        super.yAccThreshold = yAccThreshold;
-        super.zAccThreshold = zAccThreshold;
+        super.xAccThreshold = 12;
+        super.yAccThreshold = 19;
+        super.zAccThreshold = 25;
+        super.zGyroThreshold = 5;
         timeStamp = Calendar.getInstance().getTimeInMillis();
     }
 
@@ -31,33 +35,33 @@ public class Pistol extends AccelerometerListener {
     }
 
     public void onAccX(float force) {
-
-        if (soundPlayer.isSoundOn()&&(Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-               if(shots>0) {
-                   if (!silenced) {
-                       soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
-                       timeStamp = Calendar.getInstance().getTimeInMillis();
-                   } else {
-                       soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
-                       timeStamp = Calendar.getInstance().getTimeInMillis();
-                   }
-                   shots--;
-               } else{
-                   soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
-                   timeStamp = Calendar.getInstance().getTimeInMillis();
-               }
+        now = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn()) {
+            if (force > 0) {
+                rightAcc = now;
+            } else {
+                leftAcc = now;
+            }
+            if (now - rightAcc < 100 && now - leftAcc < 100) {
+                if (rightAcc - leftAcc < 0) {
+                    rightMove(force);
+                } else {
+                    leftMove(force);
+                }
+            }
         }
-        //jsHandler.alert("Force: " + force);
     }
 
     public void onAccY(float force) {
-        if (soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn() && (now - timeStamp) > 500
+        && now -rightAcc > 200 && now - leftAcc > 200) {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
-                timeStamp = Calendar.getInstance().getTimeInMillis();
-            //jsHandler.alert("Force: " + force);
+                timeStamp = now;
         }
     }
+
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
             //soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
@@ -66,14 +70,43 @@ public class Pistol extends AccelerometerListener {
             shots=8;
         }
     }
-        public void onGyroX(float force) {
+
+    public void onGyroZ(float force){
+        now = Calendar.getInstance().getTimeInMillis();
+        gyroZ = now;
+        if (now - rightMove < 200 && force < -2) {
+            playShot();
         }
-    
-        public void onGyroY(float force) {
+    }
+
+    private void rightMove(float force) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if (now - gyroZ < 200 && now - leftMove > 500) {
+            playShot();
         }
-    
-        public void onGyroZ(float force) {
+        rightMove = now;
+    }
+
+    private void leftMove(float force){
+        now = Calendar.getInstance().getTimeInMillis();
+        leftMove = now;
+    }
+
+
+    private void playShot(){
+        now = Calendar.getInstance().getTimeInMillis();
+        if(shots > 0 && now - timeStamp > 400) {
+            if (!silenced) {
+                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL);
+            } else {
+                soundPlayer.playSound(SoundPlayer.SOUND_PISTOL_SILENCED);
+            }
+            shots--;
+        } else if (now - timeStamp > 400){
+            soundPlayer.playSound(SoundPlayer.SOUND_DRY_FIRE);
         }
+        timeStamp = now;
+    }
 
 
     }
