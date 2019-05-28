@@ -6,17 +6,17 @@ import java.util.Random;
 public class FartPrank extends AccelerometerListener {
 
 
-    private float xAccThreshold = 3;
-    private float yAccThreshold = 3;
-    private float zAccThreshold = 3;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     Random rand = new Random();
 
     public FartPrank(){
-        super.xAccThreshold = xAccThreshold;
-        super.yAccThreshold = yAccThreshold;
-        super.zAccThreshold = zAccThreshold;
+        super.xAccThreshold = 3f;
+        super.yAccThreshold = 3f;
+        super.zAccThreshold = 3f;
+        super.xGyroThreshold = 3f;
+        super.yGyroThreshold = 3f;
+        super.zGyroThreshold = 3f;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -49,12 +49,24 @@ public class FartPrank extends AccelerometerListener {
     }
 
     public void onGyroX(float force) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 5000) {
+            playRandomSound();
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+        }
             }
 
     public void onGyroY(float force) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 5000) {
+            playRandomSound();
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+        }
             }
 
     public void onGyroZ(float force) {
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 5000) {
+            playRandomSound();
+            timeStamp = Calendar.getInstance().getTimeInMillis();
+        }
             }
 
     private void playRandomSound(){
