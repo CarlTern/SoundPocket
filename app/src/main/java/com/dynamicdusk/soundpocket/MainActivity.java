@@ -204,7 +204,6 @@ public class MainActivity extends AppCompatActivity {
                         "Jump",
                         "Pipe",
                         "Fireball",
-                        "Yahoo",
                         "MammaMia",
                         "Boing"
                 };

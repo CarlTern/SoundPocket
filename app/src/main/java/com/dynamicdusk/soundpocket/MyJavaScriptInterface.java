@@ -210,11 +210,6 @@ public class MyJavaScriptInterface {
                 endPositionText = "Pointing 45 degrees up.";
                 howToText = "With a quick motion, tilt your phone 45 degrees up.";
                 break;
-            case "Yahoo":
-                startPositionText = "Pointing straight forward.";
-                endPositionText = "Pointing straight forward.";
-                howToText = "With a quick motion, move your phone straight up.";
-                break;
             case "MammaMia":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left.";
@@ -426,9 +421,6 @@ public class MyJavaScriptInterface {
                 break;
             case "Fireball":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_FIREBALL);
-                break;
-            case "Yahoo":
-                soundPlayer.playSpecificSound(SoundPlayer.SOUND_YAHOO);
                 break;
             case "MammaMia":
                 soundPlayer.playSpecificSound(SoundPlayer.SOUND_MAMMA_MIA);
