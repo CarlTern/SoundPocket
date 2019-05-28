@@ -173,7 +173,7 @@ public class MyJavaScriptInterface {
             case "Dry Fire":
                 startPositionText = "Pointing straight forward";
                 endPositionText = "Pointing 45 degrees up";
-                howToText = "Hold your phone pointing forward horizontally. With a quick motion, tilt it 45 degrees up.";
+                howToText = "With a quick motion, tilt your phone 45 degrees up.";
                 hintText = "Your shotgun must be unloaded or out of shots in order to dry-fire";
                 break;
             case "Pump":
@@ -191,19 +191,19 @@ public class MyJavaScriptInterface {
             case "Ammo Refill":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left.";
-                howToText = "In a quick jerking motion, tilt your phone 90 degrees to the left or right.";
+                howToText = "With a quick jerking motion, tilt your phone 90 degrees to the left or right.";
                 break;
 
             //------------Mario
             case "Jump":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
-                howToText = "In a quick jerking motion, move your phone upwards.";
+                howToText = "With a quick jerking motion, move your phone upwards.";
                 break;
             case "Pipe":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
-                howToText = "In a quick jerking motion, move your phone downwards.";
+                howToText = "With a quick jerking motion, move your phone downwards.";
                 break;
             case "Fireball":
                 startPositionText = "Pointing straight forward.";
@@ -213,17 +213,17 @@ public class MyJavaScriptInterface {
             case "Yahoo":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "In a quick motion, move your phone straight up.";
+                howToText = "With a quick motion, move your phone straight up.";
                 break;
             case "MammaMia":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward, tilted 90 degrees to the right or left.";
-                howToText = "In a quick jerking motion, tilt your phone 90 degrees to the left or right.";
+                howToText = "With a quick jerking motion, tilt your phone 90 degrees to the left or right.";
                 break;
             case "Boing":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "In a quick motion, move your phone sideways.";
+                howToText = "With a quick motion, move your phone sideways.";
                 break;
 
             //------------Drumkit
@@ -235,25 +235,25 @@ public class MyJavaScriptInterface {
             case "Cymbal":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "In a quick jerking motion, move your phone forward away from your body.";
+                howToText = "With a quick jerking motion, move your phone forward away from your body.";
                 break;
             case "Tom":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "In a quick motion, move your phone sideways.";
+                howToText = "With a quick motion, move your phone sideways.";
                 break;
 
             //------------Star Wars
             case "Open":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
-                howToText = "In a quick jerking motion, move your phone upwards.";
+                howToText = "With a quick jerking motion, move your phone upwards.";
                 hintText = "This activates the lightsaber.";
                 break;
             case "Close":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
-                howToText = "In a quick jerking motion, move your phone downwards.";
+                howToText = "With a quick jerking motion, move your phone downwards.";
                 hintText = "This deactivates the lightsaber.";
                 break;
             case "Hit":
@@ -327,12 +327,12 @@ public class MyJavaScriptInterface {
             case "Yes Mi Lord":
                 startPositionText = "Pointing vertically up.";
                 endPositionText = "Pointing vertically up.";
-                howToText = "In a quick jerking motion, move your phone straight up.";
+                howToText = "With a quick jerking motion, move your phone straight up.";
                 break;
             case "Off I Go Then":
                 startPositionText = "Pointing straight forward.";
                 endPositionText = "Pointing straight forward.";
-                howToText = "In a quick motion, move your phone sideways.";
+                howToText = "With a quick motion, move your phone sideways.";
                 break;
 
             //------------Airhorn
