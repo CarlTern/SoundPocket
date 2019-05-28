@@ -18,10 +18,11 @@ public class Mario extends AccelerometerListener {
     private long uppAcc = 0;
     private long downAcc = 0;
     private long gyroZ;
+    private long noShot;
 
     public Mario(){
         super.xAccThreshold = 13;
-        super.yAccThreshold = 20f;
+        super.yAccThreshold = 10f;
         super.zAccThreshold = 35;
         super.xGyroThreshold = 6;
         super.yGyroThreshold = 18;
@@ -36,6 +37,7 @@ public class Mario extends AccelerometerListener {
     public void onAccX(float force) {
         now = Calendar.getInstance().getTimeInMillis();
         if (soundPlayer.isSoundOn()) {
+
             if (force > 0) {
                 rightAcc = now;
             } else {
@@ -55,14 +57,14 @@ public class Mario extends AccelerometerListener {
 
         now = Calendar.getInstance().getTimeInMillis();
         if(soundPlayer.isSoundOn()){
-
+            if (force > 20 || force < -20){
+                noShot = now;
+            }
             if (force < 0) {
                 downAcc = now;
             } else {
                 uppAcc = now;
             }
-
-            //ju högre vänstra värdet är, desto mer sannolikt att få downmovement
             if (now - downAcc < 192 && now - uppAcc < 80) {
 
                 if (downAcc - uppAcc < 1 && (now - timeStampUpDown) > 400) {
@@ -119,7 +121,7 @@ public class Mario extends AccelerometerListener {
 
     private void playShot(){
         if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500
-        && now - downAcc > 200 && now - uppAcc > 200) {
+        && now - noShot > 200) {
             soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             hits++;
@@ -162,11 +164,6 @@ public class Mario extends AccelerometerListener {
 
     private void downMove(float force) {
         now = Calendar.getInstance().getTimeInMillis();
-        try {
-            soundPlayer.killSound();
-        } catch (IllegalStateException exception) {
-
-        }
             soundPlayer.playSound(SoundPlayer.SOUND_PIPE);
             timeStampUpDown = now;
     }
