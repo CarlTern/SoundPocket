@@ -11,13 +11,12 @@ public class Pistol extends AccelerometerListener {
 
 
     private float xAccThreshold = 40;
-    private float yAccThreshold = 19;
+    private float yAccThreshold = 23;
     private float zAccThreshold = 25;
     private boolean silenced = false;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     private int shots = 0;
-    private MainActivity main = new MainActivity();
 
     public Pistol(){
         super.xAccThreshold = xAccThreshold;
@@ -47,7 +46,6 @@ public class Pistol extends AccelerometerListener {
                    timeStamp = Calendar.getInstance().getTimeInMillis();
                }
         }
-        //jsHandler.alert("Force: " + force);
     }
 
     public void onAccY(float force) {
@@ -55,12 +53,10 @@ public class Pistol extends AccelerometerListener {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
                 timeStamp = Calendar.getInstance().getTimeInMillis();
-            //jsHandler.alert("Force: " + force);
         }
     }
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            //soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             soundPlayer.playSound(SoundPlayer.SOUND_RELOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             shots=8;

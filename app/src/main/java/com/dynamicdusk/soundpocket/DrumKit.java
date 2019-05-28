@@ -7,9 +7,9 @@ import java.util.Calendar;
 public class DrumKit extends AccelerometerListener {
 
 
-    private float xAccThreshold = 22;
-    private float yAccThreshold = 22;
-    private float zAccThreshold = 20;
+    private float xAccThreshold = 18;
+    private float yAccThreshold = 15;
+    private float zAccThreshold = 17;
     SoundPlayer soundPlayer;
     private long timeStamp =0;
 

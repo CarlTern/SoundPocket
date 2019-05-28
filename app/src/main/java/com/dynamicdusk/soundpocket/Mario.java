@@ -16,7 +16,7 @@ public class Mario extends AccelerometerListener {
 
     public Mario(){
         super.xAccThreshold = 35;
-        super.yAccThreshold = 6.5f;
+        super.yAccThreshold = 7.2f;
         super.zAccThreshold = 16;
         super.xGyroThreshold = 5;
         super.yGyroThreshold = 6;
@@ -48,7 +48,7 @@ public class Mario extends AccelerometerListener {
             }
 
             //ju högre vänstra värdet är, desto mer sannolikt att få downmovement
-            if (now - downAcc < 190 && now - uppAcc < 80) {
+            if (now - downAcc < 192 && now - uppAcc < 80) {
 
                 if (downAcc - uppAcc < 1 && (now - timeStampUpDown) > 400) {
                     downMove(force);
