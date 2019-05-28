@@ -58,11 +58,7 @@ public class Pistol extends AccelerometerListener {
         && now -rightAcc > 200 && now - leftAcc > 200) {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
-<<<<<<< HEAD
                 timeStamp = now;
-=======
-                timeStamp = Calendar.getInstance().getTimeInMillis();
->>>>>>> 00e2faf54628a4fac42874a74dd67e01e82b0e9f
         }
     }
 
