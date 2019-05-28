@@ -10,10 +10,17 @@ import java.util.Calendar;
 public class Pistol extends AccelerometerListener {
 
 
+<<<<<<< HEAD
+=======
+    private float xAccThreshold = 40;
+    private float yAccThreshold = 23;
+    private float zAccThreshold = 25;
+>>>>>>> 00e2faf54628a4fac42874a74dd67e01e82b0e9f
     private boolean silenced = false;
     private long timeStamp = 0;
     private SoundPlayer soundPlayer;
     private int shots = 0;
+<<<<<<< HEAD
     private long rightAcc;
     private long leftAcc;
     private long rightMove;
@@ -21,6 +28,8 @@ public class Pistol extends AccelerometerListener {
     private long gyroZ;
     private long now;
     private MainActivity main = new MainActivity();
+=======
+>>>>>>> 00e2faf54628a4fac42874a74dd67e01e82b0e9f
 
     public Pistol(){
         super.xAccThreshold = 12;
@@ -58,13 +67,16 @@ public class Pistol extends AccelerometerListener {
         && now -rightAcc > 200 && now - leftAcc > 200) {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
+<<<<<<< HEAD
                 timeStamp = now;
+=======
+                timeStamp = Calendar.getInstance().getTimeInMillis();
+>>>>>>> 00e2faf54628a4fac42874a74dd67e01e82b0e9f
         }
     }
 
     public void onAccZ(float force) {
         if(soundPlayer.isSoundOn() && (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            //soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             soundPlayer.playSound(SoundPlayer.SOUND_RELOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             shots=8;

@@ -84,8 +84,8 @@ public class LightSaber extends AccelerometerListener {
     }
 
     public void killLoop(){
-        soundPlayer.killLoop();
-        isOn = false;
+            soundPlayer.killLoop();
+            isOn = false;
     }
 
     public void onGyroX(float force){
@@ -142,7 +142,11 @@ public class LightSaber extends AccelerometerListener {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            try {
             killLoop();
+            } catch (IllegalStateException exception) {
+
+            }
             downMove = now;
         }
     }

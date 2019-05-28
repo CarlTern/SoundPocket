@@ -3,25 +3,19 @@ package com.dynamicdusk.soundpocket;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-
-import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Date;
+
 
 
 public class Shotgun extends AccelerometerListener {
 
 
     private int shots = 0;
-    private boolean loaded;
     private boolean magazineCocked = false;
-    private boolean magazinePulledForward;
     private long timeStamp = 0;
     private long downAcc = 0;
     private long uppAcc = 0;
     private SoundPlayer soundPlayer;
-    private long sideMove;
-    //State booleand
     private long rightMove;
     private long gyroZ;
     private long drawBack;
@@ -83,7 +77,7 @@ public class Shotgun extends AccelerometerListener {
 
     public void onAccZ(float force) {
     }
-    // TODO GYRO FIX
+
     public void onGyroY(float force){
         now = Calendar.getInstance().getTimeInMillis();
         if(soundPlayer.isSoundOn()
