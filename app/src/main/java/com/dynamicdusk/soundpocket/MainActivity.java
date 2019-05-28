@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 String[] listP = {
                         "Shoot",
                         "Shoot Silenced",
-                        "Dry fire",
+                        "Dry Shot",
                         "Screw On Silencer",
                         "Reload"
                 };
@@ -247,8 +247,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case "Lasso":
                 String[] listLasso = {
-                        "Lasso Spin",
-                        "Lasso Throw",
+                        "Spin",
+                        "Throw",
                 };
                 return listLasso;
 
