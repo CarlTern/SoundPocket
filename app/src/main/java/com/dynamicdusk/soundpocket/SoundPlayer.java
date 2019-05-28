@@ -145,9 +145,11 @@ public class SoundPlayer {
     }
 
     public void killLoop(){
-        looper.setLooping(false);
-        looper.stop();
-        looper.release();
+        if(looper!=null) {
+            looper.setLooping(false);
+            looper.stop();
+            looper.release();
+        }
     }
 
     public void killSound(){
