@@ -25,6 +25,7 @@ public class Shotgun extends AccelerometerListener {
     private long rightMove;
     private long gyroZ;
     private long drawBack;
+    private long leftMove;
     private long shotTime;
     long now;
     private MainActivity main = new MainActivity();
@@ -34,8 +35,8 @@ public class Shotgun extends AccelerometerListener {
         super.yAccThreshold = 6;
         super.zAccThreshold = 20;
         super.xGyroThreshold = 15;
-        super.yGyroThreshold = 8;
-        super.zGyroThreshold = 4;
+        super.yGyroThreshold = 10;
+        super.zGyroThreshold = 5;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -84,7 +85,7 @@ public class Shotgun extends AccelerometerListener {
     public void onGyroY(float force){
         now = Calendar.getInstance().getTimeInMillis();
         if(soundPlayer.isSoundOn()
-                && (now - timeStamp) > 400) {
+                && (now - timeStamp) > 400 && now - leftMove > 400) {
             soundPlayer.playSound(SoundPlayer.SOUND_AMMO_LOAD);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             if(shots<8) {
@@ -95,7 +96,7 @@ public class Shotgun extends AccelerometerListener {
     public void onGyroZ(float force){
         now = Calendar.getInstance().getTimeInMillis();
         gyroZ = now;
-        if (now - rightMove < 200) {
+        if (now - rightMove < 200 && force < -2) {
             playShot();
         }
     }
@@ -135,14 +136,15 @@ public class Shotgun extends AccelerometerListener {
 
     private void rightMove(float force) {
         now = Calendar.getInstance().getTimeInMillis();
-        if (now - gyroZ < 200) {
+        if (now - gyroZ < 200 && now - leftMove > 500) {
             playShot();
         }
         rightMove = now;
     }
 
     private void leftMove(float force){
-
+        now = Calendar.getInstance().getTimeInMillis();
+        leftMove = now;
     }
 
     public void vibrate(){
