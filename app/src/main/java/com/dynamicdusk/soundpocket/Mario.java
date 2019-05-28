@@ -11,16 +11,21 @@ public class Mario extends AccelerometerListener {
     private long timeStampUpDown = 0;
     private SoundPlayer soundPlayer;
     private long now =0;
+    private long rightAcc;
+    private long leftAcc;
+    private long rightMove;
+    private long leftMove;
     private long uppAcc = 0;
     private long downAcc = 0;
+    private long gyroZ;
 
     public Mario(){
-        super.xAccThreshold = 35;
-        super.yAccThreshold = 7f;
-        super.zAccThreshold = 16;
-        super.xGyroThreshold = 5;
-        super.yGyroThreshold = 6;
-        super.zGyroThreshold = 3.55f;
+        super.xAccThreshold = 13;
+        super.yAccThreshold = 20f;
+        super.zAccThreshold = 35;
+        super.xGyroThreshold = 6;
+        super.yGyroThreshold = 18;
+        super.zGyroThreshold = 5f;
     }
 
     public void setSoundPlayer(SoundPlayer soundPlayer){
@@ -29,10 +34,20 @@ public class Mario extends AccelerometerListener {
 
 
     public void onAccX(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
-            soundPlayer.playSound(SoundPlayer.SOUND_YAHOO);
-            timeStamp = Calendar.getInstance().getTimeInMillis();
-
+        now = Calendar.getInstance().getTimeInMillis();
+        if (soundPlayer.isSoundOn()) {
+            if (force > 0) {
+                rightAcc = now;
+            } else {
+                leftAcc = now;
+            }
+            if (now - rightAcc < 100 && now - leftAcc < 100) {
+                if (rightAcc - leftAcc < 0) {
+                    rightMove(force);
+                } else {
+                    leftMove(force);
+                }
+            }
         }
     }
 
@@ -95,7 +110,16 @@ public class Mario extends AccelerometerListener {
         }
     }
     public void onGyroZ(float force) {
-        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500) {
+        now = Calendar.getInstance().getTimeInMillis();
+        gyroZ = now;
+        if (now - rightMove < 200 && force < -2) {
+            playShot();
+        }
+    }
+
+    private void playShot(){
+        if(soundPlayer.isSoundOn()&& (Calendar.getInstance().getTimeInMillis() - timeStamp) > 500
+        && now - downAcc > 200 && now - uppAcc > 200) {
             soundPlayer.playSound(SoundPlayer.SOUND_FIREBALL);
             timeStamp = Calendar.getInstance().getTimeInMillis();
             hits++;
@@ -104,6 +128,19 @@ public class Mario extends AccelerometerListener {
                 levelUp = false;
             }
         }
+    }
+
+    private void rightMove(float force) {
+        now = Calendar.getInstance().getTimeInMillis();
+        if (now - gyroZ < 200 && now - leftMove > 500) {
+            playShot();
+        }
+        rightMove = now;
+    }
+
+    private void leftMove(float force){
+        now = Calendar.getInstance().getTimeInMillis();
+        leftMove = now;
     }
 
     private void uppMove(float force){
