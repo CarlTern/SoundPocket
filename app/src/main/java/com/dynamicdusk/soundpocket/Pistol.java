@@ -21,11 +21,12 @@ public class Pistol extends AccelerometerListener {
     private long gyroZ;
     private long now;
     private MainActivity main = new MainActivity();
+    private long timeStampSilencer =0;
 
     public Pistol(){
         super.xAccThreshold = 12;
-        super.yAccThreshold = 19;
-        super.zAccThreshold = 25;
+        super.yAccThreshold = 12;
+        super.zAccThreshold = 33;
         super.zGyroThreshold = 5;
         timeStamp = Calendar.getInstance().getTimeInMillis();
     }
@@ -55,10 +56,11 @@ public class Pistol extends AccelerometerListener {
     public void onAccY(float force) {
         now = Calendar.getInstance().getTimeInMillis();
         if (soundPlayer.isSoundOn() && (now - timeStamp) > 500
-        && now -rightAcc > 200 && now - leftAcc > 200) {
+        && now -rightAcc > 200 && now - leftAcc > 200 && (now - timeStampSilencer) > 2000) {
                 silenced = !silenced;
                 soundPlayer.playSound(SoundPlayer.SOUND_SCREW_ON_SILENCER);
                 timeStamp = now;
+                timeStampSilencer = now;
         }
     }
 
